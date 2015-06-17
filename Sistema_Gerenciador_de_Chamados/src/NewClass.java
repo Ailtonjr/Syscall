@@ -5,5 +5,5 @@
  */
 public class NewClass {
     //  Aqui é o branch segundo
-    //oi gete
+    //oi gente
 }
