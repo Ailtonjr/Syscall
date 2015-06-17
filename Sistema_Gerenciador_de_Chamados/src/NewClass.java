@@ -4,5 +4,5 @@
  * fui wu    fiz
  */
 public class NewClass {
-
+    //  Aqui é o branch segundo
 }
