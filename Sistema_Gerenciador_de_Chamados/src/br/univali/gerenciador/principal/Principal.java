@@ -1,14 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  UNIVALI - Universidade do Vale do Itajaí
+ *  Curso de bacharelado e Ciência da Computação
+ *  Disciplina de Banco de Dados I
+ *  Acadêmicos: -   Ailton Cardoso Júnior
+                -   João Felipe Gonçalves
  */
+
 package br.univali.gerenciador.principal;
 
-/**
- *
- * @author João
- */
+
 public class Principal {
     
 }
