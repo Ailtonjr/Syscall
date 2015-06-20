@@ -9,15 +9,13 @@ package br.univali.gerenciador.visao;
  *
  * @author Ailton Cardoso Jr
  */
-public class Login extends javax.swing.JDialog {
+public class NovoCliente extends javax.swing.JDialog {
 
     /**
-     * Creates new form Login2
+     * Creates new form NovoCliente
      */
-    java.awt.Frame pai;
-    public Login(java.awt.Frame parent, boolean modal) {
+    public NovoCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.pai = parent;
         initComponents();
     }
 
@@ -30,22 +28,15 @@ public class Login extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        label_Login = new javax.swing.JLabel();
         fild_User = new javax.swing.JTextField();
+        label_Login = new javax.swing.JLabel();
         label_Password = new javax.swing.JLabel();
         botao_Login = new javax.swing.JButton();
-        fild_Password = new javax.swing.JPasswordField();
+        fild_User1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
-
-        label_Login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        label_Login.setText("Login");
 
         fild_User.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         fild_User.addActionListener(new java.awt.event.ActionListener() {
@@ -54,21 +45,24 @@ public class Login extends javax.swing.JDialog {
             }
         });
 
+        label_Login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label_Login.setText("Cliente");
+
         label_Password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        label_Password.setText("Senha");
+        label_Password.setText("E-Mail");
 
         botao_Login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login.setText("Entrar");
+        botao_Login.setText("Salvar");
         botao_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botao_LoginActionPerformed(evt);
             }
         });
 
-        fild_Password.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        fild_Password.addActionListener(new java.awt.event.ActionListener() {
+        fild_User1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        fild_User1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fild_PasswordActionPerformed(evt);
+                fild_User1ActionPerformed(evt);
             }
         });
 
@@ -78,16 +72,18 @@ public class Login extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(95, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(botao_Login)
-                    .addComponent(fild_User, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_Password)
+                            .addComponent(label_Login)
+                            .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(95, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(label_Password, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_Login, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(192, 192, 192))
-                    .addComponent(fild_Password))
-                .addContainerGap(95, Short.MAX_VALUE))
+                            .addComponent(botao_Login)
+                            .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,15 +94,14 @@ public class Login extends javax.swing.JDialog {
                 .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(label_Password)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fild_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(botao_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(30, 30, 30))
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fild_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_UserActionPerformed
@@ -114,49 +109,21 @@ public class Login extends javax.swing.JDialog {
     }//GEN-LAST:event_fild_UserActionPerformed
 
     private void botao_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_LoginActionPerformed
-            this.setVisible(false);       
+        this.setVisible(false);
     }//GEN-LAST:event_botao_LoginActionPerformed
 
-    private void fild_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_PasswordActionPerformed
+    private void fild_User1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_User1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fild_PasswordActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        pai.dispose();
-    }//GEN-LAST:event_formWindowClosing
+    }//GEN-LAST:event_fild_User1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Login dialog = new Login(new javax.swing.JFrame(), true);
+                NovoCliente dialog = new NovoCliente(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -170,8 +137,8 @@ public class Login extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botao_Login;
-    private javax.swing.JPasswordField fild_Password;
     private javax.swing.JTextField fild_User;
+    private javax.swing.JTextField fild_User1;
     private javax.swing.JLabel label_Login;
     private javax.swing.JLabel label_Password;
     // End of variables declaration//GEN-END:variables
