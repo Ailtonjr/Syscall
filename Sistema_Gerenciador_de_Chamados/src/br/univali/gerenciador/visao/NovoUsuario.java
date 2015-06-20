@@ -9,12 +9,12 @@ package br.univali.gerenciador.visao;
  *
  * @author Ailton Cardoso Jr
  */
-public class NovoCliente extends javax.swing.JDialog {
+public class NovoUsuario extends javax.swing.JDialog {
 
     /**
      * Creates new form NovoCliente
      */
-    public NovoCliente(java.awt.Frame parent, boolean modal) {
+    public NovoUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -33,6 +33,8 @@ public class NovoCliente extends javax.swing.JDialog {
         label_Password = new javax.swing.JLabel();
         botao_Login = new javax.swing.JButton();
         fild_User1 = new javax.swing.JTextField();
+        label_Password1 = new javax.swing.JLabel();
+        fild_Password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
@@ -46,7 +48,7 @@ public class NovoCliente extends javax.swing.JDialog {
         });
 
         label_Login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        label_Login.setText("Cliente");
+        label_Login.setText("Nome");
 
         label_Password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         label_Password.setText("E-Mail");
@@ -66,24 +68,32 @@ public class NovoCliente extends javax.swing.JDialog {
             }
         });
 
+        label_Password1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label_Password1.setText("Senha");
+
+        fild_Password.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        fild_Password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fild_PasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_Password)
-                            .addComponent(label_Login)
-                            .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(95, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(botao_Login)
-                            .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addGap(95, 95, 95)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botao_Login)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(fild_Password)
+                        .addComponent(label_Password, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(label_Login, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(fild_User, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                        .addComponent(label_Password1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(fild_User1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,8 +107,12 @@ public class NovoCliente extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(label_Password1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fild_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(botao_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -117,6 +131,10 @@ public class NovoCliente extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_fild_User1ActionPerformed
 
+    private void fild_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_PasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fild_PasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -124,7 +142,7 @@ public class NovoCliente extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                NovoCliente dialog = new NovoCliente(new javax.swing.JFrame(), true);
+                NovoUsuario dialog = new NovoUsuario(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -138,9 +156,11 @@ public class NovoCliente extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botao_Login;
+    private javax.swing.JPasswordField fild_Password;
     private javax.swing.JTextField fild_User;
     private javax.swing.JTextField fild_User1;
     private javax.swing.JLabel label_Login;
     private javax.swing.JLabel label_Password;
+    private javax.swing.JLabel label_Password1;
     // End of variables declaration//GEN-END:variables
 }
