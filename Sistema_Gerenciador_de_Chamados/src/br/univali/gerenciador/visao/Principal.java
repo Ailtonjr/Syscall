@@ -6,7 +6,7 @@
 package br.univali.gerenciador.visao;
 
 import javax.swing.UIManager;
-import br.univali.gerenciador.visao.NovoUsuario;
+import br.univali.gerenciador.visao.NovoFuncionario;
 
 /**
  *
@@ -100,11 +100,6 @@ public class Principal extends javax.swing.JFrame {
         jMenu2.setText("Usuário");
 
         jMenuItem5.setText("Novo Usuário");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
         jMenu2.add(jMenuItem5);
 
         jMenuItem6.setText("Buscar Usuários");
@@ -140,6 +135,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 
+        NovoFuncionario newJDialog = new NovoFuncionario(this, true);
+        newJDialog.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -148,15 +145,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        NovoCliente novoCliente = new NovoCliente(this,true);
-        novoCliente.setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        
-        NovoUsuario newJDialog = new NovoUsuario(this, true);
-        newJDialog.setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
