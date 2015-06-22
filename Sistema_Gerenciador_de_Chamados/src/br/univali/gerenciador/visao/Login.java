@@ -7,7 +7,7 @@ import br.univali.gerenciador.modelo.Conexao;
 public class Login extends javax.swing.JDialog {
 
     /**
-     * Creates new form Login2
+     * Creates new form Login2 teste
      */
     java.awt.Frame pai;
     public Login(java.awt.Frame parent, boolean modal) {
