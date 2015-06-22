@@ -34,36 +34,92 @@ public class NovoCliente extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fild_User = new javax.swing.JTextField();
-        label_Login = new javax.swing.JLabel();
-        label_Password = new javax.swing.JLabel();
-        botao_Login = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        botao_Login6 = new javax.swing.JButton();
+        botao_Login5 = new javax.swing.JButton();
+        botao_Login3 = new javax.swing.JButton();
+        botao_Login4 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         fild_User1 = new javax.swing.JTextField();
+        label_Password = new javax.swing.JLabel();
+        label_Login = new javax.swing.JLabel();
+        fild_User = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         setResizable(false);
 
-        fild_User.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        fild_User.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setToolTipText("");
+        jPanel1.setMaximumSize(new java.awt.Dimension(480, 420));
+        jPanel1.setMinimumSize(new java.awt.Dimension(480, 420));
+        jPanel1.setName("dfd"); // NOI18N
+        jPanel1.setPreferredSize(new java.awt.Dimension(480, 420));
+
+        botao_Login6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botao_Login6.setText("Novo");
+        botao_Login6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fild_UserActionPerformed(evt);
+                botao_Login6ActionPerformed(evt);
             }
         });
 
-        label_Login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        label_Login.setText("Cliente");
-
-        label_Password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        label_Password.setText("E-Mail");
-
-        botao_Login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login.setText("Salvar");
-        botao_Login.addActionListener(new java.awt.event.ActionListener() {
+        botao_Login5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botao_Login5.setText("Excluir");
+        botao_Login5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_LoginActionPerformed(evt);
+                botao_Login5ActionPerformed(evt);
             }
         });
+
+        botao_Login3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botao_Login3.setText("Confirmar");
+        botao_Login3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botao_Login3ActionPerformed(evt);
+            }
+        });
+
+        botao_Login4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botao_Login4.setText("Excluir");
+        botao_Login4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botao_Login4ActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Nome", "E-Mail"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setColumnSelectionAllowed(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         fild_User1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         fild_User1.addActionListener(new java.awt.event.ActionListener() {
@@ -72,39 +128,99 @@ public class NovoCliente extends javax.swing.JDialog {
             }
         });
 
+        label_Password.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        label_Password.setText("E-Mail");
+
+        label_Login.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        label_Login.setText("Cliente");
+
+        fild_User.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        fild_User.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fild_UserActionPerformed(evt);
+            }
+        });
+
+        jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator1.setToolTipText("");
+        jSeparator1.setName(""); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel1.setText("Clientes Cadastrados");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(fild_User1)
+                                .addComponent(label_Password)
+                                .addComponent(label_Login)
+                                .addComponent(fild_User, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(botao_Login6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(botao_Login5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(botao_Login4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(botao_Login3))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jSeparator1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label_Login)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(label_Password)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botao_Login3)
+                            .addComponent(botao_Login4)
+                            .addComponent(botao_Login6)
+                            .addComponent(botao_Login5))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_Password)
-                            .addComponent(label_Login)
-                            .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(95, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(botao_Login)
-                            .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(label_Login)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(label_Password)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botao_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -114,13 +230,25 @@ public class NovoCliente extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_fild_UserActionPerformed
 
-    private void botao_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_LoginActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_botao_LoginActionPerformed
-
     private void fild_User1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_User1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fild_User1ActionPerformed
+
+    private void botao_Login4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botao_Login4ActionPerformed
+
+    private void botao_Login3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botao_Login3ActionPerformed
+
+    private void botao_Login5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botao_Login5ActionPerformed
+
+    private void botao_Login6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login6ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_botao_Login6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,9 +259,17 @@ public class NovoCliente extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botao_Login;
+    private javax.swing.JButton botao_Login3;
+    private javax.swing.JButton botao_Login4;
+    private javax.swing.JButton botao_Login5;
+    private javax.swing.JButton botao_Login6;
     private javax.swing.JTextField fild_User;
     private javax.swing.JTextField fild_User1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel label_Login;
     private javax.swing.JLabel label_Password;
     // End of variables declaration//GEN-END:variables
