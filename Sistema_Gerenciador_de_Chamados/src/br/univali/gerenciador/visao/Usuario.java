@@ -45,6 +45,7 @@ public class Usuario extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Sistema de Chamados - Usuários");
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         setResizable(false);
 
@@ -52,9 +53,10 @@ public class Usuario extends javax.swing.JDialog {
         label_Login.setText("Nome");
 
         label_Password.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        label_Password.setText("E-Mail");
+        label_Password.setText("Login");
 
         fild_User1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        fild_User1.setEnabled(false);
         fild_User1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fild_User1ActionPerformed(evt);
@@ -65,6 +67,7 @@ public class Usuario extends javax.swing.JDialog {
         label_Password1.setText("Senha");
 
         fild_Password.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        fild_Password.setEnabled(false);
         fild_Password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fild_PasswordActionPerformed(evt);
@@ -72,6 +75,7 @@ public class Usuario extends javax.swing.JDialog {
         });
 
         fild_User2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        fild_User2.setEnabled(false);
         fild_User2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fild_User2ActionPerformed(evt);
@@ -86,7 +90,7 @@ public class Usuario extends javax.swing.JDialog {
                 {null, null}
             },
             new String [] {
-                "Nome", "E-Mail"
+                "Nome", "Login"
             }
         ) {
             Class[] types = new Class [] {
@@ -107,38 +111,22 @@ public class Usuario extends javax.swing.JDialog {
         jTable1.setColumnSelectionAllowed(true);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         botao_Login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botao_Login.setText("Novo");
-        botao_Login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_LoginActionPerformed(evt);
-            }
-        });
 
         botao_Login1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botao_Login1.setText("Excluir");
-        botao_Login1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login1ActionPerformed(evt);
-            }
-        });
+        botao_Login1.setEnabled(false);
 
         botao_Login2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botao_Login2.setText("Confirmar");
-        botao_Login2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login2ActionPerformed(evt);
-            }
-        });
+        botao_Login2.setEnabled(false);
 
         botao_Login3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login3.setText("Excluir");
-        botao_Login3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login3ActionPerformed(evt);
-            }
-        });
+        botao_Login3.setText("Editar");
+        botao_Login3.setEnabled(false);
 
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
         jSeparator1.setToolTipText("");
@@ -203,7 +191,7 @@ public class Usuario extends javax.swing.JDialog {
                     .addComponent(botao_Login1)
                     .addComponent(botao_Login)
                     .addComponent(botao_Login3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
@@ -230,22 +218,6 @@ public class Usuario extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void botao_Login3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login3ActionPerformed
-
-    private void botao_Login2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login2ActionPerformed
-
-    private void botao_Login1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login1ActionPerformed
-
-    private void botao_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_LoginActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_botao_LoginActionPerformed
 
     private void fild_User2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_User2ActionPerformed
         // TODO add your handling code here:

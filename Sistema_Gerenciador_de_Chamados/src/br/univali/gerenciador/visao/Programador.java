@@ -1,28 +1,22 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.univali.gerenciador.visao;
 
-
-public class Cliente extends javax.swing.JDialog {
+/**
+ *
+ * @author iPotter
+ */
+public class Programador extends javax.swing.JDialog {
 
     /**
-     * Creates new form NovoCliente
+     * Creates new form NewJDialog
      */
-    public Cliente(java.awt.Frame parent, boolean modal) {
+    public Programador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Cliente dialog = new Cliente(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
     }
 
     /**
@@ -49,15 +43,12 @@ public class Cliente extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Sistema de Chamados - Clientes");
-        setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         setResizable(false);
 
         jPanel1.setToolTipText("");
         jPanel1.setMaximumSize(new java.awt.Dimension(480, 420));
         jPanel1.setMinimumSize(new java.awt.Dimension(480, 420));
         jPanel1.setName("dfd"); // NOI18N
-        jPanel1.setPreferredSize(new java.awt.Dimension(480, 420));
 
         botao_Login6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botao_Login6.setText("Novo");
@@ -102,11 +93,11 @@ public class Cliente extends javax.swing.JDialog {
                 {null, null}
             },
             new String [] {
-                "Nome", "E-Mail"
+                "Nome", "Valor Hora"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false
@@ -123,7 +114,12 @@ public class Cliente extends javax.swing.JDialog {
         jTable1.setColumnSelectionAllowed(true);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(1).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(100);
+        }
 
         fild_User1.setEditable(false);
         fild_User1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -134,7 +130,7 @@ public class Cliente extends javax.swing.JDialog {
         });
 
         label_Password.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        label_Password.setText("E-Mail");
+        label_Password.setText("Valor Hora");
 
         label_Login.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         label_Login.setText("Nome");
@@ -153,49 +149,49 @@ public class Cliente extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("Clientes Cadastrados");
+        jLabel1.setText("Programadores Cadastrados");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_Login)
-                            .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_Password)
-                            .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(botao_Login6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(botao_Login5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(botao_Login4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(botao_Login3))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(label_Login)
+                        .addGap(327, 327, 327)
+                        .addComponent(label_Password))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(fild_User1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botao_Login6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(botao_Login5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(botao_Login4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(botao_Login3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(4, 4, 4)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(17, 17, 17))
+                        .addGap(3, 3, 3)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addComponent(label_Login)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_Login)
+                    .addComponent(label_Password))
                 .addGap(6, 6, 6)
-                .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(label_Password)
-                .addGap(6, 6, 6)
-                .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botao_Login6)
                     .addComponent(botao_Login5)
@@ -208,8 +204,7 @@ public class Cliente extends javax.swing.JDialog {
                         .addGap(10, 10, 10)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -220,43 +215,78 @@ public class Cliente extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fild_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_UserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fild_UserActionPerformed
-
-    private void fild_User1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_User1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fild_User1ActionPerformed
-
-    private void botao_Login4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login4ActionPerformed
-
-    private void botao_Login3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login3ActionPerformed
+    private void botao_Login6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login6ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_botao_Login6ActionPerformed
 
     private void botao_Login5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botao_Login5ActionPerformed
 
-    private void botao_Login6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login6ActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_botao_Login6ActionPerformed
+    private void botao_Login3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botao_Login3ActionPerformed
+
+    private void botao_Login4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botao_Login4ActionPerformed
+
+    private void fild_User1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_User1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fild_User1ActionPerformed
+
+    private void fild_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_UserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fild_UserActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Programador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Programador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Programador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Programador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
         /* Create and display the dialog */
-        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                Programador dialog = new Programador(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

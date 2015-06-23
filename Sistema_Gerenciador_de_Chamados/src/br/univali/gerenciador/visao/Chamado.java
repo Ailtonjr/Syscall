@@ -28,21 +28,204 @@ public class Chamado extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panel_fundo = new javax.swing.JPanel();
+        label_Cliente = new javax.swing.JLabel();
+        label_Categoria = new javax.swing.JLabel();
+        label_Data = new javax.swing.JLabel();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        jFormattedTextField5 = new javax.swing.JFormattedTextField();
+        label_Hora = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        botao_Novo = new javax.swing.JButton();
+        botao_Editar = new javax.swing.JButton();
+        botao_Excluir = new javax.swing.JButton();
+        botao_Confirmar = new javax.swing.JButton();
+        Separador = new javax.swing.JSeparator();
+        label_Separador = new javax.swing.JLabel();
+        scrollPane = new javax.swing.JScrollPane();
+        textArea_Descricao = new javax.swing.JTextArea();
+        comboBox_Categoria = new javax.swing.JComboBox();
+        comboBox_Cliente = new javax.swing.JComboBox();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Sistema de Chamados - Chamados");
+        setAlwaysOnTop(true);
+        setResizable(false);
+
+        label_Cliente.setText("Cliente");
+
+        label_Categoria.setText("Categoria");
+
+        label_Data.setText("Data");
+
+        jFormattedTextField2.setEditable(false);
+
+        jFormattedTextField5.setEditable(false);
+        jFormattedTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField5ActionPerformed(evt);
+            }
+        });
+
+        label_Hora.setText("Hora");
+
+        jLabel4.setText("Descrição");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        botao_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botao_Novo.setText("Novo");
+
+        botao_Editar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botao_Editar.setText("Editar");
+        botao_Editar.setEnabled(false);
+
+        botao_Excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botao_Excluir.setText("Excluir");
+        botao_Excluir.setEnabled(false);
+
+        botao_Confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botao_Confirmar.setText("Confirmar");
+        botao_Confirmar.setEnabled(false);
+
+        Separador.setForeground(new java.awt.Color(153, 153, 153));
+        Separador.setToolTipText("");
+        Separador.setName(""); // NOI18N
+
+        label_Separador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label_Separador.setForeground(new java.awt.Color(102, 102, 102));
+        label_Separador.setText("Chamados Cadastrados");
+
+        textArea_Descricao.setEditable(false);
+        textArea_Descricao.setColumns(20);
+        textArea_Descricao.setRows(5);
+        scrollPane.setViewportView(textArea_Descricao);
+
+        comboBox_Categoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        comboBox_Cliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout panel_fundoLayout = new javax.swing.GroupLayout(panel_fundo);
+        panel_fundo.setLayout(panel_fundoLayout);
+        panel_fundoLayout.setHorizontalGroup(
+            panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_fundoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPane)
+                    .addGroup(panel_fundoLayout.createSequentialGroup()
+                        .addComponent(label_Separador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Separador))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_fundoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_fundoLayout.createSequentialGroup()
+                                .addComponent(botao_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(botao_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(botao_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(botao_Confirmar))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(comboBox_Categoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panel_fundoLayout.createSequentialGroup()
+                        .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_Categoria)
+                            .addComponent(label_Cliente)
+                            .addGroup(panel_fundoLayout.createSequentialGroup()
+                                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_Data)
+                                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(24, 24, 24)
+                                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_Hora)
+                                    .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel4))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(comboBox_Cliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        panel_fundoLayout.setVerticalGroup(
+            panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_fundoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label_Cliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboBox_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(label_Categoria)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboBox_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panel_fundoLayout.createSequentialGroup()
+                        .addComponent(label_Data)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_fundoLayout.createSequentialGroup()
+                        .addComponent(label_Hora)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botao_Confirmar)
+                    .addComponent(botao_Excluir)
+                    .addComponent(botao_Novo)
+                    .addComponent(botao_Editar))
+                .addGap(18, 18, 18)
+                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Separador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_fundoLayout.createSequentialGroup()
+                        .addComponent(label_Separador)
+                        .addGap(9, 9, 9)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel_fundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel_fundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,5 +270,27 @@ public class Chamado extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSeparator Separador;
+    private javax.swing.JButton botao_Confirmar;
+    private javax.swing.JButton botao_Editar;
+    private javax.swing.JButton botao_Excluir;
+    private javax.swing.JButton botao_Novo;
+    private javax.swing.JComboBox comboBox_Categoria;
+    private javax.swing.JComboBox comboBox_Cliente;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JFormattedTextField jFormattedTextField3;
+    private javax.swing.JFormattedTextField jFormattedTextField4;
+    private javax.swing.JFormattedTextField jFormattedTextField5;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel label_Categoria;
+    private javax.swing.JLabel label_Cliente;
+    private javax.swing.JLabel label_Data;
+    private javax.swing.JLabel label_Hora;
+    private javax.swing.JLabel label_Separador;
+    private javax.swing.JPanel panel_fundo;
+    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JTextArea textArea_Descricao;
     // End of variables declaration//GEN-END:variables
 }

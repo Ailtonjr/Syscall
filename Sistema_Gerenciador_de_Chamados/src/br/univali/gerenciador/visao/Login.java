@@ -32,19 +32,20 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        label_logo = new javax.swing.JLabel();
         botao_Login1 = new javax.swing.JButton();
         botao_Login = new javax.swing.JButton();
         fild_Password = new javax.swing.JPasswordField();
         label_Password = new javax.swing.JLabel();
         fild_User = new javax.swing.JTextField();
         label_Login = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        label_Titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Chamados - Login");
         setResizable(false);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\iPotter\\Desktop\\technicalsupportrepresentative_male_light_256.png")); // NOI18N
+        label_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\iPotter\\Desktop\\technicalsupportrepresentative_male_light_256.png")); // NOI18N
 
         botao_Login1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botao_Login1.setIcon(new javax.swing.JLabel() {
@@ -92,10 +93,10 @@ public class Login extends javax.swing.JFrame {
         });
 
         label_Login.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        label_Login.setText("E-mail");
+        label_Login.setText("Login");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel1.setText("Sistema de Chamado");
+        label_Titulo.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        label_Titulo.setText("Sistema de Chamado");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,7 +106,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(label_logo)
                         .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,18 +119,18 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(label_Login))
                         .addGap(23, 23, 23))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(label_Titulo)
                         .addGap(47, 47, 47))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(label_Titulo)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel3))
+                        .addComponent(label_logo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(label_Login)
@@ -202,10 +203,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton botao_Login1;
     private javax.swing.JPasswordField fild_Password;
     private javax.swing.JTextField fild_User;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_Login;
     private javax.swing.JLabel label_Password;
+    private javax.swing.JLabel label_Titulo;
+    private javax.swing.JLabel label_logo;
     // End of variables declaration//GEN-END:variables
 }
