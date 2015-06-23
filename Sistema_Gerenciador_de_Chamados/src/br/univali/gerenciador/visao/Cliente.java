@@ -2,18 +2,18 @@
 package br.univali.gerenciador.visao;
 
 
-public class NovoCliente extends javax.swing.JDialog {
+public class Cliente extends javax.swing.JDialog {
 
     /**
      * Creates new form NovoCliente
      */
-    public NovoCliente(java.awt.Frame parent, boolean modal) {
+    public Cliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                NovoCliente dialog = new NovoCliente(new javax.swing.JFrame(), true);
+                Cliente dialog = new Cliente(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -205,9 +205,8 @@ public class NovoCliente extends javax.swing.JDialog {
                             .addComponent(botao_Login6)
                             .addComponent(botao_Login5))
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

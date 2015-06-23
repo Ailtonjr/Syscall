@@ -9,12 +9,12 @@ package br.univali.gerenciador.visao;
  *
  * @author Ailton Cardoso Jr
  */
-public class NovoUsuario extends javax.swing.JDialog {
+public class Usuario extends javax.swing.JDialog {
 
     /**
      * Creates new form NovoCliente
      */
-    public NovoUsuario(java.awt.Frame parent, boolean modal) {
+    public Usuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -266,7 +266,7 @@ public class NovoUsuario extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                NovoUsuario dialog = new NovoUsuario(new javax.swing.JFrame(), true);
+                Usuario dialog = new Usuario(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

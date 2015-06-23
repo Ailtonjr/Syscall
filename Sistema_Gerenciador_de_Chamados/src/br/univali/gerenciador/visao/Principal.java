@@ -6,7 +6,7 @@
 package br.univali.gerenciador.visao;
 
 import javax.swing.UIManager;
-import br.univali.gerenciador.visao.NovoUsuario;
+import br.univali.gerenciador.visao.Usuario;
 
 /**
  *
@@ -135,7 +135,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 
-        NovoUsuario newJDialog = new NovoUsuario(this, true);
+        Usuario newJDialog = new Usuario(this, true);
         newJDialog.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
