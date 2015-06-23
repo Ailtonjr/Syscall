@@ -19,7 +19,11 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         // Teste de conexão
-        new Conexao();
+        Conexao con = new Conexao();
+        con.inserirUsuario("Testonio", "Teste", "123");
+        con.removerUsuario("jfg12");
+        
+        con.encerrarConexao();
     }
 
     /**
