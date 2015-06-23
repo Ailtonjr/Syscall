@@ -89,12 +89,12 @@
                           <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                           <Component id="label_Login" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="fild_User" min="-2" pref="22" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <Component id="fild_User" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                           <Component id="label_Password" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="fild_Password" min="-2" pref="22" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="fild_Password" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="botao_Login" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="botao_Login1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -110,7 +110,7 @@
         <Component class="javax.swing.JLabel" name="label_logo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\iPotter\Desktop\technicalsupportrepresentative_male_light_256.png"/>
+              <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/login.png"/>
             </Property>
           </Properties>
         </Component>
@@ -120,7 +120,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="1" name="file:/C:/Users/iPotter/Desktop/24x24/NO.png"/>
+              <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/No.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
@@ -134,7 +134,7 @@
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\iPotter\Desktop\24x24\OK.png"/>
+              <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/OK.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Entrar"/>
           </Properties>

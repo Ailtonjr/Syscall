@@ -38,16 +38,18 @@ public class Chamado extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        botao_Novo = new javax.swing.JButton();
-        botao_Editar = new javax.swing.JButton();
-        botao_Excluir = new javax.swing.JButton();
-        botao_Confirmar = new javax.swing.JButton();
         Separador = new javax.swing.JSeparator();
         label_Separador = new javax.swing.JLabel();
         scrollPane = new javax.swing.JScrollPane();
         textArea_Descricao = new javax.swing.JTextArea();
         comboBox_Categoria = new javax.swing.JComboBox();
         comboBox_Cliente = new javax.swing.JComboBox();
+        botao_Novo1 = new javax.swing.JButton();
+        botao_Editar1 = new javax.swing.JButton();
+        botao_Excluir1 = new javax.swing.JButton();
+        botao_Confirmar1 = new javax.swing.JButton();
+        label_Separador1 = new javax.swing.JLabel();
+        Separador1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Chamados - Chamados");
@@ -86,28 +88,13 @@ public class Chamado extends javax.swing.JDialog {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        botao_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Novo.setText("Novo");
-
-        botao_Editar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Editar.setText("Editar");
-        botao_Editar.setEnabled(false);
-
-        botao_Excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Excluir.setText("Excluir");
-        botao_Excluir.setEnabled(false);
-
-        botao_Confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Confirmar.setText("Confirmar");
-        botao_Confirmar.setEnabled(false);
-
         Separador.setForeground(new java.awt.Color(153, 153, 153));
         Separador.setToolTipText("");
         Separador.setName(""); // NOI18N
 
         label_Separador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         label_Separador.setForeground(new java.awt.Color(102, 102, 102));
-        label_Separador.setText("Chamados Cadastrados");
+        label_Separador.setText("Tópicos Cadastrados");
 
         textArea_Descricao.setEditable(false);
         textArea_Descricao.setColumns(20);
@@ -118,88 +105,127 @@ public class Chamado extends javax.swing.JDialog {
 
         comboBox_Cliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        botao_Novo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botao_Novo1.setText("Novo");
+        botao_Novo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botao_Novo1ActionPerformed(evt);
+            }
+        });
+
+        botao_Editar1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botao_Editar1.setText("Editar");
+        botao_Editar1.setEnabled(false);
+
+        botao_Excluir1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botao_Excluir1.setText("Excluir");
+        botao_Excluir1.setEnabled(false);
+
+        botao_Confirmar1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botao_Confirmar1.setText("Confirmar");
+        botao_Confirmar1.setEnabled(false);
+
+        label_Separador1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label_Separador1.setForeground(new java.awt.Color(102, 102, 102));
+        label_Separador1.setText("Informaçoes do chamado");
+
+        Separador1.setForeground(new java.awt.Color(153, 153, 153));
+        Separador1.setToolTipText("");
+        Separador1.setName(""); // NOI18N
+
         javax.swing.GroupLayout panel_fundoLayout = new javax.swing.GroupLayout(panel_fundo);
         panel_fundo.setLayout(panel_fundoLayout);
         panel_fundoLayout.setHorizontalGroup(
             panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_fundoLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPane)
                     .addGroup(panel_fundoLayout.createSequentialGroup()
-                        .addComponent(label_Separador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Separador))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_fundoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_fundoLayout.createSequentialGroup()
-                                .addComponent(botao_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(botao_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(botao_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(botao_Confirmar))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(comboBox_Categoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(108, 108, 108)
+                        .addComponent(botao_Novo1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(botao_Editar1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(botao_Excluir1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(botao_Confirmar1))
                     .addGroup(panel_fundoLayout.createSequentialGroup()
-                        .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_Categoria)
-                            .addComponent(label_Cliente)
+                        .addContainerGap()
+                        .addComponent(label_Separador1)
+                        .addGap(13, 13, 13)
+                        .addComponent(Separador1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_fundoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panel_fundoLayout.createSequentialGroup()
-                                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_Data)
-                                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(24, 24, 24)
-                                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_Hora)
-                                    .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(comboBox_Cliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(label_Separador)
+                                .addGap(13, 13, 13)
+                                .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panel_fundoLayout.createSequentialGroup()
+                            .addComponent(label_Data)
+                            .addGap(104, 104, 104)
+                            .addComponent(label_Hora))
+                        .addGroup(panel_fundoLayout.createSequentialGroup()
+                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(24, 24, 24)
+                            .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel4)
+                        .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_fundoLayout.createSequentialGroup()
+                            .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(comboBox_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label_Cliente))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(label_Categoria)
+                                .addComponent(comboBox_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         panel_fundoLayout.setVerticalGroup(
             panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_fundoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_fundoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(label_Cliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboBox_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(label_Categoria)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboBox_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panel_fundoLayout.createSequentialGroup()
-                        .addComponent(label_Data)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_fundoLayout.createSequentialGroup()
-                        .addComponent(label_Hora)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botao_Confirmar)
-                    .addComponent(botao_Excluir)
-                    .addComponent(botao_Novo)
-                    .addComponent(botao_Editar))
-                .addGap(18, 18, 18)
                 .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Separador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_fundoLayout.createSequentialGroup()
-                        .addComponent(label_Separador)
-                        .addGap(9, 9, 9)))
+                    .addComponent(label_Separador1)
+                    .addGroup(panel_fundoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(Separador1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_Cliente)
+                    .addComponent(label_Categoria))
+                .addGap(6, 6, 6)
+                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboBox_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBox_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_Data)
+                    .addComponent(label_Hora))
+                .addGap(6, 6, 6)
+                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_Separador)
+                    .addGroup(panel_fundoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botao_Novo1)
+                    .addComponent(botao_Editar1)
+                    .addComponent(botao_Excluir1)
+                    .addComponent(botao_Confirmar1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,8 +234,8 @@ public class Chamado extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panel_fundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panel_fundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,6 +252,11 @@ public class Chamado extends javax.swing.JDialog {
     private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField5ActionPerformed
+
+    private void botao_Novo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Novo1ActionPerformed
+        Topico topico = new Topico(this,true);
+        topico.setVisible(true);
+    }//GEN-LAST:event_botao_Novo1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,10 +302,11 @@ public class Chamado extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSeparator Separador;
-    private javax.swing.JButton botao_Confirmar;
-    private javax.swing.JButton botao_Editar;
-    private javax.swing.JButton botao_Excluir;
-    private javax.swing.JButton botao_Novo;
+    private javax.swing.JSeparator Separador1;
+    private javax.swing.JButton botao_Confirmar1;
+    private javax.swing.JButton botao_Editar1;
+    private javax.swing.JButton botao_Excluir1;
+    private javax.swing.JButton botao_Novo1;
     private javax.swing.JComboBox comboBox_Categoria;
     private javax.swing.JComboBox comboBox_Cliente;
     private javax.swing.JFormattedTextField jFormattedTextField2;
@@ -289,6 +321,7 @@ public class Chamado extends javax.swing.JDialog {
     private javax.swing.JLabel label_Data;
     private javax.swing.JLabel label_Hora;
     private javax.swing.JLabel label_Separador;
+    private javax.swing.JLabel label_Separador1;
     private javax.swing.JPanel panel_fundo;
     private javax.swing.JScrollPane scrollPane;
     private javax.swing.JTextArea textArea_Descricao;

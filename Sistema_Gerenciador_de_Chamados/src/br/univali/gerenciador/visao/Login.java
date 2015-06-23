@@ -45,20 +45,10 @@ public class Login extends javax.swing.JFrame {
         setTitle("Sistema de Chamados - Login");
         setResizable(false);
 
-        label_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\iPotter\\Desktop\\technicalsupportrepresentative_male_light_256.png")); // NOI18N
+        label_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/login.png"))); // NOI18N
 
         botao_Login1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login1.setIcon(new javax.swing.JLabel() {
-            public javax.swing.Icon getIcon() {
-                try {
-                    return new javax.swing.ImageIcon(
-                        new java.net.URL("file:/C:/Users/iPotter/Desktop/24x24/NO.png")
-                    );
-                } catch (java.net.MalformedURLException e) {
-                }
-                return null;
-            }
-        }.getIcon());
+        botao_Login1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/No.png"))); // NOI18N
         botao_Login1.setText("Cancelar");
         botao_Login1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,7 +57,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         botao_Login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login.setIcon(new javax.swing.ImageIcon("C:\\Users\\iPotter\\Desktop\\24x24\\OK.png")); // NOI18N
+        botao_Login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/OK.png"))); // NOI18N
         botao_Login.setText("Entrar");
         botao_Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,12 +125,12 @@ public class Login extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(label_Login)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
+                        .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
                         .addComponent(label_Password)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fild_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(fild_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botao_Login)
                             .addComponent(botao_Login1))))
