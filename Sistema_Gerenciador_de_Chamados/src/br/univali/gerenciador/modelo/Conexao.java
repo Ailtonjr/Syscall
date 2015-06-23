@@ -8,8 +8,8 @@ import java.sql.SQLException;
 public class Conexao {
 
     private String url = "jdbc:postgersql://localhost:5432/db_chamados";
-    private String usuario = "us_admin";
-    private String senha = "1234";
+    private String usuario = "postgres";
+    private String senha = "123";
     private Connection conexao;
     
     public Conexao() {
