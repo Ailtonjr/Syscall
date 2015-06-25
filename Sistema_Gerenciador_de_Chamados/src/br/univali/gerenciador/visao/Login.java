@@ -23,27 +23,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-        // Teste de conexão
-        Conexao con = new Conexao();
-        ResultSet rs;
-        rs = con.consultaChamados("status = true");
         
-        
-        try {
-            ResultSetMetaData rsmt = rs.getMetaData();
-            int qtdColunas = rsmt.getColumnCount();
-            String vetor[] = new String[qtdColunas];
-            
-            while(rs.next()) {
-                for (int i = 1; i <= qtdColunas; i++) {
-                    System.out.print(rs.getString(i) + "\t");
-                    
-                }
-                System.out.println();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     /**

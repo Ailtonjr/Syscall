@@ -18,7 +18,7 @@ public class Conexao {
 
     private String url = "jdbc:postgresql://localhost:5432/db_chamados";
     private String usuario = "postgres";
-    private String senha = "7133";
+    private String senha = "123";
     private Connection conexao;
     private Statement statement;
     
@@ -159,7 +159,9 @@ public class Conexao {
     
     // Consultas
     public ResultSet consultaChamados(String parametro) {
-        String sql = "SELECT * FROM chamado WHERE " + parametro;
+        //String sql = "SELECT * FROM chamado WHERE " + parametro;
+        
+        String sql = "SELECT c.nome, ct.nome, date(ch.dataHora) FROM chamado ch join cliente c on (c.id = ch.id_cliente) join categoria ct on (ct.id = ch.id_categoria) WHERE "+ parametro;
         ResultSet rs = null;
         try {
             rs = statement.executeQuery(sql);
