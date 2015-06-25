@@ -9,6 +9,7 @@ package br.univali.gerenciador.modelo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -88,9 +89,20 @@ public class Conexao {
         }
     }
     
+    public void inserirChamado(String descricao, int id_categoria, int id_cliente, int id_usuario, String dataHora) {
+        String sql = "INSERT INTO chamado(descricao, id_categoria, id_cliente, id_usuario, dataHora) VALUES ('" + descricao + "', " + id_categoria +", " + id_cliente + ", " + id_usuario + ", '" + dataHora + "')";
+        try {
+            statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Chamado inserido com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao criar chamado");
+            ex.printStackTrace();
+        }
+    }
+    
     //Remoções
-    public void removerUsuario(String login) {
-        String sql = "DELETE FROM usuario WHERE login = '" + login + "'";
+    public void removerUsuario(int id, String login) {
+        String sql = "DELETE FROM usuario WHERE id = '" + id + "'";
         try {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Usuario " + login + " removido com sucesso!");
@@ -133,5 +145,28 @@ public class Conexao {
         }
     }
     
+    public void removerChamado(int id) {
+        String sql = "DELETE FROM chamado WHERE id = '" + id  +"'";
+        try {
+            statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Chamado " + id + " foi removido com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao remover o chamado " + id + "\n" + sql);
+            ex.printStackTrace();
+        }
+    }
     
+    
+    // Consultas
+    public ResultSet consultaChamados(String parametro) {
+        String sql = "SELECT * FROM chamado WHERE " + parametro;
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar chamado\n" + sql);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
 }
