@@ -6,6 +6,7 @@
 package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
+import br.univali.gerenciador.modelo.Consulta;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -28,43 +29,8 @@ public class Principal extends javax.swing.JFrame {
 
         initComponents();
         // Teste de conexão
-        Conexao con = new Conexao();
-        ResultSet rs;
-        rs = con.consultaChamados("status = true or status = false");
-        
-        modelo = new DefaultTableModel();
-        
-        
-        try {
-            ResultSetMetaData rsmt = rs.getMetaData();
-            int qtdColunas = rsmt.getColumnCount();
-            String vetor[] = new String[qtdColunas];
-            /*for (int i = 1; i <= qtdColunas; i++) {
-                modelo.addColumn(rsmt.getColumnName(i));
-            }*/
-            
-            modelo.addColumn("Cliente");
-            modelo.addColumn("Categoria");
-            modelo.addColumn("Data");
-            modelo.addColumn("Hora");
-            
-            while(rs.next()) {
-                
-                for (int i = 1; i <= qtdColunas; i++) {
-                    System.out.print(rs.getString(i) + "\t");
-                    vetor[i-1] = rs.getString(i);
-                }
-                modelo.addRow(vetor);
-                System.out.println();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        /*for (Processo processo : processosAlocados) {
-            modelo.addRow(new Object[]{processo.id, processo.tamanhoBytes, processo.tempoTotal, processo.tempo});
-        }*/
-
+        Consulta consulta = new Consulta();
+        modelo = consulta.geraTabela();
         jTable2.setModel(modelo);
     }
 

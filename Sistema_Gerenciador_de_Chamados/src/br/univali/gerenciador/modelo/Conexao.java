@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 public class Conexao {
 
-    private String url = "jdbc:postgresql://localhost:5432/db_chamados";
+    private String url = "jdbc:postgresql://localhost:5432/db_chamado";
     private String usuario = "postgres";
     private String senha = "123";
     private Connection conexao;
@@ -161,7 +161,7 @@ public class Conexao {
     public ResultSet consultaChamados(String parametro) {
         //String sql = "SELECT * FROM chamado WHERE " + parametro;
         
-        String sql = "SELECT c.nome, ct.nome, date(ch.dataHora) FROM chamado ch join cliente c on (c.id = ch.id_cliente) join categoria ct on (ct.id = ch.id_categoria) WHERE "+ parametro;
+        String sql = "SELECT ch.id, c.nome, ct.nome, ch.data, ch.hora, status FROM chamado ch join cliente c on (c.id = ch.id_cliente) join categoria ct on (ct.id = ch.id_categoria) WHERE "+ parametro;
         ResultSet rs = null;
         try {
             rs = statement.executeQuery(sql);
