@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class Conexao {
@@ -14,13 +15,17 @@ public class Conexao {
     private String usuario = "postgres";
     private String senha = "7133";
     private Connection conexao;
-    private PreparedStatement statement;
+    private PreparedStatement preparedStatement;
+    private Statement statement;
     
     public Conexao() {
         
         try {
             this.conexao = DriverManager.getConnection(url, usuario, senha);
             System.out.println("Conexão estabelecida");
+            
+            this.statement = conexao.createStatement();
+            System.out.println("Statement criado");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Conectar ao banco de dados", "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
@@ -43,12 +48,12 @@ public class Conexao {
                 + "INSERT INTO usuario (nome, login, senha) VALUES (?, ?, ?);"
                 + "COMMIT";
         try {
-            statement = conexao.prepareStatement(sql);
-            statement.setString(1, nome);
-            statement.setString(2, login);
-            statement.setString(3, senha);
+            preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, nome);
+            preparedStatement.setString(2, login);
+            preparedStatement.setString(3, senha);
             
-            statement.executeUpdate();
+            preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Usuario " + login + " inserido com sucesso");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Usuário já existe!\nErro ao inserir usuário: " + sql, "Erro", JOptionPane.ERROR_MESSAGE);
@@ -61,11 +66,11 @@ public class Conexao {
                 + "INSERT INTO cliente (nome, email) VALUES (?, ?);"
                 + "COMMIT";
         try {
-            statement = conexao.prepareStatement(sql);
-            statement.setString(1, nome);
-            statement.setString(2, email);
+            preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, nome);
+            preparedStatement.setString(2, email);
             
-            statement.executeUpdate();
+            preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Cliente " + nome + " inserido com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Cliente já existe! \nErro ao inserir cliente " + sql, "Erro", JOptionPane.ERROR_MESSAGE);
@@ -78,11 +83,11 @@ public class Conexao {
                 + "INSERT INTO programador (nome, valorHora) VALUES(?, ?);"
                 + "COMMIT";
         try {
-            statement = conexao.prepareStatement(sql);
-            statement.setString(1, nome);
-            statement.setFloat(2, valorHora);
+            preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, nome);
+            preparedStatement.setFloat(2, valorHora);
             
-            statement.executeUpdate();
+            preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Programador " + nome + " inserido com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao inserir programador " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
@@ -95,10 +100,10 @@ public class Conexao {
                 + "INSERT INTO categoria (nome) VALUES (?);"
                 + "COMMIT";
         try {
-            statement = conexao.prepareStatement(sql);
-            statement.setString(1, nome);
+            preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, nome);
             
-            statement.executeUpdate();
+            preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Categoria " + nome + " inserida com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao inserir categoria " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
@@ -111,14 +116,14 @@ public class Conexao {
                 + "INSERT INTO chamado(descricao, id_categoria, id_cliente, id_usuario, dataHora) VALUES (?, ?, ?, ?, ?);"
                 + "COMMIT";
         try {
-            statement = conexao.prepareStatement(sql);
-            statement.setString(1, descricao);
-            statement.setInt(2, id_categoria);
-            statement.setInt(3, id_cliente);
-            statement.setInt(4, id_usuario);
-            statement.setString(5, dataHora);
+            preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, descricao);
+            preparedStatement.setInt(2, id_categoria);
+            preparedStatement.setInt(3, id_cliente);
+            preparedStatement.setInt(4, id_usuario);
+            preparedStatement.setString(5, dataHora);
             
-            statement.executeUpdate();
+            preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Chamado inserido com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao criar chamado", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -131,13 +136,13 @@ public class Conexao {
                 + "INSERT INTO topico (id_chamado, descricao, id_programador, tempo_trabalhado, solucionado) VALUES (?, ?, ?, ?);"
                 + "COMMIT";
         try {
-            statement = conexao.prepareStatement(sql);
-            statement.setInt(1, id_chamado);
-            statement.setString(2, descricao);
-            statement.setInt(3, id_programador);
-            statement.setString(4, tempo_trabalhado);
+            preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setInt(1, id_chamado);
+            preparedStatement.setString(2, descricao);
+            preparedStatement.setInt(3, id_programador);
+            preparedStatement.setString(4, tempo_trabalhado);
             
-            statement.executeUpdate();
+            preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Topico inserido com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao inserir topico", "Erro", JOptionPane.ERROR_MESSAGE);

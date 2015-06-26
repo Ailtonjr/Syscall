@@ -165,7 +165,7 @@ public class Login extends javax.swing.JFrame {
     private void botao_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_LoginActionPerformed
         Conexao con = new Conexao();
         
-        con.inserirProgramador("Jorozinho", (float) 9.27);
+        con.removerProgramador(8, null);
         
     }//GEN-LAST:event_botao_LoginActionPerformed
 
