@@ -37,11 +37,11 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         label_logo = new javax.swing.JLabel();
-        botao_Login1 = new javax.swing.JButton();
-        botao_Login = new javax.swing.JButton();
-        fild_Password = new javax.swing.JPasswordField();
-        label_Password = new javax.swing.JLabel();
-        fild_User = new javax.swing.JTextField();
+        button_Cancelar = new javax.swing.JButton();
+        button_Entrar = new javax.swing.JButton();
+        field_Password = new javax.swing.JPasswordField();
+        label_Senha = new javax.swing.JLabel();
+        field_User = new javax.swing.JTextField();
         label_Login = new javax.swing.JLabel();
         label_Titulo = new javax.swing.JLabel();
 
@@ -51,38 +51,38 @@ public class Login extends javax.swing.JFrame {
 
         label_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/login.png"))); // NOI18N
 
-        botao_Login1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/No.png"))); // NOI18N
-        botao_Login1.setText("Cancelar");
-        botao_Login1.addActionListener(new java.awt.event.ActionListener() {
+        button_Cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/No.png"))); // NOI18N
+        button_Cancelar.setText("Cancelar");
+        button_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login1ActionPerformed(evt);
+                button_CancelarActionPerformed(evt);
             }
         });
 
-        botao_Login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/OK.png"))); // NOI18N
-        botao_Login.setText("Entrar");
-        botao_Login.addActionListener(new java.awt.event.ActionListener() {
+        button_Entrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Entrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/OK.png"))); // NOI18N
+        button_Entrar.setText("Entrar");
+        button_Entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_LoginActionPerformed(evt);
+                button_EntrarActionPerformed(evt);
             }
         });
 
-        fild_Password.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        fild_Password.addActionListener(new java.awt.event.ActionListener() {
+        field_Password.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_Password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fild_PasswordActionPerformed(evt);
+                field_PasswordActionPerformed(evt);
             }
         });
 
-        label_Password.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        label_Password.setText("Senha");
+        label_Senha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        label_Senha.setText("Senha");
 
-        fild_User.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        fild_User.addActionListener(new java.awt.event.ActionListener() {
+        field_User.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_User.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fild_UserActionPerformed(evt);
+                field_UserActionPerformed(evt);
             }
         });
 
@@ -103,13 +103,13 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(label_logo)
                         .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(field_User, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(botao_Login1)
+                                .addComponent(button_Cancelar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botao_Login))
-                            .addComponent(fild_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_Password)
+                                .addComponent(button_Entrar))
+                            .addComponent(field_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_Senha)
                             .addComponent(label_Login))
                         .addGap(23, 23, 23))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -129,15 +129,15 @@ public class Login extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(label_Login)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(field_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
-                        .addComponent(label_Password)
+                        .addComponent(label_Senha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fild_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(field_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botao_Login)
-                            .addComponent(botao_Login1))))
+                            .addComponent(button_Entrar)
+                            .addComponent(button_Cancelar))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -162,23 +162,23 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botao_Login1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login1ActionPerformed
+    private void button_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_CancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login1ActionPerformed
+    }//GEN-LAST:event_button_CancelarActionPerformed
 
-    private void botao_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_LoginActionPerformed
+    private void button_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EntrarActionPerformed
         this.setVisible(false);
         Principal principal = new Principal();
         principal.setVisible(true);
-    }//GEN-LAST:event_botao_LoginActionPerformed
+    }//GEN-LAST:event_button_EntrarActionPerformed
 
-    private void fild_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_PasswordActionPerformed
+    private void field_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_PasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fild_PasswordActionPerformed
+    }//GEN-LAST:event_field_PasswordActionPerformed
 
-    private void fild_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_UserActionPerformed
+    private void field_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_UserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fild_UserActionPerformed
+    }//GEN-LAST:event_field_UserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,13 +193,13 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botao_Login;
-    private javax.swing.JButton botao_Login1;
-    private javax.swing.JPasswordField fild_Password;
-    private javax.swing.JTextField fild_User;
+    private javax.swing.JButton button_Cancelar;
+    private javax.swing.JButton button_Entrar;
+    private javax.swing.JPasswordField field_Password;
+    private javax.swing.JTextField field_User;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_Login;
-    private javax.swing.JLabel label_Password;
+    private javax.swing.JLabel label_Senha;
     private javax.swing.JLabel label_Titulo;
     private javax.swing.JLabel label_logo;
     // End of variables declaration//GEN-END:variables

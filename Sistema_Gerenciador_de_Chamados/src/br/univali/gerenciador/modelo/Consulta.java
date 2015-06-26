@@ -138,6 +138,30 @@ public class Consulta {
 
     }
 
+    public DefaultTableModel geraTabelaCategorias() {
+        rs = con.consultaCategorias();
+        try {
+            ResultSetMetaData rsmt = rs.getMetaData();
+            int qtdColunas = rsmt.getColumnCount();
+            String vetor[] = new String[qtdColunas];
+
+            modelo.addColumn("ID");
+            modelo.addColumn("Nome");
+
+            while (rs.next()) {
+                for (int i = 1; i <= qtdColunas; i++) {
+                    vetor[i - 1] = rs.getString(i);
+                }
+                modelo.addRow(vetor);
+                System.out.println();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return modelo;
+    }
+
     public String[] geraVisaoChamado(int idChamado) {
         rs = con.consultaChamado(idChamado);
         String vetor[] = null;
@@ -184,6 +208,23 @@ public class Consulta {
         return vetor;
     }
 
+    public String[] geraVisaoCategoria(int idCategoria) {
+        rs = con.consultaCategoria(idCategoria);
+        String vetor[] = null;
+        try {
+            ResultSetMetaData rsmt = rs.getMetaData();
+            int qtdColunas = rsmt.getColumnCount();
+            vetor = new String[qtdColunas];
+            rs.next();
+            for (int i = 1; i <= qtdColunas; i++) {
+                vetor[i - 1] = rs.getString(i);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vetor;
+    }
+
     public List<String> geraListaClientes() {
         rs = con.consultaClientes();
         List<String> lista = new ArrayList<>();
@@ -196,7 +237,7 @@ public class Consulta {
         }
         return lista;
     }
-    
+
     public List<String> geraListaCategorias() {
         rs = con.consultaCategorias();
         List<String> lista = new ArrayList<>();

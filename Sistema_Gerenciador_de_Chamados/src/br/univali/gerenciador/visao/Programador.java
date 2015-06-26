@@ -5,6 +5,9 @@
  */
 package br.univali.gerenciador.visao;
 
+import br.univali.gerenciador.modelo.Consulta;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author iPotter
@@ -14,9 +17,15 @@ public class Programador extends javax.swing.JDialog {
     /**
      * Creates new form NewJDialog
      */
+    DefaultTableModel modelo;
+    Consulta consulta;
+    
     public Programador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        consulta = new Consulta();
+        modelo = consulta.geraTabelaCategorias();
+        table_Programadores.setModel(modelo);
     }
 
     /**
@@ -28,64 +37,64 @@ public class Programador extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        botao_Login6 = new javax.swing.JButton();
-        botao_Login5 = new javax.swing.JButton();
-        botao_Login3 = new javax.swing.JButton();
-        botao_Login4 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        fild_User1 = new javax.swing.JTextField();
-        label_Password = new javax.swing.JLabel();
-        label_Login = new javax.swing.JLabel();
-        fild_User = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
+        panel_Principal = new javax.swing.JPanel();
+        button_Novo = new javax.swing.JButton();
+        button_Editar = new javax.swing.JButton();
+        button_Confirmar = new javax.swing.JButton();
+        button_Excluir = new javax.swing.JButton();
+        scrollPane_Programadores = new javax.swing.JScrollPane();
+        table_Programadores = new javax.swing.JTable();
+        field_ValorHora = new javax.swing.JTextField();
+        label_ValorHora = new javax.swing.JLabel();
+        label_Nome = new javax.swing.JLabel();
+        field_Nome = new javax.swing.JTextField();
+        separator = new javax.swing.JSeparator();
+        label_Separador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setToolTipText("");
-        jPanel1.setMaximumSize(new java.awt.Dimension(480, 420));
-        jPanel1.setMinimumSize(new java.awt.Dimension(480, 420));
-        jPanel1.setName("dfd"); // NOI18N
+        panel_Principal.setToolTipText("");
+        panel_Principal.setMaximumSize(new java.awt.Dimension(480, 420));
+        panel_Principal.setMinimumSize(new java.awt.Dimension(480, 420));
+        panel_Principal.setName("dfd"); // NOI18N
 
-        botao_Login6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login6.setText("Novo");
-        botao_Login6.addActionListener(new java.awt.event.ActionListener() {
+        button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Novo.setText("Novo");
+        button_Novo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login6ActionPerformed(evt);
+                button_NovoActionPerformed(evt);
             }
         });
 
-        botao_Login5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login5.setText("Editar");
-        botao_Login5.setEnabled(false);
-        botao_Login5.addActionListener(new java.awt.event.ActionListener() {
+        button_Editar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Editar.setText("Editar");
+        button_Editar.setEnabled(false);
+        button_Editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login5ActionPerformed(evt);
+                button_EditarActionPerformed(evt);
             }
         });
 
-        botao_Login3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login3.setText("Confirmar");
-        botao_Login3.setEnabled(false);
-        botao_Login3.addActionListener(new java.awt.event.ActionListener() {
+        button_Confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Confirmar.setText("Confirmar");
+        button_Confirmar.setEnabled(false);
+        button_Confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login3ActionPerformed(evt);
+                button_ConfirmarActionPerformed(evt);
             }
         });
 
-        botao_Login4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login4.setText("Excluir");
-        botao_Login4.setEnabled(false);
-        botao_Login4.addActionListener(new java.awt.event.ActionListener() {
+        button_Excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Excluir.setText("Excluir");
+        button_Excluir.setEnabled(false);
+        button_Excluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login4ActionPerformed(evt);
+                button_ExcluirActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table_Programadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -111,140 +120,140 @@ public class Programador extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(1).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(100);
+        table_Programadores.setColumnSelectionAllowed(true);
+        table_Programadores.getTableHeader().setReorderingAllowed(false);
+        scrollPane_Programadores.setViewportView(table_Programadores);
+        table_Programadores.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        if (table_Programadores.getColumnModel().getColumnCount() > 0) {
+            table_Programadores.getColumnModel().getColumn(1).setMinWidth(100);
+            table_Programadores.getColumnModel().getColumn(1).setPreferredWidth(100);
+            table_Programadores.getColumnModel().getColumn(1).setMaxWidth(100);
         }
 
-        fild_User1.setEditable(false);
-        fild_User1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        fild_User1.addActionListener(new java.awt.event.ActionListener() {
+        field_ValorHora.setEditable(false);
+        field_ValorHora.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_ValorHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fild_User1ActionPerformed(evt);
+                field_ValorHoraActionPerformed(evt);
             }
         });
 
-        label_Password.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        label_Password.setText("Valor Hora");
+        label_ValorHora.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        label_ValorHora.setText("Valor Hora");
 
-        label_Login.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        label_Login.setText("Nome");
+        label_Nome.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        label_Nome.setText("Nome");
 
-        fild_User.setEditable(false);
-        fild_User.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        fild_User.addActionListener(new java.awt.event.ActionListener() {
+        field_Nome.setEditable(false);
+        field_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_Nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fild_UserActionPerformed(evt);
+                field_NomeActionPerformed(evt);
             }
         });
 
-        jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
-        jSeparator1.setToolTipText("");
-        jSeparator1.setName(""); // NOI18N
+        separator.setForeground(new java.awt.Color(153, 153, 153));
+        separator.setToolTipText("");
+        separator.setName(""); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("Programadores Cadastrados");
+        label_Separador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label_Separador.setForeground(new java.awt.Color(102, 102, 102));
+        label_Separador.setText("Programadores Cadastrados");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel_PrincipalLayout = new javax.swing.GroupLayout(panel_Principal);
+        panel_Principal.setLayout(panel_PrincipalLayout);
+        panel_PrincipalLayout.setHorizontalGroup(
+            panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_PrincipalLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(label_Login)
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                        .addComponent(label_Nome)
                         .addGap(327, 327, 327)
-                        .addComponent(label_Password))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(label_ValorHora))
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                        .addComponent(field_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(fild_User1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(botao_Login6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(field_ValorHora))
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                        .addComponent(button_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(botao_Login5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(botao_Login4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(botao_Login3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(button_Confirmar))
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                        .addComponent(label_Separador)
                         .addGap(3, 3, 3)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scrollPane_Programadores, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panel_PrincipalLayout.setVerticalGroup(
+            panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_PrincipalLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_Login)
-                    .addComponent(label_Password))
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_Nome)
+                    .addComponent(label_ValorHora))
                 .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(field_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(field_ValorHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botao_Login6)
-                    .addComponent(botao_Login5)
-                    .addComponent(botao_Login4)
-                    .addComponent(botao_Login3))
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(button_Novo)
+                    .addComponent(button_Editar)
+                    .addComponent(button_Excluir)
+                    .addComponent(button_Confirmar))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_Separador)
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(scrollPane_Programadores, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, Short.MAX_VALUE)
+            .addComponent(panel_Principal, javax.swing.GroupLayout.PREFERRED_SIZE, 473, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel_Principal, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botao_Login6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login6ActionPerformed
+    private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_botao_Login6ActionPerformed
+    }//GEN-LAST:event_button_NovoActionPerformed
 
-    private void botao_Login5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login5ActionPerformed
+    private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login5ActionPerformed
+    }//GEN-LAST:event_button_EditarActionPerformed
 
-    private void botao_Login3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login3ActionPerformed
+    private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login3ActionPerformed
+    }//GEN-LAST:event_button_ConfirmarActionPerformed
 
-    private void botao_Login4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login4ActionPerformed
+    private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login4ActionPerformed
+    }//GEN-LAST:event_button_ExcluirActionPerformed
 
-    private void fild_User1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_User1ActionPerformed
+    private void field_ValorHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_ValorHoraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fild_User1ActionPerformed
+    }//GEN-LAST:event_field_ValorHoraActionPerformed
 
-    private void fild_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_UserActionPerformed
+    private void field_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_NomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fild_UserActionPerformed
+    }//GEN-LAST:event_field_NomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,18 +299,18 @@ public class Programador extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botao_Login3;
-    private javax.swing.JButton botao_Login4;
-    private javax.swing.JButton botao_Login5;
-    private javax.swing.JButton botao_Login6;
-    private javax.swing.JTextField fild_User;
-    private javax.swing.JTextField fild_User1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel label_Login;
-    private javax.swing.JLabel label_Password;
+    private javax.swing.JButton button_Confirmar;
+    private javax.swing.JButton button_Editar;
+    private javax.swing.JButton button_Excluir;
+    private javax.swing.JButton button_Novo;
+    private javax.swing.JTextField field_Nome;
+    private javax.swing.JTextField field_ValorHora;
+    private javax.swing.JLabel label_Nome;
+    private javax.swing.JLabel label_Separador;
+    private javax.swing.JLabel label_ValorHora;
+    private javax.swing.JPanel panel_Principal;
+    private javax.swing.JScrollPane scrollPane_Programadores;
+    private javax.swing.JSeparator separator;
+    private javax.swing.JTable table_Programadores;
     // End of variables declaration//GEN-END:variables
 }

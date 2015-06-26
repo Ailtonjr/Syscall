@@ -37,7 +37,7 @@ public class Principal extends javax.swing.JFrame {
         comboBox_Filtro = new javax.swing.JComboBox();
         textField_Buscar = new javax.swing.JTextField();
         botao_Buscar = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        menuBar = new javax.swing.JMenuBar();
         menu_Gerenciar = new javax.swing.JMenu();
         menuItem_Programador = new javax.swing.JMenuItem();
         menuItem_Cliente = new javax.swing.JMenuItem();
@@ -176,7 +176,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Gerenciar.add(menuItem_Usuario);
 
-        jMenuBar1.add(menu_Gerenciar);
+        menuBar.add(menu_Gerenciar);
 
         menu_Relatorio.setText("Relatórios");
 
@@ -189,15 +189,15 @@ public class Principal extends javax.swing.JFrame {
         menuItem_Relatorio3.setText("Relatorio 3");
         menu_Relatorio.add(menuItem_Relatorio3);
 
-        jMenuBar1.add(menu_Relatorio);
+        menuBar.add(menu_Relatorio);
 
         menu_Sobre.setText("Sobre");
-        jMenuBar1.add(menu_Sobre);
+        menuBar.add(menu_Sobre);
 
         menu_Sair.setText("Sair");
-        jMenuBar1.add(menu_Sair);
+        menuBar.add(menu_Sair);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -271,7 +271,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botao_Buscar;
     private javax.swing.JComboBox comboBox_Filtro;
     private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuItem_Categoria;
     private javax.swing.JMenuItem menuItem_Chamado;
     private javax.swing.JMenuItem menuItem_Cliente;

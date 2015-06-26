@@ -28,17 +28,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="473" max="32767" attributes="0"/>
+          <Component id="panel_Principal" alignment="0" pref="473" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="panel_Principal" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="panel_Principal">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -62,26 +62,26 @@
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="label_Login" min="-2" max="-2" attributes="0"/>
-                              <Component id="fild_Nome" min="-2" pref="453" max="-2" attributes="0"/>
+                              <Component id="field_Nome" min="-2" pref="453" max="-2" attributes="0"/>
                               <Component id="label_Password" min="-2" max="-2" attributes="0"/>
-                              <Component id="fild_Email" min="-2" pref="453" max="-2" attributes="0"/>
+                              <Component id="field_Email" min="-2" pref="453" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="botao_Login6" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="button_Novo" min="-2" pref="93" max="-2" attributes="0"/>
                                   <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
-                                  <Component id="botao_Login5" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="button_Editar" min="-2" pref="93" max="-2" attributes="0"/>
                                   <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
-                                  <Component id="botao_Login4" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="button_Excluir" min="-2" pref="93" max="-2" attributes="0"/>
                                   <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
-                                  <Component id="botao_Login3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="button_Confirmar" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane1" min="-2" pref="453" max="-2" attributes="0"/>
+                              <Component id="scrollPane_Clientes" min="-2" pref="453" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="label_Separador" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                          <Component id="jSeparator1" min="-2" pref="317" max="-2" attributes="0"/>
+                          <Component id="separator" min="-2" pref="317" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -94,35 +94,35 @@
                   <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
                   <Component id="label_Login" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                  <Component id="fild_Nome" min="-2" max="-2" attributes="0"/>
+                  <Component id="field_Nome" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
                   <Component id="label_Password" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                  <Component id="fild_Email" min="-2" max="-2" attributes="0"/>
+                  <Component id="field_Email" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="botao_Login6" min="-2" max="-2" attributes="0"/>
-                      <Component id="botao_Login5" min="-2" max="-2" attributes="0"/>
-                      <Component id="botao_Login4" min="-2" max="-2" attributes="0"/>
-                      <Component id="botao_Login3" min="-2" max="-2" attributes="0"/>
+                      <Component id="button_Novo" min="-2" max="-2" attributes="0"/>
+                      <Component id="button_Editar" min="-2" max="-2" attributes="0"/>
+                      <Component id="button_Excluir" min="-2" max="-2" attributes="0"/>
+                      <Component id="button_Confirmar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="label_Separador" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="jSeparator1" min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="separator" min="-2" pref="15" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="212" max="-2" attributes="0"/>
+                  <Component id="scrollPane_Clientes" min="-2" pref="212" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="botao_Login6">
+        <Component class="javax.swing.JButton" name="button_Novo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -130,10 +130,10 @@
             <Property name="text" type="java.lang.String" value="Novo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_Login6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_NovoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="botao_Login5">
+        <Component class="javax.swing.JButton" name="button_Editar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -142,10 +142,10 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_Login5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_EditarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="botao_Login3">
+        <Component class="javax.swing.JButton" name="button_Confirmar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -154,10 +154,10 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_Login3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_ConfirmarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="botao_Login4">
+        <Component class="javax.swing.JButton" name="button_Excluir">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -166,17 +166,17 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botao_Login4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_ExcluirActionPerformed"/>
           </Events>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+        <Container class="javax.swing.JScrollPane" name="scrollPane_Clientes">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tabela_Clientes">
+            <Component class="javax.swing.JTable" name="table_Clientes">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="4">
@@ -203,12 +203,12 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabela_ClientesMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="table_ClientesMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="fild_Email">
+        <Component class="javax.swing.JTextField" name="field_Email">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -216,7 +216,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fild_EmailActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="field_EmailActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="label_Password">
@@ -235,7 +235,7 @@
             <Property name="text" type="java.lang.String" value="Nome"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="fild_Nome">
+        <Component class="javax.swing.JTextField" name="field_Nome">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -243,10 +243,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fild_NomeActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="field_NomeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JSeparator" name="jSeparator1">
+        <Component class="javax.swing.JSeparator" name="separator">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
@@ -255,7 +255,7 @@
             <Property name="name" type="java.lang.String" value="" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="label_Separador">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>

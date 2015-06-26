@@ -16,7 +16,7 @@ public class Cliente extends javax.swing.JDialog {
         initComponents();
         consulta = new Consulta();
         modelo = consulta.geraTabelaClientes();
-        tabela_Clientes.setModel(modelo);
+        table_Clientes.setModel(modelo);
     }
 
     /**
@@ -28,67 +28,67 @@ public class Cliente extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        botao_Login6 = new javax.swing.JButton();
-        botao_Login5 = new javax.swing.JButton();
-        botao_Login3 = new javax.swing.JButton();
-        botao_Login4 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabela_Clientes = new javax.swing.JTable();
-        fild_Email = new javax.swing.JTextField();
+        panel_Principal = new javax.swing.JPanel();
+        button_Novo = new javax.swing.JButton();
+        button_Editar = new javax.swing.JButton();
+        button_Confirmar = new javax.swing.JButton();
+        button_Excluir = new javax.swing.JButton();
+        scrollPane_Clientes = new javax.swing.JScrollPane();
+        table_Clientes = new javax.swing.JTable();
+        field_Email = new javax.swing.JTextField();
         label_Password = new javax.swing.JLabel();
         label_Login = new javax.swing.JLabel();
-        fild_Nome = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
+        field_Nome = new javax.swing.JTextField();
+        separator = new javax.swing.JSeparator();
+        label_Separador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Chamados - Clientes");
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         setResizable(false);
 
-        jPanel1.setToolTipText("");
-        jPanel1.setMaximumSize(new java.awt.Dimension(480, 420));
-        jPanel1.setMinimumSize(new java.awt.Dimension(480, 420));
-        jPanel1.setName("dfd"); // NOI18N
-        jPanel1.setPreferredSize(new java.awt.Dimension(480, 420));
+        panel_Principal.setToolTipText("");
+        panel_Principal.setMaximumSize(new java.awt.Dimension(480, 420));
+        panel_Principal.setMinimumSize(new java.awt.Dimension(480, 420));
+        panel_Principal.setName("dfd"); // NOI18N
+        panel_Principal.setPreferredSize(new java.awt.Dimension(480, 420));
 
-        botao_Login6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login6.setText("Novo");
-        botao_Login6.addActionListener(new java.awt.event.ActionListener() {
+        button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Novo.setText("Novo");
+        button_Novo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login6ActionPerformed(evt);
+                button_NovoActionPerformed(evt);
             }
         });
 
-        botao_Login5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login5.setText("Editar");
-        botao_Login5.setEnabled(false);
-        botao_Login5.addActionListener(new java.awt.event.ActionListener() {
+        button_Editar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Editar.setText("Editar");
+        button_Editar.setEnabled(false);
+        button_Editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login5ActionPerformed(evt);
+                button_EditarActionPerformed(evt);
             }
         });
 
-        botao_Login3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login3.setText("Confirmar");
-        botao_Login3.setEnabled(false);
-        botao_Login3.addActionListener(new java.awt.event.ActionListener() {
+        button_Confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Confirmar.setText("Confirmar");
+        button_Confirmar.setEnabled(false);
+        button_Confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login3ActionPerformed(evt);
+                button_ConfirmarActionPerformed(evt);
             }
         });
 
-        botao_Login4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login4.setText("Excluir");
-        botao_Login4.setEnabled(false);
-        botao_Login4.addActionListener(new java.awt.event.ActionListener() {
+        button_Excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Excluir.setText("Excluir");
+        button_Excluir.setEnabled(false);
+        button_Excluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login4ActionPerformed(evt);
+                button_ExcluirActionPerformed(evt);
             }
         });
 
-        tabela_Clientes.setModel(new javax.swing.table.DefaultTableModel(
+        table_Clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -114,19 +114,19 @@ public class Cliente extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        tabela_Clientes.getTableHeader().setReorderingAllowed(false);
-        tabela_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        table_Clientes.getTableHeader().setReorderingAllowed(false);
+        table_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabela_ClientesMouseClicked(evt);
+                table_ClientesMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabela_Clientes);
+        scrollPane_Clientes.setViewportView(table_Clientes);
 
-        fild_Email.setEditable(false);
-        fild_Email.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        fild_Email.addActionListener(new java.awt.event.ActionListener() {
+        field_Email.setEditable(false);
+        field_Email.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_Email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fild_EmailActionPerformed(evt);
+                field_EmailActionPerformed(evt);
             }
         });
 
@@ -136,76 +136,76 @@ public class Cliente extends javax.swing.JDialog {
         label_Login.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         label_Login.setText("Nome");
 
-        fild_Nome.setEditable(false);
-        fild_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        fild_Nome.addActionListener(new java.awt.event.ActionListener() {
+        field_Nome.setEditable(false);
+        field_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_Nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fild_NomeActionPerformed(evt);
+                field_NomeActionPerformed(evt);
             }
         });
 
-        jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
-        jSeparator1.setToolTipText("");
-        jSeparator1.setName(""); // NOI18N
+        separator.setForeground(new java.awt.Color(153, 153, 153));
+        separator.setToolTipText("");
+        separator.setName(""); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("Clientes Cadastrados");
+        label_Separador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label_Separador.setForeground(new java.awt.Color(102, 102, 102));
+        label_Separador.setText("Clientes Cadastrados");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel_PrincipalLayout = new javax.swing.GroupLayout(panel_Principal);
+        panel_Principal.setLayout(panel_PrincipalLayout);
+        panel_PrincipalLayout.setHorizontalGroup(
+            panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label_Login)
-                            .addComponent(fild_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(field_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label_Password)
-                            .addComponent(fild_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(botao_Login6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(field_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                                .addComponent(button_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
-                                .addComponent(botao_Login5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(button_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
-                                .addComponent(botao_Login4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(button_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
-                                .addComponent(botao_Login3))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(button_Confirmar))
+                            .addComponent(scrollPane_Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1)
+                        .addComponent(label_Separador)
                         .addGap(4, 4, 4)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panel_PrincipalLayout.setVerticalGroup(
+            panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_PrincipalLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addComponent(label_Login)
                 .addGap(6, 6, 6)
-                .addComponent(fild_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(field_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(label_Password)
                 .addGap(6, 6, 6)
-                .addComponent(fild_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(field_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botao_Login6)
-                    .addComponent(botao_Login5)
-                    .addComponent(botao_Login4)
-                    .addComponent(botao_Login3))
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(button_Novo)
+                    .addComponent(button_Editar)
+                    .addComponent(button_Excluir)
+                    .addComponent(button_Confirmar))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_Separador)
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPane_Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -213,49 +213,49 @@ public class Cliente extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, Short.MAX_VALUE)
+            .addComponent(panel_Principal, javax.swing.GroupLayout.PREFERRED_SIZE, 473, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fild_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_NomeActionPerformed
+    private void field_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_NomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fild_NomeActionPerformed
+    }//GEN-LAST:event_field_NomeActionPerformed
 
-    private void fild_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_EmailActionPerformed
+    private void field_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_EmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fild_EmailActionPerformed
+    }//GEN-LAST:event_field_EmailActionPerformed
 
-    private void botao_Login4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login4ActionPerformed
+    private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login4ActionPerformed
+    }//GEN-LAST:event_button_ExcluirActionPerformed
 
-    private void botao_Login3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login3ActionPerformed
+    private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login3ActionPerformed
+    }//GEN-LAST:event_button_ConfirmarActionPerformed
 
-    private void botao_Login5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login5ActionPerformed
+    private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login5ActionPerformed
+    }//GEN-LAST:event_button_EditarActionPerformed
 
-    private void botao_Login6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login6ActionPerformed
+    private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
 
-    }//GEN-LAST:event_botao_Login6ActionPerformed
+    }//GEN-LAST:event_button_NovoActionPerformed
 
-    private void tabela_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_ClientesMouseClicked
+    private void table_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_ClientesMouseClicked
         if (evt.getClickCount() == 1) {
-            int id = Integer.parseInt((String) tabela_Clientes.getValueAt(tabela_Clientes.getSelectedRow(), 0));
+            int id = Integer.parseInt((String) table_Clientes.getValueAt(table_Clientes.getSelectedRow(), 0));
             String[] vetor = consulta.geraVisaoCliente(id);
-            fild_Nome.setText(vetor[0]);
-            fild_Email.setText(vetor[1]);
+            field_Nome.setText(vetor[0]);
+            field_Email.setText(vetor[1]);
         }
-    }//GEN-LAST:event_tabela_ClientesMouseClicked
+    }//GEN-LAST:event_table_ClientesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -277,18 +277,18 @@ public class Cliente extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botao_Login3;
-    private javax.swing.JButton botao_Login4;
-    private javax.swing.JButton botao_Login5;
-    private javax.swing.JButton botao_Login6;
-    private javax.swing.JTextField fild_Email;
-    private javax.swing.JTextField fild_Nome;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton button_Confirmar;
+    private javax.swing.JButton button_Editar;
+    private javax.swing.JButton button_Excluir;
+    private javax.swing.JButton button_Novo;
+    private javax.swing.JTextField field_Email;
+    private javax.swing.JTextField field_Nome;
     private javax.swing.JLabel label_Login;
     private javax.swing.JLabel label_Password;
-    private javax.swing.JTable tabela_Clientes;
+    private javax.swing.JLabel label_Separador;
+    private javax.swing.JPanel panel_Principal;
+    private javax.swing.JScrollPane scrollPane_Clientes;
+    private javax.swing.JSeparator separator;
+    private javax.swing.JTable table_Clientes;
     // End of variables declaration//GEN-END:variables
 }

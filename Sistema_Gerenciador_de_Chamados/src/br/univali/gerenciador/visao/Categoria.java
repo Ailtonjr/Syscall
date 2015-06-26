@@ -15,7 +15,7 @@ public class Categoria extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         consulta = new Consulta();
-        modelo = consulta.geraTabelaClientes();
+        modelo = consulta.geraTabelaCategorias();
         tabela_Categorias.setModel(modelo);
     }
 
@@ -28,56 +28,56 @@ public class Categoria extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        botao_Login6 = new javax.swing.JButton();
-        botao_Login5 = new javax.swing.JButton();
-        botao_Login3 = new javax.swing.JButton();
-        botao_Login4 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        panel_Principal = new javax.swing.JPanel();
+        button_Novo = new javax.swing.JButton();
+        button_Editar = new javax.swing.JButton();
+        button_Confirmar = new javax.swing.JButton();
+        button_Excluir = new javax.swing.JButton();
+        scrollPane_Categorias = new javax.swing.JScrollPane();
         tabela_Categorias = new javax.swing.JTable();
-        label_Login = new javax.swing.JLabel();
-        fild_Nome = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
+        label_Nome = new javax.swing.JLabel();
+        field_Nome = new javax.swing.JTextField();
+        separator = new javax.swing.JSeparator();
+        label_Separador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Chamados - Clientes");
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         setResizable(false);
 
-        jPanel1.setToolTipText("");
-        jPanel1.setMaximumSize(new java.awt.Dimension(480, 420));
-        jPanel1.setMinimumSize(new java.awt.Dimension(480, 420));
-        jPanel1.setName("dfd"); // NOI18N
-        jPanel1.setPreferredSize(new java.awt.Dimension(480, 420));
+        panel_Principal.setToolTipText("");
+        panel_Principal.setMaximumSize(new java.awt.Dimension(480, 420));
+        panel_Principal.setMinimumSize(new java.awt.Dimension(480, 420));
+        panel_Principal.setName("dfd"); // NOI18N
+        panel_Principal.setPreferredSize(new java.awt.Dimension(480, 420));
 
-        botao_Login6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login6.setText("Novo");
+        button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Novo.setText("Novo");
 
-        botao_Login5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login5.setText("Editar");
-        botao_Login5.setEnabled(false);
-        botao_Login5.addActionListener(new java.awt.event.ActionListener() {
+        button_Editar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Editar.setText("Editar");
+        button_Editar.setEnabled(false);
+        button_Editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login5ActionPerformed(evt);
+                button_EditarActionPerformed(evt);
             }
         });
 
-        botao_Login3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login3.setText("Confirmar");
-        botao_Login3.setEnabled(false);
-        botao_Login3.addActionListener(new java.awt.event.ActionListener() {
+        button_Confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Confirmar.setText("Confirmar");
+        button_Confirmar.setEnabled(false);
+        button_Confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login3ActionPerformed(evt);
+                button_ConfirmarActionPerformed(evt);
             }
         });
 
-        botao_Login4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botao_Login4.setText("Excluir");
-        botao_Login4.setEnabled(false);
-        botao_Login4.addActionListener(new java.awt.event.ActionListener() {
+        button_Excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Excluir.setText("Excluir");
+        button_Excluir.setEnabled(false);
+        button_Excluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botao_Login4ActionPerformed(evt);
+                button_ExcluirActionPerformed(evt);
             }
         });
 
@@ -113,87 +113,87 @@ public class Categoria extends javax.swing.JDialog {
                 tabela_CategoriasMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabela_Categorias);
+        scrollPane_Categorias.setViewportView(tabela_Categorias);
         if (tabela_Categorias.getColumnModel().getColumnCount() > 0) {
             tabela_Categorias.getColumnModel().getColumn(0).setPreferredWidth(1);
             tabela_Categorias.getColumnModel().getColumn(1).setPreferredWidth(300);
         }
 
-        label_Login.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        label_Login.setText("Nome");
+        label_Nome.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        label_Nome.setText("Nome");
 
-        fild_Nome.setEditable(false);
-        fild_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        fild_Nome.addActionListener(new java.awt.event.ActionListener() {
+        field_Nome.setEditable(false);
+        field_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_Nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fild_NomeActionPerformed(evt);
+                field_NomeActionPerformed(evt);
             }
         });
 
-        jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
-        jSeparator1.setToolTipText("");
-        jSeparator1.setName(""); // NOI18N
+        separator.setForeground(new java.awt.Color(153, 153, 153));
+        separator.setToolTipText("");
+        separator.setName(""); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("Categorias Cadastradas");
+        label_Separador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label_Separador.setForeground(new java.awt.Color(102, 102, 102));
+        label_Separador.setText("Categorias Cadastradas");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel_PrincipalLayout = new javax.swing.GroupLayout(panel_Principal);
+        panel_Principal.setLayout(panel_PrincipalLayout);
+        panel_PrincipalLayout.setHorizontalGroup(
+            panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_PrincipalLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_Login)
-                    .addComponent(fild_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(botao_Login6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_Nome)
+                    .addComponent(field_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                        .addComponent(button_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(botao_Login5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(botao_Login4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(botao_Login3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(button_Confirmar))
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                        .addComponent(label_Separador)
                         .addGap(14, 14, 14)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scrollPane_Categorias, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panel_PrincipalLayout.setVerticalGroup(
+            panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_PrincipalLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addComponent(label_Login)
+                .addComponent(label_Nome)
                 .addGap(6, 6, 6)
-                .addComponent(fild_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(field_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botao_Login6)
-                    .addComponent(botao_Login5)
-                    .addComponent(botao_Login4)
-                    .addComponent(botao_Login3))
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(button_Novo)
+                    .addComponent(button_Editar)
+                    .addComponent(button_Excluir)
+                    .addComponent(button_Confirmar))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_Separador)
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(scrollPane_Categorias, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, Short.MAX_VALUE)
+            .addComponent(panel_Principal, javax.swing.GroupLayout.PREFERRED_SIZE, 473, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panel_Principal, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -201,27 +201,27 @@ public class Categoria extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fild_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_NomeActionPerformed
+    private void field_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_NomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fild_NomeActionPerformed
+    }//GEN-LAST:event_field_NomeActionPerformed
 
-    private void botao_Login4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login4ActionPerformed
+    private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login4ActionPerformed
+    }//GEN-LAST:event_button_ExcluirActionPerformed
 
-    private void botao_Login3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login3ActionPerformed
+    private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login3ActionPerformed
+    }//GEN-LAST:event_button_ConfirmarActionPerformed
 
-    private void botao_Login5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login5ActionPerformed
+    private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botao_Login5ActionPerformed
+    }//GEN-LAST:event_button_EditarActionPerformed
 
     private void tabela_CategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_CategoriasMouseClicked
         if (evt.getClickCount() == 1) {
             int id = Integer.parseInt((String) tabela_Categorias.getValueAt(tabela_Categorias.getSelectedRow(), 0));
-            String[] vetor = consulta.geraVisaoCliente(id);
-            fild_Nome.setText(vetor[0]);
+            String[] vetor = consulta.geraVisaoCategoria(id);
+            field_Nome.setText(vetor[1]);
         }
     }//GEN-LAST:event_tabela_CategoriasMouseClicked
 
@@ -245,16 +245,16 @@ public class Categoria extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botao_Login3;
-    private javax.swing.JButton botao_Login4;
-    private javax.swing.JButton botao_Login5;
-    private javax.swing.JButton botao_Login6;
-    private javax.swing.JTextField fild_Nome;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel label_Login;
+    private javax.swing.JButton button_Confirmar;
+    private javax.swing.JButton button_Editar;
+    private javax.swing.JButton button_Excluir;
+    private javax.swing.JButton button_Novo;
+    private javax.swing.JTextField field_Nome;
+    private javax.swing.JLabel label_Nome;
+    private javax.swing.JLabel label_Separador;
+    private javax.swing.JPanel panel_Principal;
+    private javax.swing.JScrollPane scrollPane_Categorias;
+    private javax.swing.JSeparator separator;
     private javax.swing.JTable tabela_Categorias;
     // End of variables declaration//GEN-END:variables
 }
