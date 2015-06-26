@@ -114,8 +114,10 @@ public class Chamado extends javax.swing.JDialog {
         label_Data.setText("Data");
 
         formatted_Data.setEditable(false);
+        formatted_Data.setEnabled(false);
 
         formatted_Hora.setEditable(false);
+        formatted_Hora.setEnabled(false);
         formatted_Hora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 formatted_HoraActionPerformed(evt);
@@ -150,11 +152,14 @@ public class Chamado extends javax.swing.JDialog {
         textArea_Descricao.setEditable(false);
         textArea_Descricao.setColumns(20);
         textArea_Descricao.setRows(5);
+        textArea_Descricao.setEnabled(false);
         scrollPane.setViewportView(textArea_Descricao);
 
         comboBox_Categoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBox_Categoria.setEnabled(false);
 
         comboBox_Cliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBox_Cliente.setEnabled(false);
 
         botao_Novo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botao_Novo1.setText("Novo");
@@ -183,8 +188,6 @@ public class Chamado extends javax.swing.JDialog {
         Separador1.setForeground(new java.awt.Color(153, 153, 153));
         Separador1.setToolTipText("");
         Separador1.setName(""); // NOI18N
-
-        label_Status.setText("jLabel1");
 
         javax.swing.GroupLayout panel_fundoLayout = new javax.swing.GroupLayout(panel_fundo);
         panel_fundo.setLayout(panel_fundoLayout);
@@ -223,7 +226,7 @@ public class Chamado extends javax.swing.JDialog {
                             .addComponent(formatted_Data, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(24, 24, 24)
                             .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
+                            .addGap(405, 405, 405)
                             .addComponent(label_Status))
                         .addComponent(jLabel4)
                         .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)
