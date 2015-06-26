@@ -1,22 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Consulta;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Ailton Cardoso Jr
- */
+
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame
-     */
+
     DefaultTableModel modelo;
 
     public Principal() {

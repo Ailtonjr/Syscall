@@ -1,36 +1,29 @@
-/*
- Exemplo de uso dos metodos desta classe:
- Conexao con = new Conexao();
- con.inserirUsuario("Joao", "jfg12", "123");
- con.encerrarConexao();
- */
+
 package br.univali.gerenciador.modelo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class Conexao {
 
     private String url = "jdbc:postgresql://localhost:5432/db_chamado";
     private String usuario = "postgres";
-    private String senha = "123";
+    private String senha = "7133";
     private Connection conexao;
-    private Statement statement;
-
+    private PreparedStatement statement;
+    
     public Conexao() {
 
         try {
             this.conexao = DriverManager.getConnection(url, usuario, senha);
             System.out.println("Conexão estabelecida");
-
-            this.statement = conexao.createStatement();
-            System.out.println("Statement criado");
         } catch (SQLException ex) {
-            System.err.println("Erro ao se conectar");
+            JOptionPane.showMessageDialog(null, "Erro ao Conectar ao banco de dados", "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
         }
     }
 
@@ -42,115 +35,192 @@ public class Conexao {
             System.err.println("Erro ao encerrar conexão");
         }
     }
-
+    
+    
     //Inserções
     public void inserirUsuario(String nome, String login, String senha) {
-        String sql = "INSERT INTO usuario (nome, login, senha) VALUES ('" + nome + "', '" + login + "', '" + senha + "')";
+        String sql = "BEGIN;"
+                + "INSERT INTO usuario (nome, login, senha) VALUES (?, ?, ?);"
+                + "COMMIT";
         try {
-            statement.executeUpdate(sql);
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, nome);
+            statement.setString(2, login);
+            statement.setString(3, senha);
+            
+            statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Usuario " + login + " inserido com sucesso");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Usuário já existe!\nErro ao inserir usuário: " + sql);
+            JOptionPane.showMessageDialog(null, "Usuário já existe!\nErro ao inserir usuário: " + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
 
     public void inserirCliente(String nome, String email) {
-        String sql = "INSERT INTO cliente (nome, email) VALUES ('" + nome + "', '" + email + "')";
+        String sql = "BEGIN;"
+                + "INSERT INTO cliente (nome, email) VALUES (?, ?);"
+                + "COMMIT";
         try {
-            statement.executeUpdate(sql);
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, nome);
+            statement.setString(2, email);
+            
+            statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Cliente " + nome + " inserido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Cliente já existe! \nErro ao inserir cliente " + sql);
+            JOptionPane.showMessageDialog(null, "Cliente já existe! \nErro ao inserir cliente " + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
 
     public void inserirProgramador(String nome, float valorHora) {
-        String sql = "INSERT INTO programador (nome, valorHora) VALUES('" + nome + "', '" + valorHora + "')";
+        String sql = "BEGIN;"
+                + "INSERT INTO programador (nome, valorHora) VALUES(?, ?);"
+                + "COMMIT";
         try {
-            statement.executeUpdate(sql);
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, nome);
+            statement.setFloat(2, valorHora);
+            
+            statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Programador " + nome + " inserido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir programador " + nome + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir programador " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
 
     public void inserirCategoria(String nome) {
-        String sql = "INSERT INTO categoria (nome) VALUES ('" + nome + "')";
+        String sql = "BEGIN;"
+                + "INSERT INTO categoria (nome) VALUES (?);"
+                + "COMMIT";
         try {
-            statement.executeUpdate(sql);
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, nome);
+            
+            statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Categoria " + nome + " inserida com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir categoria " + nome + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir categoria " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
 
     public void inserirChamado(String descricao, int id_categoria, int id_cliente, int id_usuario, String dataHora) {
-        String sql = "INSERT INTO chamado(descricao, id_categoria, id_cliente, id_usuario, dataHora) VALUES ('" + descricao + "', " + id_categoria + ", " + id_cliente + ", " + id_usuario + ", '" + dataHora + "')";
+        String sql = "BEGIN;"
+                + "INSERT INTO chamado(descricao, id_categoria, id_cliente, id_usuario, dataHora) VALUES (?, ?, ?, ?, ?);"
+                + "COMMIT";
         try {
-            statement.executeUpdate(sql);
+            statement = conexao.prepareStatement(sql);
+            statement.setString(1, descricao);
+            statement.setInt(2, id_categoria);
+            statement.setInt(3, id_cliente);
+            statement.setInt(4, id_usuario);
+            statement.setString(5, dataHora);
+            
+            statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Chamado inserido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao criar chamado");
+            JOptionPane.showMessageDialog(null, "Erro ao criar chamado", "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
-
+    
+    public void inserirTopico(int id_chamado, String descricao, int id_programador, String tempo_trabalhado) {
+        String sql = "BEGIN;"
+                + "INSERT INTO topico (id_chamado, descricao, id_programador, tempo_trabalhado, solucionado) VALUES (?, ?, ?, ?);"
+                + "COMMIT";
+        try {
+            statement = conexao.prepareStatement(sql);
+            statement.setInt(1, id_chamado);
+            statement.setString(2, descricao);
+            statement.setInt(3, id_programador);
+            statement.setString(4, tempo_trabalhado);
+            
+            statement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Topico inserido com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao inserir topico", "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
+    
+    
     //Remoções
     public void removerUsuario(int id, String login) {
-        String sql = "DELETE FROM usuario WHERE id = '" + id + "'";
+        String sql = "BEGIN;"
+                + "DELETE FROM usuario WHERE id = '" + id + "';"
+                + "COMMIT";
         try {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Usuario " + login + " removido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover usuario " + login + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao remover usuario " + login + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
 
     public void removerCliente(int id, String nome) {
-        String sql = "DELETE FROM cliente WHERE id = '" + id + "'";
+        String sql = "BEGIN;"
+                + "DELETE FROM cliente WHERE id = '" + id + "';"
+                + "COMMIT";
         try {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Cliente " + nome + " removido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover cliente " + nome + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao remover cliente " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
 
     public void removerProgramador(int id, String nome) {
-        String sql = "DELETE FROM programador WHERE id = '" + id + "'";
+        String sql = "BEGIN;"
+                + "DELETE FROM programador WHERE id = '" + id + "';"
+                + "COMMIT";
         try {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Programador " + nome + " removido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover programador " + nome + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao remover programador " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
 
     public void removerCategoria(int id, String nome) {
-        String sql = "DELETE FROM categoria WHERE id = '" + id + "'";
+        String sql = "BEGIN;"
+                + "DELETE FROM categoria WHERE id = '" + id + "';"
+                + "COMMIT";
         try {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Categoria " + nome + " removida com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover categoria " + nome + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao remover categoria " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
 
     public void removerChamado(int id) {
-        String sql = "DELETE FROM chamado WHERE id = '" + id + "'";
+        String sql = "BEGIN;"
+                + "DELETE FROM chamado WHERE id = '" + id  +"';"
+                + "COMMIT";
         try {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Chamado " + id + " foi removido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover o chamado " + id + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao remover o chamado " + id + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
+    
+    public void removerTopico(int id) {
+        String sql = "BEGIN;"
+                + "DELETE FROM topico WHERE id = '" + id  +"';"
+                + "COMMIT";
+        try {
+            statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Topico " + id + " foi removido com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao remover o topico " + id + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
@@ -164,7 +234,7 @@ public class Conexao {
         try {
             rs = statement.executeQuery(sql);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar chamado\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao buscar chamados\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
         return rs;
