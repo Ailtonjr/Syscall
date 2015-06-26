@@ -24,38 +24,39 @@ public class Principal extends javax.swing.JFrame {
         // Teste de conexão
         Consulta consulta = new Consulta();
         modelo = consulta.geraTabelaChamados();
-        table_Clientes.setModel(modelo);
+        table_Chamados.setModel(modelo);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jComboBox2 = new javax.swing.JComboBox();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table_Clientes = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        panel_Principal = new javax.swing.JPanel();
+        scrollPane_Chamados = new javax.swing.JScrollPane();
+        table_Chamados = new javax.swing.JTable();
+        comboBox_Filtro = new javax.swing.JComboBox();
+        textField_Buscar = new javax.swing.JTextField();
+        botao_Buscar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
+        menu_Gerenciar = new javax.swing.JMenu();
+        menuItem_Programador = new javax.swing.JMenuItem();
+        menuItem_Cliente = new javax.swing.JMenuItem();
+        menuItem_Chamado = new javax.swing.JMenuItem();
+        menuItem_Categoria = new javax.swing.JMenuItem();
+        menuItem_Usuario = new javax.swing.JMenuItem();
+        menu_Relatorio = new javax.swing.JMenu();
+        menuItem_Relatorio1 = new javax.swing.JMenuItem();
+        menuItem_Relatorio2 = new javax.swing.JMenuItem();
+        menuItem_Relatorio3 = new javax.swing.JMenuItem();
+        menu_Sobre = new javax.swing.JMenu();
+        menu_Sair = new javax.swing.JMenu();
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Chamados - Início");
 
-        table_Clientes.setModel(new javax.swing.table.DefaultTableModel(
+        table_Chamados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -81,112 +82,120 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        table_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        table_Chamados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table_ClientesMouseClicked(evt);
+                table_ChamadosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(table_Clientes);
+        scrollPane_Chamados.setViewportView(table_Chamados);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Somente Abertos", "Somente Concluidos", "Todos" }));
+        comboBox_Filtro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Somente Abertos", "Somente Concluidos", "Todos" }));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        textField_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                textField_BuscarActionPerformed(evt);
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Find 2.png"))); // NOI18N
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botao_Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Find 2.png"))); // NOI18N
+        botao_Buscar.setText("Buscar");
+        botao_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botao_BuscarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel_PrincipalLayout = new javax.swing.GroupLayout(panel_Principal);
+        panel_Principal.setLayout(panel_PrincipalLayout);
+        panel_PrincipalLayout.setHorizontalGroup(
+            panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
                 .addContainerGap(108, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(scrollPane_Chamados, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                        .addComponent(comboBox_Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textField_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(botao_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(98, 98, 98))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panel_PrincipalLayout.setVerticalGroup(
+            panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_PrincipalLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botao_Buscar)
+                    .addComponent(textField_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBox_Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPane_Chamados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(205, Short.MAX_VALUE))
         );
 
-        jMenu4.setText("Gerenciar");
+        menu_Gerenciar.setText("Gerenciar");
 
-        jMenuItem4.setText("Programador");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        menuItem_Programador.setText("Programador");
+        menuItem_Programador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                menuItem_ProgramadorActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        menu_Gerenciar.add(menuItem_Programador);
 
-        jMenuItem1.setText("Cliente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuItem_Cliente.setText("Cliente");
+        menuItem_Cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuItem_ClienteActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem1);
+        menu_Gerenciar.add(menuItem_Cliente);
 
-        jMenuItem8.setText("Chamado");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        menuItem_Chamado.setText("Chamado");
+        menuItem_Chamado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                menuItem_ChamadoActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem8);
+        menu_Gerenciar.add(menuItem_Chamado);
 
-        jMenuItem9.setText("Usuário");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        menuItem_Categoria.setText("Categoria");
+        menuItem_Categoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                menuItem_CategoriaActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem9);
+        menu_Gerenciar.add(menuItem_Categoria);
 
-        jMenuBar1.add(jMenu4);
+        menuItem_Usuario.setText("Usuário");
+        menuItem_Usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_UsuarioActionPerformed(evt);
+            }
+        });
+        menu_Gerenciar.add(menuItem_Usuario);
 
-        jMenu3.setText("Relatórios");
+        jMenuBar1.add(menu_Gerenciar);
 
-        jMenuItem10.setText("Relatorio 1");
-        jMenu3.add(jMenuItem10);
+        menu_Relatorio.setText("Relatórios");
 
-        jMenuItem11.setText("Relatorio 2");
-        jMenu3.add(jMenuItem11);
+        menuItem_Relatorio1.setText("Relatorio 1");
+        menu_Relatorio.add(menuItem_Relatorio1);
 
-        jMenuItem12.setText("Relatorio 3");
-        jMenu3.add(jMenuItem12);
+        menuItem_Relatorio2.setText("Relatorio 2");
+        menu_Relatorio.add(menuItem_Relatorio2);
 
-        jMenuBar1.add(jMenu3);
+        menuItem_Relatorio3.setText("Relatorio 3");
+        menu_Relatorio.add(menuItem_Relatorio3);
 
-        jMenu5.setText("Sobre");
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(menu_Relatorio);
 
-        jMenu7.setText("Sair");
-        jMenuBar1.add(jMenu7);
+        menu_Sobre.setText("Sobre");
+        jMenuBar1.add(menu_Sobre);
+
+        menu_Sair.setText("Sair");
+        jMenuBar1.add(menu_Sair);
 
         setJMenuBar(jMenuBar1);
 
@@ -194,52 +203,57 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void menuItem_ChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_ChamadoActionPerformed
         Chamado chamado = new Chamado(this, true);
         chamado.setVisible(true);
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_menuItem_ChamadoActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void menuItem_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_UsuarioActionPerformed
         Usuario usuario = new Usuario(this,true);
         usuario.setVisible(true);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_menuItem_UsuarioActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void menuItem_ProgramadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_ProgramadorActionPerformed
         Programador programador = new Programador(this,true);
         programador.setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_menuItem_ProgramadorActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void textField_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_BuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_textField_BuscarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botao_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_BuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botao_BuscarActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuItem_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_ClienteActionPerformed
         Cliente cliente = new Cliente(this,true);
         cliente.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuItem_ClienteActionPerformed
 
-    private void table_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_ClientesMouseClicked
+    private void table_ChamadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_ChamadosMouseClicked
         if (evt.getClickCount() == 2) {
-            int id = Integer.parseInt((String) table_Clientes.getValueAt(table_Clientes.getSelectedRow(), 0));
+            int id = Integer.parseInt((String) table_Chamados.getValueAt(table_Chamados.getSelectedRow(), 0));
             Chamado chamado = new Chamado(this, true, id);
             chamado.setVisible(true);
         }
-    }//GEN-LAST:event_table_ClientesMouseClicked
+    }//GEN-LAST:event_table_ChamadosMouseClicked
+
+    private void menuItem_CategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_CategoriaActionPerformed
+        Categoria categoria = new Categoria(this,true);
+        categoria.setVisible(true);
+    }//GEN-LAST:event_menuItem_CategoriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,24 +268,25 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JButton botao_Buscar;
+    private javax.swing.JComboBox comboBox_Filtro;
     private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable table_Clientes;
+    private javax.swing.JMenuItem menuItem_Categoria;
+    private javax.swing.JMenuItem menuItem_Chamado;
+    private javax.swing.JMenuItem menuItem_Cliente;
+    private javax.swing.JMenuItem menuItem_Programador;
+    private javax.swing.JMenuItem menuItem_Relatorio1;
+    private javax.swing.JMenuItem menuItem_Relatorio2;
+    private javax.swing.JMenuItem menuItem_Relatorio3;
+    private javax.swing.JMenuItem menuItem_Usuario;
+    private javax.swing.JMenu menu_Gerenciar;
+    private javax.swing.JMenu menu_Relatorio;
+    private javax.swing.JMenu menu_Sair;
+    private javax.swing.JMenu menu_Sobre;
+    private javax.swing.JPanel panel_Principal;
+    private javax.swing.JScrollPane scrollPane_Chamados;
+    private javax.swing.JTable table_Chamados;
+    private javax.swing.JTextField textField_Buscar;
     // End of variables declaration//GEN-END:variables
 }
