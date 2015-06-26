@@ -162,6 +162,56 @@ public class Consulta {
         return modelo;
     }
 
+    public DefaultTableModel geraTabelaUsuarios() {
+        rs = con.consultaUsuarios();
+        try {
+            ResultSetMetaData rsmt = rs.getMetaData();
+            int qtdColunas = rsmt.getColumnCount();
+            String vetor[] = new String[qtdColunas];
+
+            modelo.addColumn("ID");
+            modelo.addColumn("Nome");
+            modelo.addColumn("Login");
+
+            while (rs.next()) {
+                for (int i = 1; i <= qtdColunas; i++) {
+                    vetor[i - 1] = rs.getString(i);
+                }
+                modelo.addRow(vetor);
+                System.out.println();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return modelo;
+    }
+    
+    public DefaultTableModel geraTabelaProgramadores() {
+        rs = con.consultaProgramadores();
+        try {
+            ResultSetMetaData rsmt = rs.getMetaData();
+            int qtdColunas = rsmt.getColumnCount();
+            String vetor[] = new String[qtdColunas];
+
+            modelo.addColumn("ID");
+            modelo.addColumn("Nome");
+            modelo.addColumn("Valor Hora");
+
+            while (rs.next()) {
+                for (int i = 1; i <= qtdColunas; i++) {
+                    vetor[i - 1] = rs.getString(i);
+                }
+                modelo.addRow(vetor);
+                System.out.println();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return modelo;
+    }
+
     public String[] geraVisaoChamado(int idChamado) {
         rs = con.consultaChamado(idChamado);
         String vetor[] = null;
@@ -227,6 +277,23 @@ public class Consulta {
 
     public String[] geraVisaoUsuario(int idUsuario) {
         rs = con.consultaUsuario(idUsuario);
+        String vetor[] = null;
+        try {
+            ResultSetMetaData rsmt = rs.getMetaData();
+            int qtdColunas = rsmt.getColumnCount();
+            vetor = new String[qtdColunas];
+            rs.next();
+            for (int i = 1; i <= qtdColunas; i++) {
+                vetor[i - 1] = rs.getString(i);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vetor;
+    }
+    
+    public String[] geraVisaoProgramador(int idProgramador) {
+        rs = con.consultaProgramador(idProgramador);
         String vetor[] = null;
         try {
             ResultSetMetaData rsmt = rs.getMetaData();

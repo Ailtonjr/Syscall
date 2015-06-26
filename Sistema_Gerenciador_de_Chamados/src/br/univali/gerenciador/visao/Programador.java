@@ -24,7 +24,7 @@ public class Programador extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         consulta = new Consulta();
-        modelo = consulta.geraTabelaCategorias();
+        modelo = consulta.geraTabelaProgramadores();
         table_Programadores.setModel(modelo);
     }
 
@@ -61,11 +61,6 @@ public class Programador extends javax.swing.JDialog {
 
         button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Novo.setText("Novo");
-        button_Novo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_NovoActionPerformed(evt);
-            }
-        });
 
         button_Editar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Editar.setText("Editar");
@@ -120,10 +115,13 @@ public class Programador extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        table_Programadores.setColumnSelectionAllowed(true);
         table_Programadores.getTableHeader().setReorderingAllowed(false);
+        table_Programadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_ProgramadoresMouseClicked(evt);
+            }
+        });
         scrollPane_Programadores.setViewportView(table_Programadores);
-        table_Programadores.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         if (table_Programadores.getColumnModel().getColumnCount() > 0) {
             table_Programadores.getColumnModel().getColumn(1).setMinWidth(100);
             table_Programadores.getColumnModel().getColumn(1).setPreferredWidth(100);
@@ -231,10 +229,6 @@ public class Programador extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_button_NovoActionPerformed
-
     private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_button_EditarActionPerformed
@@ -254,6 +248,15 @@ public class Programador extends javax.swing.JDialog {
     private void field_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_NomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_field_NomeActionPerformed
+
+    private void table_ProgramadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_ProgramadoresMouseClicked
+        if (evt.getClickCount() == 1) {
+            int id = Integer.parseInt((String) table_Programadores.getValueAt(table_Programadores.getSelectedRow(), 0));
+            String[] vetor = consulta.geraVisaoProgramador(id);
+            field_Nome.setText(vetor[1]);
+            field_ValorHora.setText(vetor[2]);
+        }
+    }//GEN-LAST:event_table_ProgramadoresMouseClicked
 
     /**
      * @param args the command line arguments

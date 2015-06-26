@@ -24,7 +24,7 @@ public class Usuario extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         consulta = new Consulta();
-        modelo = consulta.geraTabelaCategorias();
+        modelo = consulta.geraTabelaUsuarios();
         table_Usuarios.setModel(modelo);
     }
 
@@ -117,7 +117,6 @@ public class Usuario extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        table_Usuarios.setColumnSelectionAllowed(true);
         table_Usuarios.getTableHeader().setReorderingAllowed(false);
         table_Usuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -125,7 +124,6 @@ public class Usuario extends javax.swing.JDialog {
             }
         });
         scrollPane_Usuarios.setViewportView(table_Usuarios);
-        table_Usuarios.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Novo.setText("Novo");
@@ -250,6 +248,8 @@ public class Usuario extends javax.swing.JDialog {
             int id = Integer.parseInt((String) table_Usuarios.getValueAt(table_Usuarios.getSelectedRow(), 0));
             String[] vetor = consulta.geraVisaoUsuario(id);
             field_Nome.setText(vetor[1]);
+            field_Login.setText(vetor[2]);
+            field_Senha.setText(vetor[3]);
         }
     }//GEN-LAST:event_table_UsuariosMouseClicked
 
