@@ -18,7 +18,7 @@ public class Conexao {
 
     private String url = "jdbc:postgresql://localhost:5432/db_chamados";
     private String usuario = "postgres";
-    private String senha = "123";
+    private String senha = "7133";
     private Connection conexao;
     private Statement statement;
     
@@ -27,11 +27,12 @@ public class Conexao {
         try {
             this.conexao = DriverManager.getConnection(url, usuario, senha);
             System.out.println("Conexão estabelecida");
-            
+
             this.statement = conexao.createStatement();
             System.out.println("Statement criado");
         } catch (SQLException ex) {
-            System.err.println("Erro ao se conectar");
+            JOptionPane.showMessageDialog(null, "Erro ao Conectar ao banco de dados", "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
         }
     }
     
@@ -51,7 +52,7 @@ public class Conexao {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Usuario " + login + " inserido com sucesso");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Usuário já existe!\nErro ao inserir usuário: " + sql);
+            JOptionPane.showMessageDialog(null, "Usuário já existe!\nErro ao inserir usuário: " + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
@@ -62,7 +63,7 @@ public class Conexao {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Cliente " + nome + " inserido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Cliente já existe! \nErro ao inserir cliente " + sql);
+            JOptionPane.showMessageDialog(null, "Cliente já existe! \nErro ao inserir cliente " + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
@@ -73,7 +74,7 @@ public class Conexao {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Programador " + nome + " inserido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir programador " + nome + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir programador " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
@@ -84,7 +85,7 @@ public class Conexao {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Categoria " + nome + " inserida com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir categoria " + nome + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir categoria " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
@@ -95,7 +96,7 @@ public class Conexao {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Chamado inserido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao criar chamado");
+            JOptionPane.showMessageDialog(null, "Erro ao criar chamado", "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
@@ -107,7 +108,7 @@ public class Conexao {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Usuario " + login + " removido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover usuario " + login + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao remover usuario " + login + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
@@ -118,7 +119,7 @@ public class Conexao {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Cliente " + nome + " removido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover cliente " + nome + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao remover cliente " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
@@ -129,7 +130,7 @@ public class Conexao {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Programador " + nome + " removido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover programador " + nome + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao remover programador " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
@@ -140,7 +141,7 @@ public class Conexao {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Categoria " + nome + " removida com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover categoria " + nome + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao remover categoria " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
@@ -151,7 +152,7 @@ public class Conexao {
             statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Chamado " + id + " foi removido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao remover o chamado " + id + "\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao remover o chamado " + id + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
@@ -159,16 +160,40 @@ public class Conexao {
     
     // Consultas
     public ResultSet consultaChamados(String parametro) {
-        //String sql = "SELECT * FROM chamado WHERE " + parametro;
-        
-        String sql = "SELECT c.nome, ct.nome, date(ch.dataHora) FROM chamado ch join cliente c on (c.id = ch.id_cliente) join categoria ct on (ct.id = ch.id_categoria) WHERE "+ parametro;
+        String sql = "SELECT c.nome, ct.nome, date(ch.dataHora) FROM chamado ch JOIN cliente c ON (c.id = ch.id_cliente) JOIN categoria ct ON (ct.id = ch.id_categoria) WHERE "+ parametro;
         ResultSet rs = null;
         try {
             rs = statement.executeQuery(sql);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao buscar chamado\n" + sql);
+            JOptionPane.showMessageDialog(null, "Erro ao buscar chamados\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
         return rs;
     }
+    
+    public ResultSet consultaChamado(int id){
+        String sql = "SELECT ch.status, ch.descricao, c.nome, cl.nome, ch.data, ch.hora  FROM chamado ch JOIN categoria c ON (ch.id_cliente = c.id) JOIN cliente cl ON (ch.id_cliente = cl.id) WHERE id = " + id;
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar chamado\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
+    
+    public ResultSet consultaTopicos(int idChamado) {
+        String sql = "SELECT t.id, t.descricao, p.nome, t.tempo_trabalhado, t.solucionado FROM topico t JOIN programador p ON (t.id_programador = p.id) WHERE t.id_chamado = " + idChamado;
+        ResultSet  rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar topicos\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        
+        return rs;
+    }
+    
 }
