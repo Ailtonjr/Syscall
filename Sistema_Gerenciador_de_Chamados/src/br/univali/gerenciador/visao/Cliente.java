@@ -1,28 +1,22 @@
-
 package br.univali.gerenciador.visao;
 
+import br.univali.gerenciador.modelo.Consulta;
+import javax.swing.table.DefaultTableModel;
 
 public class Cliente extends javax.swing.JDialog {
 
     /**
      * Creates new form NovoCliente
      */
+    DefaultTableModel modelo;
+
     public Cliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Cliente dialog = new Cliente(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+
+        Consulta consulta = new Consulta();
+        modelo = consulta.geraTabelaClientes();
+        jTable1.setModel(modelo);
     }
 
     /**
@@ -256,7 +250,18 @@ public class Cliente extends javax.swing.JDialog {
      */
     public static void main(String args[]) {
         /* Create and display the dialog */
-        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                Cliente dialog = new Cliente(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

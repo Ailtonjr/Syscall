@@ -102,5 +102,31 @@ public class Consulta {
         return modelo;
 
     }
+    
+    public DefaultTableModel geraTabelaClientes() {
+        rs = con.consultaChamados("status = true or status = false");
+        try {
+            ResultSetMetaData rsmt = rs.getMetaData();
+            int qtdColunas = rsmt.getColumnCount();
+            String vetor[] = new String[qtdColunas];
+
+            modelo.addColumn("ID");
+            modelo.addColumn("Nome");
+            modelo.addColumn("E-Mail");
+
+            while (rs.next()) {
+                for (int i = 1; i <= qtdColunas; i++) {
+                    vetor[i - 1] = rs.getString(i);
+                }
+                modelo.addRow(vetor);
+                System.out.println();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return modelo;
+
+    }
 
 }
