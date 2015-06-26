@@ -105,9 +105,9 @@ public class Conexao {
         String sql = "INSERT INTO topico (id_chamado, descricao, id_programador, tempo_trabalhado, solucionado) VALUES (" + id_chamado + ", '" + descricao + "', "+ id_programador + ", '" + tempo_trabalhado + "', '" + solucionado + "')";
         try {
             statement.executeUpdate(sql);
-            JOptionPane.showMessageDialog(null, "Chamado inserido com sucesso!");
+            JOptionPane.showMessageDialog(null, "Topico inserido com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao criar chamado", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir topico", "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
     }
@@ -168,6 +168,16 @@ public class Conexao {
         }
     }
     
+    public void removerTopico(int id) {
+        String sql = "DELETE FROM topico WHERE id = '" + id  +"'";
+        try {
+            statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Topico " + id + " foi removido com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao remover o topico " + id + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
     
     // Consultas
     public ResultSet consultaChamados(String parametro) {
