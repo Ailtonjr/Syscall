@@ -30,7 +30,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         // Teste de conexão
         Consulta consulta = new Consulta();
-        modelo = consulta.geraTabela();
+        modelo = consulta.geraTabelaChamados();
         jTable2.setModel(modelo);
     }
 

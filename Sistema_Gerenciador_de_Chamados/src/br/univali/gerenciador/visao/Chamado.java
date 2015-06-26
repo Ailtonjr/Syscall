@@ -5,6 +5,9 @@
  */
 package br.univali.gerenciador.visao;
 
+import br.univali.gerenciador.modelo.Consulta;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author iPotter
@@ -14,9 +17,14 @@ public class Chamado extends javax.swing.JDialog {
     /**
      * Creates new form Chamado
      */
+    private DefaultTableModel modelo;
     public Chamado(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        // Teste de conexão
+        Consulta consulta = new Consulta();
+        modelo = consulta.geraTabelaTopicos();
+        jTable1.setModel(modelo);
     }
 
     /**
