@@ -249,4 +249,27 @@ public class Conexao {
         return rs;
     }
     
+    public ResultSet consultaProgramadores() {
+        String sql = "SELECT * FROM programador";
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar programadores\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
+    
+    public ResultSet consultaProgramador(int id) {
+        String sql = "SELECT * FROM programador WHERE id = " + id;
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar clientes\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
 }
