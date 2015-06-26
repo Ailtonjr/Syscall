@@ -1,9 +1,3 @@
-/*
-Exemplo de uso dos metodos desta classe:
-        Conexao con = new Conexao();
-        con.inserirUsuario("Joao", "jfg12", "123");
-        con.encerrarConexao();
-*/
 
 package br.univali.gerenciador.modelo;
 
@@ -44,6 +38,7 @@ public class Conexao {
             System.err.println("Erro ao encerrar conexão");
         }
     }
+    
     
     //Inserções
     public void inserirUsuario(String nome, String login, String senha) {
@@ -112,6 +107,7 @@ public class Conexao {
         }
     }
     
+    
     //Remoções
     public void removerUsuario(int id, String login) {
         String sql = "DELETE FROM usuario WHERE id = '" + id + "'";
@@ -179,6 +175,7 @@ public class Conexao {
         }
     }
     
+    
     // Consultas
     public ResultSet consultaChamados(String parametro) {
         String sql = "SELECT c.nome, ct.nome, date(ch.dataHora) FROM chamado ch JOIN cliente c ON (c.id = ch.id_cliente) JOIN categoria ct ON (ct.id = ch.id_categoria) WHERE "+ parametro;
@@ -213,7 +210,6 @@ public class Conexao {
             JOptionPane.showMessageDialog(null, "Erro ao consultar topicos\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
-        
         return rs;
     }
     
@@ -223,7 +219,31 @@ public class Conexao {
         try {
             rs = statement.executeQuery(sql);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao consultar chamado\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro ao consultar topico\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
+    
+    public ResultSet consultaClientes() {
+        String sql = "SELECT * FROM cliente";
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar clientes\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
+    
+    public ResultSet consultaCliente(String nome) {
+        String sql = "SELECT * FROM cliente WHERE nome = " + nome;
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar cliente\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
         return rs;
