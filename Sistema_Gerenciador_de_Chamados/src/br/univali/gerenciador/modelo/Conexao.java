@@ -272,4 +272,28 @@ public class Conexao {
         }
         return rs;
     }
+    
+    public ResultSet consultaUsuarios() {
+        String sql = "SELECT * FROM usuario";
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar usuario\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
+    
+    public ResultSet consultaUsuario(int idUsuario) {
+        String sql = "SELECT * FROM usuario WHERE id = " + idUsuario;
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar usuario\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
 }
