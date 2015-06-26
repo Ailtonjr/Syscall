@@ -12,7 +12,7 @@ public class Conexao {
 
     private String url = "jdbc:postgresql://localhost:5432/db_chamado";
     private String usuario = "postgres";
-    private String senha = "7133";
+    private String senha = "123";
     private Connection conexao;
     private PreparedStatement statement;
     

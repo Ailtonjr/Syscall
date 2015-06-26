@@ -5,6 +5,9 @@
  */
 package br.univali.gerenciador.visao;
 
+import br.univali.gerenciador.modelo.Consulta;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Ailton Cardoso Jr
@@ -14,9 +17,15 @@ public class Usuario extends javax.swing.JDialog {
     /**
      * Creates new form NovoCliente
      */
+    DefaultTableModel modelo;
+    Consulta consulta;
+    
     public Usuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        consulta = new Consulta();
+        modelo = consulta.geraTabelaCategorias();
+        table_Usuarios.setModel(modelo);
     }
 
     /**
@@ -36,7 +45,7 @@ public class Usuario extends javax.swing.JDialog {
         label_Senha = new javax.swing.JLabel();
         field_Senha = new javax.swing.JPasswordField();
         scrollPane_Usuarios = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table_Usuarios = new javax.swing.JTable();
         button_Novo = new javax.swing.JButton();
         button_Excluir = new javax.swing.JButton();
         button_Confirmar = new javax.swing.JButton();
@@ -82,7 +91,7 @@ public class Usuario extends javax.swing.JDialog {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table_Usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -108,10 +117,15 @@ public class Usuario extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        scrollPane_Usuarios.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        table_Usuarios.setColumnSelectionAllowed(true);
+        table_Usuarios.getTableHeader().setReorderingAllowed(false);
+        table_Usuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_UsuariosMouseClicked(evt);
+            }
+        });
+        scrollPane_Usuarios.setViewportView(table_Usuarios);
+        table_Usuarios.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Novo.setText("Novo");
@@ -231,6 +245,14 @@ public class Usuario extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_field_LoginActionPerformed
 
+    private void table_UsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_UsuariosMouseClicked
+        if (evt.getClickCount() == 1) {
+            int id = Integer.parseInt((String) table_Usuarios.getValueAt(table_Usuarios.getSelectedRow(), 0));
+            String[] vetor = consulta.geraVisaoUsuario(id);
+            field_Nome.setText(vetor[1]);
+        }
+    }//GEN-LAST:event_table_UsuariosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -258,7 +280,6 @@ public class Usuario extends javax.swing.JDialog {
     private javax.swing.JTextField field_Login;
     private javax.swing.JTextField field_Nome;
     private javax.swing.JPasswordField field_Senha;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel label_Login;
     private javax.swing.JLabel label_Nome;
     private javax.swing.JLabel label_Senha;
@@ -266,5 +287,6 @@ public class Usuario extends javax.swing.JDialog {
     private javax.swing.JPanel panel_Principal;
     private javax.swing.JScrollPane scrollPane_Usuarios;
     private javax.swing.JSeparator separator;
+    private javax.swing.JTable table_Usuarios;
     // End of variables declaration//GEN-END:variables
 }

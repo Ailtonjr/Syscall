@@ -225,6 +225,23 @@ public class Consulta {
         return vetor;
     }
 
+    public String[] geraVisaoUsuario(int idUsuario) {
+        rs = con.consultaUsuario(idUsuario);
+        String vetor[] = null;
+        try {
+            ResultSetMetaData rsmt = rs.getMetaData();
+            int qtdColunas = rsmt.getColumnCount();
+            vetor = new String[qtdColunas];
+            rs.next();
+            for (int i = 1; i <= qtdColunas; i++) {
+                vetor[i - 1] = rs.getString(i);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vetor;
+    }
+
     public List<String> geraListaClientes() {
         rs = con.consultaClientes();
         List<String> lista = new ArrayList<>();
