@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class Conexao {
@@ -346,7 +345,5 @@ public class Conexao {
             ex.printStackTrace();
         }
         return rs;
-    }
-    
-    
+    }  
 }
