@@ -9,14 +9,14 @@ public class Cliente extends javax.swing.JDialog {
      * Creates new form NovoCliente
      */
     DefaultTableModel modelo;
+    Consulta consulta;
 
     public Cliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        Consulta consulta = new Consulta();
+        consulta = new Consulta();
         modelo = consulta.geraTabelaClientes();
-        jTable1.setModel(modelo);
+        tabela_Clientes.setModel(modelo);
     }
 
     /**
@@ -34,11 +34,11 @@ public class Cliente extends javax.swing.JDialog {
         botao_Login3 = new javax.swing.JButton();
         botao_Login4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        fild_User1 = new javax.swing.JTextField();
+        tabela_Clientes = new javax.swing.JTable();
+        fild_Email = new javax.swing.JTextField();
         label_Password = new javax.swing.JLabel();
         label_Login = new javax.swing.JLabel();
-        fild_User = new javax.swing.JTextField();
+        fild_Nome = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
 
@@ -88,7 +88,7 @@ public class Cliente extends javax.swing.JDialog {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela_Clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -114,16 +114,19 @@ public class Cliente extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tabela_Clientes.getTableHeader().setReorderingAllowed(false);
+        tabela_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabela_ClientesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabela_Clientes);
 
-        fild_User1.setEditable(false);
-        fild_User1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        fild_User1.addActionListener(new java.awt.event.ActionListener() {
+        fild_Email.setEditable(false);
+        fild_Email.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        fild_Email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fild_User1ActionPerformed(evt);
+                fild_EmailActionPerformed(evt);
             }
         });
 
@@ -133,11 +136,11 @@ public class Cliente extends javax.swing.JDialog {
         label_Login.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         label_Login.setText("Nome");
 
-        fild_User.setEditable(false);
-        fild_User.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        fild_User.addActionListener(new java.awt.event.ActionListener() {
+        fild_Nome.setEditable(false);
+        fild_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        fild_Nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fild_UserActionPerformed(evt);
+                fild_NomeActionPerformed(evt);
             }
         });
 
@@ -159,9 +162,9 @@ public class Cliente extends javax.swing.JDialog {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label_Login)
-                            .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fild_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label_Password)
-                            .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fild_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(botao_Login6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
@@ -184,11 +187,11 @@ public class Cliente extends javax.swing.JDialog {
                 .addGap(11, 11, 11)
                 .addComponent(label_Login)
                 .addGap(6, 6, 6)
-                .addComponent(fild_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fild_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(label_Password)
                 .addGap(6, 6, 6)
-                .addComponent(fild_User1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fild_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botao_Login6)
@@ -221,13 +224,13 @@ public class Cliente extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fild_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_UserActionPerformed
+    private void fild_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_NomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fild_UserActionPerformed
+    }//GEN-LAST:event_fild_NomeActionPerformed
 
-    private void fild_User1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_User1ActionPerformed
+    private void fild_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_EmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fild_User1ActionPerformed
+    }//GEN-LAST:event_fild_EmailActionPerformed
 
     private void botao_Login4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login4ActionPerformed
         // TODO add your handling code here:
@@ -242,8 +245,17 @@ public class Cliente extends javax.swing.JDialog {
     }//GEN-LAST:event_botao_Login5ActionPerformed
 
     private void botao_Login6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Login6ActionPerformed
-        this.setVisible(false);
+
     }//GEN-LAST:event_botao_Login6ActionPerformed
+
+    private void tabela_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_ClientesMouseClicked
+        if (evt.getClickCount() == 1) {
+            int id = Integer.parseInt((String) tabela_Clientes.getValueAt(tabela_Clientes.getSelectedRow(), 0));
+            String[] vetor = consulta.geraVisaoCliente(id);
+            fild_Nome.setText(vetor[0]);
+            fild_Email.setText(vetor[1]);
+        }
+    }//GEN-LAST:event_tabela_ClientesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -269,14 +281,14 @@ public class Cliente extends javax.swing.JDialog {
     private javax.swing.JButton botao_Login4;
     private javax.swing.JButton botao_Login5;
     private javax.swing.JButton botao_Login6;
-    private javax.swing.JTextField fild_User;
-    private javax.swing.JTextField fild_User1;
+    private javax.swing.JTextField fild_Email;
+    private javax.swing.JTextField fild_Nome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel label_Login;
     private javax.swing.JLabel label_Password;
+    private javax.swing.JTable tabela_Clientes;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,9 @@
 package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Consulta;
+import java.awt.Color;
+import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,13 +21,52 @@ public class Chamado extends javax.swing.JDialog {
      * Creates new form Chamado
      */
     private DefaultTableModel modelo;
-    public Chamado(java.awt.Frame parent, boolean modal) {
+
+
+    public Chamado(java.awt.Frame parent, boolean modal, int numChamado) {
         super(parent, modal);
         initComponents();
         // Teste de conexão
         Consulta consulta = new Consulta();
-        modelo = consulta.geraTabelaTopicos();
-        jTable1.setModel(modelo);
+        modelo = consulta.geraTabelaTopicos(numChamado);
+        exibeListaClientes(consulta.geraListaClientes());
+        exibeListaCategorias(consulta.geraListaCategorias());
+        exibeChamado(consulta.geraVisaoChamado(numChamado));
+        tabela_chamado.setModel(modelo);
+    }
+
+    public Chamado(JFrame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+    }
+
+    private void exibeChamado(String[] vetor) {
+        //System.out.println(vetor[0]);
+        comboBox_Cliente.setSelectedItem(vetor[0]);
+        comboBox_Categoria.setSelectedItem(vetor[1]);
+        formatted_Data.setText(vetor[2]);
+        formatted_Hora.setText(vetor[3]);
+        if (vetor[4].equalsIgnoreCase("aberto")) {
+            label_Status.setForeground(new Color(0, 153, 0));
+        } else {
+            label_Status.setForeground(new Color(204, 0, 0));
+        }
+        label_Status.setText(vetor[4]);
+
+        textArea_Descricao.setText(vetor[5]);
+
+    }
+    
+    private void exibeListaClientes(List<String> lista){
+        for (String item : lista) {
+           comboBox_Cliente.addItem(item); 
+        }
+    }
+    
+    private void exibeListaCategorias(List<String> lista){
+        for (String item : lista) {
+           comboBox_Categoria.addItem(item); 
+        }  
     }
 
     /**
@@ -40,12 +82,12 @@ public class Chamado extends javax.swing.JDialog {
         label_Cliente = new javax.swing.JLabel();
         label_Categoria = new javax.swing.JLabel();
         label_Data = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
+        formatted_Data = new javax.swing.JFormattedTextField();
+        formatted_Hora = new javax.swing.JFormattedTextField();
         label_Hora = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabela_chamado = new javax.swing.JTable();
         Separador = new javax.swing.JSeparator();
         label_Separador = new javax.swing.JLabel();
         scrollPane = new javax.swing.JScrollPane();
@@ -58,6 +100,7 @@ public class Chamado extends javax.swing.JDialog {
         botao_Confirmar1 = new javax.swing.JButton();
         label_Separador1 = new javax.swing.JLabel();
         Separador1 = new javax.swing.JSeparator();
+        label_Status = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Chamados - Chamados");
@@ -70,12 +113,12 @@ public class Chamado extends javax.swing.JDialog {
 
         label_Data.setText("Data");
 
-        jFormattedTextField2.setEditable(false);
+        formatted_Data.setEditable(false);
 
-        jFormattedTextField5.setEditable(false);
-        jFormattedTextField5.addActionListener(new java.awt.event.ActionListener() {
+        formatted_Hora.setEditable(false);
+        formatted_Hora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField5ActionPerformed(evt);
+                formatted_HoraActionPerformed(evt);
             }
         });
 
@@ -83,7 +126,7 @@ public class Chamado extends javax.swing.JDialog {
 
         jLabel4.setText("Descrição");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela_chamado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -94,7 +137,7 @@ public class Chamado extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tabela_chamado);
 
         Separador.setForeground(new java.awt.Color(153, 153, 153));
         Separador.setToolTipText("");
@@ -141,6 +184,8 @@ public class Chamado extends javax.swing.JDialog {
         Separador1.setToolTipText("");
         Separador1.setName(""); // NOI18N
 
+        label_Status.setText("jLabel1");
+
         javax.swing.GroupLayout panel_fundoLayout = new javax.swing.GroupLayout(panel_fundo);
         panel_fundo.setLayout(panel_fundoLayout);
         panel_fundoLayout.setHorizontalGroup(
@@ -175,9 +220,11 @@ public class Chamado extends javax.swing.JDialog {
                             .addGap(104, 104, 104)
                             .addComponent(label_Hora))
                         .addGroup(panel_fundoLayout.createSequentialGroup()
-                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(formatted_Data, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(24, 24, 24)
-                            .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(label_Status))
                         .addComponent(jLabel4)
                         .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_fundoLayout.createSequentialGroup()
@@ -213,8 +260,10 @@ public class Chamado extends javax.swing.JDialog {
                     .addComponent(label_Hora))
                 .addGap(6, 6, 6)
                 .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(formatted_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel_fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(label_Status)))
                 .addGap(11, 11, 11)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -257,9 +306,9 @@ public class Chamado extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
+    private void formatted_HoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatted_HoraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField5ActionPerformed
+    }//GEN-LAST:event_formatted_HoraActionPerformed
 
     private void botao_Novo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_Novo1ActionPerformed
         Topico topico = new Topico(this,true);
@@ -317,21 +366,20 @@ public class Chamado extends javax.swing.JDialog {
     private javax.swing.JButton botao_Novo1;
     private javax.swing.JComboBox comboBox_Categoria;
     private javax.swing.JComboBox comboBox_Cliente;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
-    private javax.swing.JFormattedTextField jFormattedTextField5;
+    private javax.swing.JFormattedTextField formatted_Data;
+    private javax.swing.JFormattedTextField formatted_Hora;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel label_Categoria;
     private javax.swing.JLabel label_Cliente;
     private javax.swing.JLabel label_Data;
     private javax.swing.JLabel label_Hora;
     private javax.swing.JLabel label_Separador;
     private javax.swing.JLabel label_Separador1;
+    private javax.swing.JLabel label_Status;
     private javax.swing.JPanel panel_fundo;
     private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JTable tabela_chamado;
     private javax.swing.JTextArea textArea_Descricao;
     // End of variables declaration//GEN-END:variables
 }
