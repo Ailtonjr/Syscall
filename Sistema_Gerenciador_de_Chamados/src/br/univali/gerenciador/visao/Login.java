@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
@@ -167,9 +163,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_Login1ActionPerformed
 
     private void botao_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_LoginActionPerformed
-        this.setVisible(false);
-        Principal principal = new Principal();
-        principal.setVisible(true);
+        Conexao con = new Conexao();
+        
+        con.inserirProgramador("Jorozinho", (float) 9.27);
+        
     }//GEN-LAST:event_botao_LoginActionPerformed
 
     private void fild_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fild_PasswordActionPerformed
