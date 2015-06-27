@@ -5,6 +5,7 @@
  */
 package br.univali.gerenciador.visao;
 
+import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,11 +20,17 @@ public class Programador extends javax.swing.JDialog {
      */
     DefaultTableModel modelo;
     Consulta consulta;
+    Conexao con;
+    int idSelecionado;
+    String ProgramadorSelecionada;
+
+    String operacao;
     
     public Programador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         consulta = new Consulta();
+        con = new Conexao();
         modelo = consulta.geraTabelaProgramadores();
         table_Programadores.setModel(modelo);
     }
@@ -36,6 +43,7 @@ public class Programador extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         panel_Principal = new javax.swing.JPanel();
         button_Novo = new javax.swing.JButton();
@@ -61,6 +69,11 @@ public class Programador extends javax.swing.JDialog {
 
         button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Novo.setText("Novo");
+        button_Novo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_NovoActionPerformed(evt);
+            }
+        });
 
         button_Editar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Editar.setText("Editar");
@@ -74,6 +87,10 @@ public class Programador extends javax.swing.JDialog {
         button_Confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Confirmar.setText("Confirmar");
         button_Confirmar.setEnabled(false);
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, field_Nome, org.jdesktop.beansbinding.ObjectProperty.create(), button_Confirmar, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         button_Confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_ConfirmarActionPerformed(evt);
@@ -128,27 +145,15 @@ public class Programador extends javax.swing.JDialog {
             table_Programadores.getColumnModel().getColumn(1).setMaxWidth(100);
         }
 
-        field_ValorHora.setEditable(false);
         field_ValorHora.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        field_ValorHora.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_ValorHoraActionPerformed(evt);
-            }
-        });
+        field_ValorHora.setEnabled(false);
 
-        label_ValorHora.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         label_ValorHora.setText("Valor Hora");
 
-        label_Nome.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         label_Nome.setText("Nome");
 
-        field_Nome.setEditable(false);
         field_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        field_Nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_NomeActionPerformed(evt);
-            }
-        });
+        field_Nome.setEnabled(false);
 
         separator.setForeground(new java.awt.Color(153, 153, 153));
         separator.setToolTipText("");
@@ -225,38 +230,70 @@ public class Programador extends javax.swing.JDialog {
             .addComponent(panel_Principal, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        bindingGroup.bind();
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+//confirmar e clique na tabela
+    private void botoes1() {
+        button_Novo.setEnabled(true);
+        button_Editar.setEnabled(true);
+        button_Excluir.setEnabled(true);
+        button_Confirmar.setEnabled(false);
+        field_Nome.setEnabled(false);
+        field_ValorHora.setEnabled(false);
+    }
+
+    private void botoes2() {
+        button_Novo.setEnabled(false);
+        button_Editar.setEnabled(false);
+        button_Excluir.setEnabled(false);
+        button_Confirmar.setEnabled(true);
+        field_Nome.setEnabled(true);
+        field_ValorHora.setEnabled(true);
+    }
     private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
-        // TODO add your handling code here:
+        operacao = "editar";
+        botoes2();
     }//GEN-LAST:event_button_EditarActionPerformed
 
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
-        // TODO add your handling code here:
+        if (operacao.equalsIgnoreCase("novo")) {
+            con.inserirProgramador(field_Nome.getText(), Float.parseFloat(field_ValorHora.getText()));
+        } else if (operacao.equalsIgnoreCase("editar")) {
+            con.atualizarProgramador(idSelecionado, field_Nome.getText(), Float.parseFloat(field_ValorHora.getText()));
+        }
+        modelo = consulta.geraTabelaProgramadores();
+        table_Programadores.setModel(modelo);
+        table_Programadores.setRowSelectionInterval(table_Programadores.getRowCount() - 1, table_Programadores.getRowCount() - 1);
+        botoes1();
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-        // TODO add your handling code here:
+        con.removerCliente(idSelecionado, ProgramadorSelecionada);
+        modelo = consulta.geraTabelaProgramadores();
+        table_Programadores.setModel(modelo);
     }//GEN-LAST:event_button_ExcluirActionPerformed
-
-    private void field_ValorHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_ValorHoraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_ValorHoraActionPerformed
-
-    private void field_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_NomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_NomeActionPerformed
 
     private void table_ProgramadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_ProgramadoresMouseClicked
         if (evt.getClickCount() == 1) {
-            int id = Integer.parseInt((String) table_Programadores.getValueAt(table_Programadores.getSelectedRow(), 0));
-            String[] vetor = consulta.geraVisaoProgramador(id);
+            idSelecionado = Integer.parseInt((String) table_Programadores.getValueAt(table_Programadores.getSelectedRow(), 0));
+            String[] vetor = consulta.geraVisaoProgramador(idSelecionado);
             field_Nome.setText(vetor[1]);
             field_ValorHora.setText(vetor[2]);
         }
+        botoes1();
     }//GEN-LAST:event_table_ProgramadoresMouseClicked
+
+    private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
+        botoes2();
+        field_Nome.setText("");
+        field_ValorHora.setText("");
+        button_Confirmar.transferFocus();
+        operacao = "novo";
+    }//GEN-LAST:event_button_NovoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,5 +352,6 @@ public class Programador extends javax.swing.JDialog {
     private javax.swing.JScrollPane scrollPane_Programadores;
     private javax.swing.JSeparator separator;
     private javax.swing.JTable table_Programadores;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

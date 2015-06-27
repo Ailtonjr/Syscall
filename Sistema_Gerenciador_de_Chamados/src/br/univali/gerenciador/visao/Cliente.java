@@ -1,6 +1,8 @@
 package br.univali.gerenciador.visao;
 
+import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
+import static java.io.File.separator;
 import javax.swing.table.DefaultTableModel;
 
 public class Cliente extends javax.swing.JDialog {
@@ -10,11 +12,17 @@ public class Cliente extends javax.swing.JDialog {
      */
     DefaultTableModel modelo;
     Consulta consulta;
+    Conexao con;
+    int idSelecionado;
+    String clienteSelecionada;
+
+    String operacao;
 
     public Cliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         consulta = new Consulta();
+        con = new Conexao();
         modelo = consulta.geraTabelaClientes();
         table_Clientes.setModel(modelo);
     }
@@ -27,6 +35,7 @@ public class Cliente extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         panel_Principal = new javax.swing.JPanel();
         button_Novo = new javax.swing.JButton();
@@ -73,6 +82,10 @@ public class Cliente extends javax.swing.JDialog {
         button_Confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Confirmar.setText("Confirmar");
         button_Confirmar.setEnabled(false);
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, field_Nome, org.jdesktop.beansbinding.ObjectProperty.create(), button_Confirmar, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         button_Confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_ConfirmarActionPerformed(evt);
@@ -122,27 +135,20 @@ public class Cliente extends javax.swing.JDialog {
         });
         scrollPane_Clientes.setViewportView(table_Clientes);
 
-        field_Email.setEditable(false);
         field_Email.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_Email.setEnabled(false);
         field_Email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_EmailActionPerformed(evt);
             }
         });
 
-        label_Password.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         label_Password.setText("E-Mail");
 
-        label_Login.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         label_Login.setText("Nome");
 
-        field_Nome.setEditable(false);
         field_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        field_Nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_NomeActionPerformed(evt);
-            }
-        });
+        field_Nome.setEnabled(false);
 
         separator.setForeground(new java.awt.Color(153, 153, 153));
         separator.setToolTipText("");
@@ -220,42 +226,77 @@ public class Cliente extends javax.swing.JDialog {
             .addComponent(panel_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        bindingGroup.bind();
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void field_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_NomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_NomeActionPerformed
+//confirmar e clique na tabela
+    private void botoes1() {
+        button_Novo.setEnabled(true);
+        button_Editar.setEnabled(true);
+        button_Excluir.setEnabled(true);
+        button_Confirmar.setEnabled(false);
+        field_Nome.setEnabled(false);
+        field_Email.setEnabled(false);
+    }
 
-    private void field_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_EmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_EmailActionPerformed
+    private void botoes2() {
+        button_Novo.setEnabled(false);
+        button_Editar.setEnabled(false);
+        button_Excluir.setEnabled(false);
+        button_Confirmar.setEnabled(true);
+        field_Nome.setEnabled(true);
+        field_Email.setEnabled(true);
+    }
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-        // TODO add your handling code here:
+        con.removerCliente(idSelecionado, clienteSelecionada);
+        modelo = consulta.geraTabelaCategorias();
+        table_Clientes.setModel(modelo);
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
-        // TODO add your handling code here:
+        if (operacao.equalsIgnoreCase("novo")) {
+            con.inserirCliente(field_Nome.getText(), field_Email.getText());
+        } else if (operacao.equalsIgnoreCase("editar")) {
+            con.atualizarCliente(idSelecionado, field_Nome.getText(), field_Email.getText());
+        }
+        modelo = consulta.geraTabelaClientes();
+        table_Clientes.setModel(modelo);
+        table_Clientes.setRowSelectionInterval(table_Clientes.getRowCount() - 1, table_Clientes.getRowCount() - 1);
+        botoes1();
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
-        // TODO add your handling code here:
+        operacao = "editar";
+        botoes2();
+        
     }//GEN-LAST:event_button_EditarActionPerformed
 
     private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
-
+        botoes2();
+        field_Nome.setText("");
+        field_Email.setText("");
+        button_Confirmar.transferFocus();
+        operacao = "novo";
     }//GEN-LAST:event_button_NovoActionPerformed
 
     private void table_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_ClientesMouseClicked
         if (evt.getClickCount() == 1) {
-            int id = Integer.parseInt((String) table_Clientes.getValueAt(table_Clientes.getSelectedRow(), 0));
-            String[] vetor = consulta.geraVisaoCliente(id);
+            idSelecionado = Integer.parseInt((String) table_Clientes.getValueAt(table_Clientes.getSelectedRow(), 0));
+            String[] vetor = consulta.geraVisaoCliente(idSelecionado);
             field_Nome.setText(vetor[0]);
             field_Email.setText(vetor[1]);
         }
+        botoes1();
+
     }//GEN-LAST:event_table_ClientesMouseClicked
+
+    private void field_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_EmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field_EmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,5 +331,6 @@ public class Cliente extends javax.swing.JDialog {
     private javax.swing.JScrollPane scrollPane_Clientes;
     private javax.swing.JSeparator separator;
     private javax.swing.JTable table_Clientes;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

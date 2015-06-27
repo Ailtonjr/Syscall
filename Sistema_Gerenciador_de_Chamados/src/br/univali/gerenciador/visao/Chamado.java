@@ -21,12 +21,12 @@ public class Chamado extends javax.swing.JDialog {
      * Creates new form Chamado
      */
     private DefaultTableModel modelo;
-
+    private int numChamado;
 
     public Chamado(java.awt.Frame parent, boolean modal, int numChamado) {
         super(parent, modal);
         initComponents();
-        // Teste de conexão
+        this.numChamado = numChamado;
         Consulta consulta = new Consulta();
         modelo = consulta.geraTabelaTopicos(numChamado);
         exibeListaClientes(consulta.geraListaClientes());
@@ -270,21 +270,21 @@ public class Chamado extends javax.swing.JDialog {
                 .addGap(11, 11, 11)
                 .addComponent(label_Descricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane_Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(scrollPane_Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_Separador)
                     .addGroup(panel_PrincipalLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(6, 6, 6)
+                        .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_Separador))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(button_Novo)
                     .addComponent(button_Editar)
                     .addComponent(button_Excluir)
                     .addComponent(button_Convirmar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(scrollPane_Topicos, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(scrollPane_Topicos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -301,8 +301,8 @@ public class Chamado extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panel_Principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panel_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -314,7 +314,7 @@ public class Chamado extends javax.swing.JDialog {
     }//GEN-LAST:event_formatted_HoraActionPerformed
 
     private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
-        Topico topico = new Topico(this,true);
+        Topico topico = new Topico(this,true,numChamado);
         topico.setVisible(true);
     }//GEN-LAST:event_button_NovoActionPerformed
 

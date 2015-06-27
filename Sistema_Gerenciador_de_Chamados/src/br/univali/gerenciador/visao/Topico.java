@@ -5,6 +5,10 @@
  */
 package br.univali.gerenciador.visao;
 
+import br.univali.gerenciador.modelo.Conexao;
+import br.univali.gerenciador.modelo.Consulta;
+import java.util.List;
+
 /**
  *
  * @author iPotter
@@ -14,9 +18,29 @@ public class Topico extends javax.swing.JDialog {
     /**
      * Creates new form Topico
      */
+    private Conexao con;
+    private int numChamado;
+
     public Topico(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+
+    Topico(Chamado parent, boolean modal, int numChamado) {
+        super(parent, modal);
+        initComponents();
+        con = new Conexao();
+        this.numChamado = numChamado;
+        Consulta consulta = new Consulta();
+        exibeListaProgramadores(consulta.geraListaProgramadores());
+        
+    }
+
+    private void exibeListaProgramadores(List<String> lista) {
+        for (String item : lista) {
+            comboBox_Programador.addItem(item);
+        }
+
     }
 
     /**
@@ -41,8 +65,6 @@ public class Topico extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
-
-        comboBox_Programador.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         label_Programador.setText("Programador");
 
@@ -132,7 +154,13 @@ public class Topico extends javax.swing.JDialog {
     }//GEN-LAST:event_formattedTextField_HorasActionPerformed
 
     private void button_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_salvarActionPerformed
-        // TODO add your handling code here:
+        
+        if(checkBox_Solucionado.isSelected()){
+            //fecha chamado
+        }
+        int idProgramador  = (con.consultaIdProgramador((String) comboBox_Programador.getSelectedItem()));
+        con.inserirTopico(numChamado, textArea_Descricao.getText(),idProgramador, formattedTextField_Horas.getText());
+        
     }//GEN-LAST:event_button_salvarActionPerformed
 
     /**
@@ -189,4 +217,5 @@ public class Topico extends javax.swing.JDialog {
     private javax.swing.JScrollPane scrollPane_Descricao;
     private javax.swing.JTextArea textArea_Descricao;
     // End of variables declaration//GEN-END:variables
+
 }

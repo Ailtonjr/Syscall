@@ -6,7 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static jdk.nashorn.internal.runtime.Debug.id;
+import static sun.security.jgss.GSSUtil.login;
 
 public class Conexao {
 
@@ -268,7 +272,7 @@ public class Conexao {
     }
 
     public ResultSet consultaTopicos(int idChamado) {
-        String sql = "SELECT t.id, t.descricao, p.nome, t.tempo_trabalhado, t.solucionado FROM topico t JOIN programador p ON (t.id_programador = p.id) WHERE t.id_chamado = " + idChamado + " ORDER BY t.id";
+        String sql = "SELECT t.id, t.descricao, p.nome, t.tempo_trabalhado FROM topico t JOIN programador p ON (t.id_programador = p.id) WHERE t.id_chamado = " + idChamado + " ORDER BY t.id";
         ResultSet rs = null;
         try {
             rs = statement.executeQuery(sql);
@@ -338,6 +342,24 @@ public class Conexao {
         }
         return rs;
     }
+    
+    public int consultaIdProgramador(String nome) {
+        String sql = "SELECT * FROM programador WHERE nome = '" + nome+"'";
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar clientes\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        try {
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
 
     public ResultSet consultaUsuarios() {
         String sql = "SELECT * FROM usuario";
@@ -389,8 +411,9 @@ public class Conexao {
 
     // Atualizações
     public void atualizarUsuario(int id, String nome, String login, String senha) {
+    
         String sql = "BEGIN;"
-                + "UPDATE usuario SET nome = ?, login = ?, senha = ? WHERE id = ?;"
+                + "UPDATE usuario SET nome = ?, login = ?, senha = ? WHERE id = ? ;"
                 + "COMMIT";
         try {
             preparedStatement = conexao.prepareStatement(sql);
@@ -405,6 +428,7 @@ public class Conexao {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar usuario " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
+        System.out.println("teste");
     }
 
     public void atualizarCliente(int id, String nome, String email) {
@@ -502,4 +526,6 @@ public class Conexao {
             ex.printStackTrace();
         }
     }
+
+
 }

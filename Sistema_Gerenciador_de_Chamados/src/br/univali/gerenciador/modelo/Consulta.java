@@ -228,6 +228,12 @@ public class Consulta {
 
     public DefaultTableModel geraTabelaProgramadores() {
         rs = con.consultaProgramadores();
+        modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
         try {
             ResultSetMetaData rsmt = rs.getMetaData();
             int qtdColunas = rsmt.getColumnCount();
@@ -363,6 +369,18 @@ public class Consulta {
 
     public List<String> geraListaCategorias() {
         rs = con.consultaCategorias();
+        List<String> lista = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                lista.add(rs.getString(2));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+    }
+    public List<String> geraListaProgramadores() {
+        rs = con.consultaProgramadores();
         List<String> lista = new ArrayList<>();
         try {
             while (rs.next()) {

@@ -8,6 +8,7 @@ package br.univali.gerenciador.visao;
 import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
 import javax.swing.table.DefaultTableModel;
+import static jdk.nashorn.internal.runtime.Debug.id;
 
 /**
  *
@@ -29,7 +30,7 @@ public class Usuario extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         consulta = new Consulta();
-        //con = new Conexao();
+        con = new Conexao();
         modelo = consulta.geraTabelaUsuarios();
         table_Usuarios.setModel(modelo);
     }
@@ -65,7 +66,6 @@ public class Usuario extends javax.swing.JDialog {
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         setResizable(false);
 
-        label_Nome.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         label_Nome.setText("Nome");
 
         field_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -76,7 +76,6 @@ public class Usuario extends javax.swing.JDialog {
             }
         });
 
-        label_Login.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         label_Login.setText("Login");
 
         field_Login.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -87,7 +86,6 @@ public class Usuario extends javax.swing.JDialog {
             }
         });
 
-        label_Senha.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         label_Senha.setText("Senha");
 
         field_Senha.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -302,10 +300,10 @@ public class Usuario extends javax.swing.JDialog {
 
     private void table_UsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_UsuariosMouseClicked
         if (evt.getClickCount() == 1) {
-            int id = Integer.parseInt((String) table_Usuarios.getValueAt(table_Usuarios.getSelectedRow(), 0));
-            idSelecionado = id;
+            idSelecionado = Integer.parseInt((String) table_Usuarios.getValueAt(table_Usuarios.getSelectedRow(), 0));
+            
             loginSelecionado = (String) table_Usuarios.getValueAt(table_Usuarios.getSelectedRow(), 2);
-            String[] vetor = consulta.geraVisaoUsuario(id);
+            String[] vetor = consulta.geraVisaoUsuario(idSelecionado);
             field_Nome.setText(vetor[1]);
             field_Login.setText(vetor[2]);
             field_Senha.setText(vetor[3]);
@@ -328,10 +326,18 @@ public class Usuario extends javax.swing.JDialog {
         operacao = "editar";
     }//GEN-LAST:event_button_EditarActionPerformed
 
+    private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
+        System.out.println("id "+ idSelecionado + " login " + loginSelecionado);
+        con.removerUsuario(idSelecionado, loginSelecionado);
+        modelo = consulta.geraTabelaUsuarios();
+        table_Usuarios.setModel(modelo);
+    }//GEN-LAST:event_button_ExcluirActionPerformed
+
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
         if (operacao.equalsIgnoreCase("novo")) {
             con.inserirUsuario(field_Nome.getText(), field_Login.getText(), field_Senha.getText());
         } else if (operacao.equalsIgnoreCase("editar")) {
+            System.out.println("IDSelecionado "+ idSelecionado);
             con.atualizarUsuario(idSelecionado, field_Nome.getText(), field_Login.getText(), field_Senha.getText());
             
         }
@@ -340,13 +346,6 @@ public class Usuario extends javax.swing.JDialog {
         table_Usuarios.setRowSelectionInterval(table_Usuarios.getRowCount() - 1, table_Usuarios.getRowCount() - 1);
         botoes1();
     }//GEN-LAST:event_button_ConfirmarActionPerformed
-
-    private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-        System.out.println("id "+ idSelecionado + " login " + loginSelecionado);
-        con.removerUsuario(idSelecionado, loginSelecionado);
-        modelo = consulta.geraTabelaUsuarios();
-        table_Usuarios.setModel(modelo);
-    }//GEN-LAST:event_button_ExcluirActionPerformed
 
     /**
      * @param args the command line arguments

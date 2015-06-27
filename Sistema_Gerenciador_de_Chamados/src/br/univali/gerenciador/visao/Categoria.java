@@ -1,5 +1,6 @@
 package br.univali.gerenciador.visao;
 
+import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
 import javax.swing.table.DefaultTableModel;
 
@@ -10,11 +11,17 @@ public class Categoria extends javax.swing.JDialog {
      */
     DefaultTableModel modelo;
     Consulta consulta;
+    Conexao con;
+    int idSelecionado;
+    String categoriaSelecionada;
+    
+    String operacao;
 
     public Categoria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         consulta = new Consulta();
+        con = new Conexao();
         modelo = consulta.geraTabelaCategorias();
         tabela_Categorias.setModel(modelo);
     }
@@ -27,6 +34,7 @@ public class Categoria extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         panel_Principal = new javax.swing.JPanel();
         button_Novo = new javax.swing.JButton();
@@ -53,6 +61,11 @@ public class Categoria extends javax.swing.JDialog {
 
         button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Novo.setText("Novo");
+        button_Novo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_NovoActionPerformed(evt);
+            }
+        });
 
         button_Editar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Editar.setText("Editar");
@@ -66,6 +79,10 @@ public class Categoria extends javax.swing.JDialog {
         button_Confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Confirmar.setText("Confirmar");
         button_Confirmar.setEnabled(false);
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, field_Nome, org.jdesktop.beansbinding.ObjectProperty.create(), button_Confirmar, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         button_Confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_ConfirmarActionPerformed(evt);
@@ -119,11 +136,10 @@ public class Categoria extends javax.swing.JDialog {
             tabela_Categorias.getColumnModel().getColumn(1).setPreferredWidth(300);
         }
 
-        label_Nome.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         label_Nome.setText("Nome");
 
-        field_Nome.setEditable(false);
         field_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_Nome.setEnabled(false);
         field_Nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_NomeActionPerformed(evt);
@@ -197,6 +213,8 @@ public class Categoria extends javax.swing.JDialog {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        bindingGroup.bind();
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -205,25 +223,61 @@ public class Categoria extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_field_NomeActionPerformed
 
+//confirmar e clique na tabela
+    private void botoes1() {
+        button_Novo.setEnabled(true);
+        button_Editar.setEnabled(true);
+        button_Excluir.setEnabled(true);
+        button_Confirmar.setEnabled(false);
+        field_Nome.setEnabled(false);
+    }
+    
+     private void botoes2(){
+        button_Novo.setEnabled(false);
+        button_Editar.setEnabled(false);
+        button_Excluir.setEnabled(false);
+        button_Confirmar.setEnabled(true);
+        field_Nome.setEnabled(true);
+    }
+     
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-        // TODO add your handling code here:
+        con.removerCategoria(idSelecionado, categoriaSelecionada);
+        modelo = consulta.geraTabelaCategorias();
+        tabela_Categorias.setModel(modelo);
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
-        // TODO add your handling code here:
+        if (operacao.equalsIgnoreCase("novo")) {
+            con.inserirCategoria(field_Nome.getText());
+        } else if (operacao.equalsIgnoreCase("editar")) {
+            con.atualizarCategoria(idSelecionado, field_Nome.getText());
+        }
+        modelo = consulta.geraTabelaCategorias();
+        tabela_Categorias.setModel(modelo);
+        tabela_Categorias.setRowSelectionInterval(tabela_Categorias.getRowCount() - 1, tabela_Categorias.getRowCount() - 1);
+        botoes1();
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
-        // TODO add your handling code here:
+        botoes2();
+        operacao = "editar";
     }//GEN-LAST:event_button_EditarActionPerformed
 
     private void tabela_CategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_CategoriasMouseClicked
         if (evt.getClickCount() == 1) {
-            int id = Integer.parseInt((String) tabela_Categorias.getValueAt(tabela_Categorias.getSelectedRow(), 0));
-            String[] vetor = consulta.geraVisaoCategoria(id);
+            idSelecionado= Integer.parseInt((String) tabela_Categorias.getValueAt(tabela_Categorias.getSelectedRow(), 0));
+            String[] vetor = consulta.geraVisaoCategoria(idSelecionado);
             field_Nome.setText(vetor[1]);
+            botoes1();
         }
     }//GEN-LAST:event_tabela_CategoriasMouseClicked
+
+    private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
+        botoes2();
+        field_Nome.setText("");
+        button_Confirmar.transferFocus();
+        operacao = "novo";
+    }//GEN-LAST:event_button_NovoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,5 +310,6 @@ public class Categoria extends javax.swing.JDialog {
     private javax.swing.JScrollPane scrollPane_Categorias;
     private javax.swing.JSeparator separator;
     private javax.swing.JTable tabela_Categorias;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
