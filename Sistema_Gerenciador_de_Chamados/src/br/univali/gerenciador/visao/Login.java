@@ -2,9 +2,12 @@
 package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -165,7 +168,12 @@ public class Login extends javax.swing.JFrame {
     private void botao_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botao_LoginActionPerformed
         Conexao con = new Conexao();
         
-        con.removerProgramador(8, null);
+        con.atualizarUsuario(1, "Joao", "jfg", "buceta12");
+        con.atualizarCliente(1, "QualyTeam", "contato@qualyteam.br");
+        con.atualizarProgramador(1, "Daniel", 10);
+        con.atualizarCategoria(1, "Legal");
+        con.atualizarChamado(1, "Teste", 1, 1, 1, "2015-06-10", "21:30:00");
+        con.atualizarTopico(WIDTH, WIDTH, null, WIDTH, null);
         
     }//GEN-LAST:event_botao_LoginActionPerformed
 

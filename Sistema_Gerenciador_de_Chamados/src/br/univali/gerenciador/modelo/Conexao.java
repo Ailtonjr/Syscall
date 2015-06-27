@@ -111,17 +111,19 @@ public class Conexao {
         }
     }
     
-    public void inserirChamado(String descricao, int id_categoria, int id_cliente, int id_usuario, String dataHora) {
+    public void inserirChamado(String descricao, int id_categoria, int id_cliente, int id_usuario, String data, String hora) {
         String sql = "BEGIN;"
-                + "INSERT INTO chamado(descricao, id_categoria, id_cliente, id_usuario, dataHora) VALUES (?, ?, ?, ?, ?);"
+                + "INSERT INTO chamado(status, descricao, id_categoria, id_cliente, id_usuario, data, hora) VALUES (?, ?, ?, ?, ?, ?, ?);"
                 + "COMMIT";
         try {
             preparedStatement = conexao.prepareStatement(sql);
-            preparedStatement.setString(1, descricao);
-            preparedStatement.setInt(2, id_categoria);
-            preparedStatement.setInt(3, id_cliente);
-            preparedStatement.setInt(4, id_usuario);
-            preparedStatement.setString(5, dataHora);
+            preparedStatement.setBoolean(1, true);
+            preparedStatement.setString(2, descricao);
+            preparedStatement.setInt(3, id_categoria);
+            preparedStatement.setInt(4, id_cliente);
+            preparedStatement.setInt(5, id_usuario);
+            preparedStatement.setDate(6, java.sql.Date.valueOf(data));
+            preparedStatement.setTime(7, java.sql.Time.valueOf(hora));
             
             preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Chamado inserido com sucesso!");
@@ -133,14 +135,14 @@ public class Conexao {
     
     public void inserirTopico(int id_chamado, String descricao, int id_programador, String tempo_trabalhado) {
         String sql = "BEGIN;"
-                + "INSERT INTO topico (id_chamado, descricao, id_programador, tempo_trabalhado, solucionado) VALUES (?, ?, ?, ?);"
+                + "INSERT INTO topico (id_chamado, descricao, id_programador, tempo_trabalhado) VALUES (?, ?, ?, ?);"
                 + "COMMIT";
         try {
             preparedStatement = conexao.prepareStatement(sql);
             preparedStatement.setInt(1, id_chamado);
             preparedStatement.setString(2, descricao);
             preparedStatement.setInt(3, id_programador);
-            preparedStatement.setString(4, tempo_trabalhado);
+            preparedStatement.setTime(4, java.sql.Time.valueOf(tempo_trabalhado));
             
             preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Topico inserido com sucesso!");
@@ -351,4 +353,121 @@ public class Conexao {
         }
         return rs;
     }  
+    
+    
+    // Atualizações
+    public void atualizarUsuario(int id, String nome, String login, String senha) {
+        String sql = "BEGIN;"
+                + "UPDATE usuario SET nome = ?, login = ?, senha = ? WHERE id = ?;"
+                + "COMMIT";
+        try {
+            preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, nome);
+            preparedStatement.setString(2, login);
+            preparedStatement.setString(3, senha);
+            preparedStatement.setInt(4, id);
+            
+            preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Usuario " + nome + " atualizado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar usuario " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
+    
+    public void atualizarCliente(int id, String nome, String email) {
+        String sql = "BEGIN;"
+                + "UPDATE cliente SET nome = ?, email = ? WHERE id = ?;"
+                + "COMMIT";
+        try {
+            preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, nome);
+            preparedStatement.setString(2, email);
+            preparedStatement.setInt(3, id);
+            
+            preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Cliente " + nome + " atualizado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar cliente " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
+    
+    public void atualizarProgramador(int id, String nome, float valorHora) {
+        String sql = "BEGIN;"
+                + "UPDATE programador SET nome = ?, valorHora = ? WHERE id = ?;"
+                + "COMMIT";
+        try {
+            preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, nome);
+            preparedStatement.setFloat(2, valorHora);
+            preparedStatement.setInt(3, id);
+            
+            preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Programador " + nome + " atualizado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar programador " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
+    
+    public void atualizarCategoria(int id, String nome) {
+        String sql = "BEGIN;"
+                + "UPDATE categoria SET nome = ? WHERE id = ?;"
+                + "COMMIT";
+        try {
+            preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, nome);
+            preparedStatement.setInt(2, id);
+            
+            preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Categoria " + nome + " atualizado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar categoria " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
+    
+    public void atualizarChamado(int id, String descricao, int id_categoria, int id_cliente, int id_usuario, String data, String hora) {
+        String sql = "BEGIN;"
+                + "UPDATE chamado SET descricao = ?, id_categoria = ?, id_cliente = ?, id_usuario = ?, data = ?, hora = ? WHERE id = ?;"
+                + "COMMIT";
+        try {
+            preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setString(1, descricao);
+            preparedStatement.setInt(2, id_categoria);
+            preparedStatement.setInt(3, id_cliente);
+            preparedStatement.setInt(4, id_usuario);
+            preparedStatement.setDate(5, java.sql.Date.valueOf(data));
+            preparedStatement.setTime(6, java.sql.Time.valueOf(hora));
+            
+            preparedStatement.setInt(7, id);
+            
+            preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Chamado " + id + " atualizado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar chamado " + id + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
+    
+    public void atualizarTopico(int id, int id_chamado, String descricao, int id_programador, String tempo_trabalhado) {
+        String sql = "BEGIN;"
+                + "UPDATE topico SET id_chamado = ?, descricao = ?, id_programador = ?, tempo_trabalhado = ? WHERE id = ?;"
+                + "COMMIT";
+        try {
+            preparedStatement = conexao.prepareStatement(sql);
+            preparedStatement.setInt(1, id_chamado);
+            preparedStatement.setString(2, descricao);
+            preparedStatement.setInt(3, id_programador);
+            preparedStatement.setTime(4, java.sql.Time.valueOf(tempo_trabalhado));
+            preparedStatement.setInt(5, id);
+            
+            preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Topico " + id + " atualizado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar topico " + id + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
 }
