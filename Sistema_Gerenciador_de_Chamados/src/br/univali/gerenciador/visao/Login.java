@@ -1,15 +1,12 @@
-
 package br.univali.gerenciador.visao;
 
-import br.univali.gerenciador.modelo.Conexao;
-import java.util.Date;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+import br.univali.gerenciador.modelo.Consulta;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +19,28 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-        
+
+    }
+
+    private void tentarLogin() {
+        Consulta consulta = new Consulta();
+        String login = field_Usuario.getText();
+        String senha = field_Senha.getText();
+        try {
+            if (!login.equals("") && !senha.equals("")) {
+                if (consulta.consultaLogin(login, senha)) {
+                    //if (!login.equals("") && !senha.equals("")) {
+                    this.setVisible(false);
+                    Principal principal = new Principal();
+                    principal.setVisible(true);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Os campos 'Usuário' e 'Senha' não podem estar em branco", "Erro de Login", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "'Usuário' ou 'Senha' Inválidos", "Erro de Login", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -38,9 +56,9 @@ public class Login extends javax.swing.JFrame {
         label_logo = new javax.swing.JLabel();
         button_Cancelar = new javax.swing.JButton();
         button_Entrar = new javax.swing.JButton();
-        field_Password = new javax.swing.JPasswordField();
+        field_Senha = new javax.swing.JPasswordField();
         label_Senha = new javax.swing.JLabel();
-        field_User = new javax.swing.JTextField();
+        field_Usuario = new javax.swing.JTextField();
         label_Login = new javax.swing.JLabel();
         label_Titulo = new javax.swing.JLabel();
 
@@ -68,20 +86,30 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        field_Password.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        field_Password.addActionListener(new java.awt.event.ActionListener() {
+        field_Senha.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_Senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_PasswordActionPerformed(evt);
+                field_SenhaActionPerformed(evt);
+            }
+        });
+        field_Senha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                field_SenhaKeyPressed(evt);
             }
         });
 
         label_Senha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         label_Senha.setText("Senha");
 
-        field_User.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        field_User.addActionListener(new java.awt.event.ActionListener() {
+        field_Usuario.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_UserActionPerformed(evt);
+                field_UsuarioActionPerformed(evt);
+            }
+        });
+        field_Usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                field_UsuarioKeyPressed(evt);
             }
         });
 
@@ -102,12 +130,12 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(label_logo)
                         .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(field_User, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(field_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(button_Cancelar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(button_Entrar))
-                            .addComponent(field_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(field_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label_Senha)
                             .addComponent(label_Login))
                         .addGap(23, 23, 23))
@@ -128,11 +156,11 @@ public class Login extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(label_Login)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(field_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(field_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addComponent(label_Senha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(field_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(field_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(button_Entrar)
@@ -166,18 +194,30 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_button_CancelarActionPerformed
 
     private void button_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EntrarActionPerformed
-        this.setVisible(false);
-        Principal principal = new Principal();
-        principal.setVisible(true);
+        tentarLogin();
     }//GEN-LAST:event_button_EntrarActionPerformed
 
-    private void field_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_PasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_PasswordActionPerformed
+    private void field_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_SenhaActionPerformed
 
-    private void field_UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_UserActionPerformed
+    }//GEN-LAST:event_field_SenhaActionPerformed
+
+    private void field_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_UsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_field_UserActionPerformed
+    }//GEN-LAST:event_field_UsuarioActionPerformed
+
+    private void field_UsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field_UsuarioKeyPressed
+        int key = evt.getKeyCode();
+        if (key == KeyEvent.VK_ENTER) {
+            field_Usuario.transferFocus();
+        }
+    }//GEN-LAST:event_field_UsuarioKeyPressed
+
+    private void field_SenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field_SenhaKeyPressed
+        int key = evt.getKeyCode();
+        if (key == KeyEvent.VK_ENTER) {
+            tentarLogin();
+        }
+    }//GEN-LAST:event_field_SenhaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -194,8 +234,8 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_Cancelar;
     private javax.swing.JButton button_Entrar;
-    private javax.swing.JPasswordField field_Password;
-    private javax.swing.JTextField field_User;
+    private javax.swing.JPasswordField field_Senha;
+    private javax.swing.JTextField field_Usuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_Login;
     private javax.swing.JLabel label_Senha;

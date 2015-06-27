@@ -22,6 +22,8 @@ public class Usuario extends javax.swing.JDialog {
     Consulta consulta;
     String operacao;
     Conexao con;
+    int idSelecionado;
+    String loginSelecionado;
 
     public Usuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -141,6 +143,11 @@ public class Usuario extends javax.swing.JDialog {
         button_Excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Excluir.setText("Excluir");
         button_Excluir.setEnabled(false);
+        button_Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_ExcluirActionPerformed(evt);
+            }
+        });
 
         button_Confirmar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Confirmar.setText("Confirmar");
@@ -296,11 +303,14 @@ public class Usuario extends javax.swing.JDialog {
     private void table_UsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_UsuariosMouseClicked
         if (evt.getClickCount() == 1) {
             int id = Integer.parseInt((String) table_Usuarios.getValueAt(table_Usuarios.getSelectedRow(), 0));
+            idSelecionado = id;
+            loginSelecionado = (String) table_Usuarios.getValueAt(table_Usuarios.getSelectedRow(), 2);
             String[] vetor = consulta.geraVisaoUsuario(id);
             field_Nome.setText(vetor[1]);
             field_Login.setText(vetor[2]);
             field_Senha.setText(vetor[3]);
             botoes1();
+            
         }
     }//GEN-LAST:event_table_UsuariosMouseClicked
 
@@ -319,18 +329,24 @@ public class Usuario extends javax.swing.JDialog {
     }//GEN-LAST:event_button_EditarActionPerformed
 
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
-        con = new Conexao();
         if (operacao.equalsIgnoreCase("novo")) {
             con.inserirUsuario(field_Nome.getText(), field_Login.getText(), field_Senha.getText());
         } else if (operacao.equalsIgnoreCase("editar")) {
-            //Update
+            con.atualizarUsuario(idSelecionado, field_Nome.getText(), field_Login.getText(), field_Senha.getText());
+            
         }
-        con.encerrarConexao();
         modelo = consulta.geraTabelaUsuarios();
         table_Usuarios.setModel(modelo);
         table_Usuarios.setRowSelectionInterval(table_Usuarios.getRowCount() - 1, table_Usuarios.getRowCount() - 1);
         botoes1();
     }//GEN-LAST:event_button_ConfirmarActionPerformed
+
+    private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
+        System.out.println("id "+ idSelecionado + " login " + loginSelecionado);
+        con.removerUsuario(idSelecionado, loginSelecionado);
+        modelo = consulta.geraTabelaUsuarios();
+        table_Usuarios.setModel(modelo);
+    }//GEN-LAST:event_button_ExcluirActionPerformed
 
     /**
      * @param args the command line arguments
