@@ -5,6 +5,7 @@
  */
 package br.univali.gerenciador.visao;
 
+import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,11 +20,14 @@ public class Usuario extends javax.swing.JDialog {
      */
     DefaultTableModel modelo;
     Consulta consulta;
-    
+    String operacao;
+    Conexao con;
+
     public Usuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         consulta = new Consulta();
+        //con = new Conexao();
         modelo = consulta.geraTabelaUsuarios();
         table_Usuarios.setModel(modelo);
     }
@@ -36,6 +40,7 @@ public class Usuario extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         panel_Principal = new javax.swing.JPanel();
         label_Nome = new javax.swing.JLabel();
@@ -49,7 +54,7 @@ public class Usuario extends javax.swing.JDialog {
         button_Novo = new javax.swing.JButton();
         button_Excluir = new javax.swing.JButton();
         button_Confirmar = new javax.swing.JButton();
-        buton_Editar = new javax.swing.JButton();
+        button_Editar = new javax.swing.JButton();
         separator = new javax.swing.JSeparator();
         label_Separador = new javax.swing.JLabel();
 
@@ -127,6 +132,11 @@ public class Usuario extends javax.swing.JDialog {
 
         button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Novo.setText("Novo");
+        button_Novo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_NovoActionPerformed(evt);
+            }
+        });
 
         button_Excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Excluir.setText("Excluir");
@@ -136,9 +146,23 @@ public class Usuario extends javax.swing.JDialog {
         button_Confirmar.setText("Confirmar");
         button_Confirmar.setEnabled(false);
 
-        buton_Editar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        buton_Editar.setText("Editar");
-        buton_Editar.setEnabled(false);
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, field_Nome, org.jdesktop.beansbinding.ObjectProperty.create(), button_Confirmar, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
+        button_Confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_ConfirmarActionPerformed(evt);
+            }
+        });
+
+        button_Editar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Editar.setText("Editar");
+        button_Editar.setEnabled(false);
+        button_Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_EditarActionPerformed(evt);
+            }
+        });
 
         separator.setForeground(new java.awt.Color(153, 153, 153));
         separator.setToolTipText("");
@@ -174,7 +198,7 @@ public class Usuario extends javax.swing.JDialog {
                             .addGroup(panel_PrincipalLayout.createSequentialGroup()
                                 .addComponent(button_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
-                                .addComponent(buton_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(button_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
                                 .addComponent(button_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
@@ -202,7 +226,7 @@ public class Usuario extends javax.swing.JDialog {
                     .addComponent(button_Confirmar)
                     .addComponent(button_Excluir)
                     .addComponent(button_Novo)
-                    .addComponent(buton_Editar))
+                    .addComponent(button_Editar))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_PrincipalLayout.createSequentialGroup()
@@ -224,8 +248,12 @@ public class Usuario extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_Principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panel_Principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        bindingGroup.bind();
 
         pack();
         setLocationRelativeTo(null);
@@ -243,6 +271,28 @@ public class Usuario extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_field_LoginActionPerformed
 
+//confirmar e clique na tabela
+    private void botoes1() {
+        button_Novo.setEnabled(true);
+        button_Editar.setEnabled(true);
+        button_Excluir.setEnabled(true);
+        button_Confirmar.setEnabled(false);
+        field_Nome.setEnabled(false);
+        field_Login.setEnabled(false);
+        field_Senha.setEnabled(false);
+    }
+    
+     private void botoes2(){
+        button_Novo.setEnabled(false);
+        button_Editar.setEnabled(false);
+        button_Excluir.setEnabled(false);
+        button_Confirmar.setEnabled(true);
+        field_Nome.setEnabled(true);
+        field_Login.setEnabled(true);
+        field_Senha.setEnabled(true);
+    }
+
+
     private void table_UsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_UsuariosMouseClicked
         if (evt.getClickCount() == 1) {
             int id = Integer.parseInt((String) table_Usuarios.getValueAt(table_Usuarios.getSelectedRow(), 0));
@@ -250,8 +300,37 @@ public class Usuario extends javax.swing.JDialog {
             field_Nome.setText(vetor[1]);
             field_Login.setText(vetor[2]);
             field_Senha.setText(vetor[3]);
+            botoes1();
         }
     }//GEN-LAST:event_table_UsuariosMouseClicked
+
+    private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
+        botoes2();
+        field_Nome.setText("");
+        field_Login.setText("");
+        field_Senha.setText("");
+        button_Confirmar.transferFocus();
+        operacao = "novo";
+    }//GEN-LAST:event_button_NovoActionPerformed
+
+    private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
+        botoes2();
+        operacao = "editar";
+    }//GEN-LAST:event_button_EditarActionPerformed
+
+    private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
+        con = new Conexao();
+        if (operacao.equalsIgnoreCase("novo")) {
+            con.inserirUsuario(field_Nome.getText(), field_Login.getText(), field_Senha.getText());
+        } else if (operacao.equalsIgnoreCase("editar")) {
+            //Update
+        }
+        con.encerrarConexao();
+        modelo = consulta.geraTabelaUsuarios();
+        table_Usuarios.setModel(modelo);
+        table_Usuarios.setRowSelectionInterval(table_Usuarios.getRowCount() - 1, table_Usuarios.getRowCount() - 1);
+        botoes1();
+    }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,8 +352,8 @@ public class Usuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buton_Editar;
     private javax.swing.JButton button_Confirmar;
+    private javax.swing.JButton button_Editar;
     private javax.swing.JButton button_Excluir;
     private javax.swing.JButton button_Novo;
     private javax.swing.JTextField field_Login;
@@ -288,5 +367,6 @@ public class Usuario extends javax.swing.JDialog {
     private javax.swing.JScrollPane scrollPane_Usuarios;
     private javax.swing.JSeparator separator;
     private javax.swing.JTable table_Usuarios;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

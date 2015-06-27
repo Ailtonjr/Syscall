@@ -18,12 +18,7 @@ public class Consulta {
 
     Conexao con;
     //private DefaultTableModel modelo = new DefaultTableModel();
-    private DefaultTableModel modelo = new DefaultTableModel() {
-        @Override
-        public boolean isCellEditable(int row, int col) {
-            return false;
-        }
-    };
+    private DefaultTableModel modelo;
 
     private ResultSet rs;
 
@@ -33,6 +28,12 @@ public class Consulta {
 
     public DefaultTableModel geraTabelaChamados() {
         rs = con.consultaChamados("status = true or status = false");
+        modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
         try {
             ResultSetMetaData rsmt = rs.getMetaData();
             int qtdColunas = rsmt.getColumnCount();
@@ -74,6 +75,12 @@ public class Consulta {
 
     public DefaultTableModel geraTabelaTopicos(int idChamado) {
         rs = con.consultaTopicos(idChamado);
+        modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
         try {
             ResultSetMetaData rsmt = rs.getMetaData();
             int qtdColunas = rsmt.getColumnCount();
@@ -114,6 +121,12 @@ public class Consulta {
 
     public DefaultTableModel geraTabelaClientes() {
         rs = con.consultaClientes();
+        modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
         try {
             ResultSetMetaData rsmt = rs.getMetaData();
             int qtdColunas = rsmt.getColumnCount();
@@ -140,6 +153,12 @@ public class Consulta {
 
     public DefaultTableModel geraTabelaCategorias() {
         rs = con.consultaCategorias();
+        modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
         try {
             ResultSetMetaData rsmt = rs.getMetaData();
             int qtdColunas = rsmt.getColumnCount();
@@ -164,14 +183,19 @@ public class Consulta {
 
     public DefaultTableModel geraTabelaUsuarios() {
         rs = con.consultaUsuarios();
+        modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
+        modelo.addColumn("ID");
+        modelo.addColumn("Nome");
+        modelo.addColumn("Login");
         try {
             ResultSetMetaData rsmt = rs.getMetaData();
             int qtdColunas = rsmt.getColumnCount();
             String vetor[] = new String[qtdColunas];
-
-            modelo.addColumn("ID");
-            modelo.addColumn("Nome");
-            modelo.addColumn("Login");
 
             while (rs.next()) {
                 for (int i = 1; i <= qtdColunas; i++) {
@@ -186,7 +210,7 @@ public class Consulta {
 
         return modelo;
     }
-    
+
     public DefaultTableModel geraTabelaProgramadores() {
         rs = con.consultaProgramadores();
         try {
@@ -291,7 +315,7 @@ public class Consulta {
         }
         return vetor;
     }
-    
+
     public String[] geraVisaoProgramador(int idProgramador) {
         rs = con.consultaProgramador(idProgramador);
         String vetor[] = null;
