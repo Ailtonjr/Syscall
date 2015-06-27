@@ -2,9 +2,12 @@
 package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
