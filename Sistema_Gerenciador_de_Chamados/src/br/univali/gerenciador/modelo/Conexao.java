@@ -354,6 +354,29 @@ public class Conexao {
         return rs;
     }  
     
+    public ResultSet consultaCategorias() {
+        String sql = "SELECT * FROM categoria";
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar Categorias\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
+
+    public ResultSet consultaCategoria(int idCategoria) {
+        String sql = "SELECT * FROM categoria WHERE id = " + idCategoria;
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar Categoria\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
     
     // Atualizações
     public void atualizarUsuario(int id, String nome, String login, String senha) {
