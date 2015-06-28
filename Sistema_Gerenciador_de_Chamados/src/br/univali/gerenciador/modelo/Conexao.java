@@ -378,6 +378,7 @@ public class Conexao {
         return rs;
     }
     
+    
     // Atualizações
     public void atualizarUsuario(int id, String nome, String login, String senha) {
         String sql = "BEGIN;"
@@ -492,5 +493,60 @@ public class Conexao {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar topico " + id + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
+    }
+
+
+    //Relatorios
+    public ResultSet relatorioProblemasReportados(String ano) {
+        String sql ="SELECT EXTRACT(MONTH FROM c.data ), count(id) as qtd " +
+                    "FROM chamado c " +
+                    "WHERE c.data BETWEEN '01/01/" + ano + "' AND '31/12/" + ano + "' " +
+                    "GROUP BY  EXTRACT(MONTH FROM c.data)";
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar Relatorio de problemas reportados\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
+    
+    public ResultSet relatorioChamadosCategoria(String inferior, String superior) {
+        String sql ="SELECT ca.nome, count(c.id) FROM chamado c RIGHT JOIN categoria ca ON(ca.id = c.id_categoria) \n" +
+                    "WHERE c.data BETWEEN ' "+ inferior + "' AND '" + superior + "'\n" +
+                    "GROUP BY ca.nome";
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar Relatorio de chamados por categoria\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
+    
+    public ResultSet relatorioGastoProblema() {
+        String sql = "SELECT * FROM gasto_problema";
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar Relatorio de gasto por problema\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
+    }
+    
+    public ResultSet relatorioGastoCliente() {
+        String sql = "SELECT * FROM gasto_cliente";
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar Relatorio de gasto com clientes\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        return rs;
     }
 }
