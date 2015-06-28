@@ -6,9 +6,6 @@ import javax.swing.table.DefaultTableModel;
 
 public class Categoria extends javax.swing.JDialog {
 
-    /**
-     * Creates new form NovoCliente
-     */
     DefaultTableModel modelo;
     Consulta consulta;
     Conexao con;
@@ -139,6 +136,7 @@ public class Categoria extends javax.swing.JDialog {
         label_Nome.setText("Nome");
 
         field_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_Nome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         field_Nome.setEnabled(false);
         field_Nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,6 +242,7 @@ public class Categoria extends javax.swing.JDialog {
         con.removerCategoria(idSelecionado, categoriaSelecionada);
         modelo = consulta.geraTabelaCategorias();
         tabela_Categorias.setModel(modelo);
+        button_Novo.doClick();
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
@@ -266,6 +265,7 @@ public class Categoria extends javax.swing.JDialog {
     private void tabela_CategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabela_CategoriasMouseClicked
         if (evt.getClickCount() == 1) {
             idSelecionado= Integer.parseInt((String) tabela_Categorias.getValueAt(tabela_Categorias.getSelectedRow(), 0));
+            categoriaSelecionada =  (String) tabela_Categorias.getValueAt(tabela_Categorias.getSelectedRow(), 1);
             String[] vetor = consulta.geraVisaoCategoria(idSelecionado);
             field_Nome.setText(vetor[1]);
             botoes1();

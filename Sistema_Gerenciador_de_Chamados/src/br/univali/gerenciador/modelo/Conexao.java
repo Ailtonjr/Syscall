@@ -9,8 +9,6 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import static jdk.nashorn.internal.runtime.Debug.id;
-import static sun.security.jgss.GSSUtil.login;
 
 public class Conexao {
 
@@ -272,7 +270,7 @@ public class Conexao {
     }
 
     public ResultSet consultaTopicos(int idChamado) {
-        String sql = "SELECT t.id, t.descricao, p.nome, t.tempo_trabalhado FROM topico t JOIN programador p ON (t.id_programador = p.id) WHERE t.id_chamado = " + idChamado + " ORDER BY t.id";
+        String sql = "SELECT t.id, t.descricao, p.nome, t.tempo_trabalhado FROM topico t LEFT JOIN programador p ON (t.id_programador = p.id) WHERE t.id_chamado = " + idChamado + " ORDER BY t.id";
         ResultSet rs = null;
         try {
             rs = statement.executeQuery(sql);

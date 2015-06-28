@@ -301,7 +301,6 @@ public class Usuario extends javax.swing.JDialog {
     private void table_UsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_UsuariosMouseClicked
         if (evt.getClickCount() == 1) {
             idSelecionado = Integer.parseInt((String) table_Usuarios.getValueAt(table_Usuarios.getSelectedRow(), 0));
-            
             loginSelecionado = (String) table_Usuarios.getValueAt(table_Usuarios.getSelectedRow(), 2);
             String[] vetor = consulta.geraVisaoUsuario(idSelecionado);
             field_Nome.setText(vetor[1]);
@@ -331,6 +330,7 @@ public class Usuario extends javax.swing.JDialog {
         con.removerUsuario(idSelecionado, loginSelecionado);
         modelo = consulta.geraTabelaUsuarios();
         table_Usuarios.setModel(modelo);
+        button_Novo.doClick();
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed

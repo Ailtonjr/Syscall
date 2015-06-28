@@ -2,7 +2,6 @@ package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
-import static java.io.File.separator;
 import javax.swing.table.DefaultTableModel;
 
 public class Cliente extends javax.swing.JDialog {
@@ -14,7 +13,7 @@ public class Cliente extends javax.swing.JDialog {
     Consulta consulta;
     Conexao con;
     int idSelecionado;
-    String clienteSelecionada;
+    String clienteSelecionado;
 
     String operacao;
 
@@ -252,9 +251,10 @@ public class Cliente extends javax.swing.JDialog {
     }
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-        con.removerCliente(idSelecionado, clienteSelecionada);
-        modelo = consulta.geraTabelaCategorias();
+        con.removerCliente(idSelecionado, clienteSelecionado);
+        modelo = consulta.geraTabelaClientes();
         table_Clientes.setModel(modelo);
+        button_Novo.doClick();
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
@@ -286,6 +286,7 @@ public class Cliente extends javax.swing.JDialog {
     private void table_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_ClientesMouseClicked
         if (evt.getClickCount() == 1) {
             idSelecionado = Integer.parseInt((String) table_Clientes.getValueAt(table_Clientes.getSelectedRow(), 0));
+            clienteSelecionado = (String) table_Clientes.getValueAt(table_Clientes.getSelectedRow(), 1);
             String[] vetor = consulta.geraVisaoCliente(idSelecionado);
             field_Nome.setText(vetor[0]);
             field_Email.setText(vetor[1]);

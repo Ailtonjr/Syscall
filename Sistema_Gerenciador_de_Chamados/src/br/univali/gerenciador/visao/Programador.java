@@ -22,7 +22,7 @@ public class Programador extends javax.swing.JDialog {
     Consulta consulta;
     Conexao con;
     int idSelecionado;
-    String ProgramadorSelecionada;
+    String ProgramadorSelecionado;
 
     String operacao;
     
@@ -272,14 +272,16 @@ public class Programador extends javax.swing.JDialog {
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-        con.removerCliente(idSelecionado, ProgramadorSelecionada);
+        con.removerProgramador(idSelecionado, ProgramadorSelecionado);
         modelo = consulta.geraTabelaProgramadores();
         table_Programadores.setModel(modelo);
+        button_Novo.doClick();
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
     private void table_ProgramadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_ProgramadoresMouseClicked
         if (evt.getClickCount() == 1) {
             idSelecionado = Integer.parseInt((String) table_Programadores.getValueAt(table_Programadores.getSelectedRow(), 0));
+            ProgramadorSelecionado =  (String) table_Programadores.getValueAt(table_Programadores.getSelectedRow(), 1);
             String[] vetor = consulta.geraVisaoProgramador(idSelecionado);
             field_Nome.setText(vetor[1]);
             field_ValorHora.setText(vetor[2]);
@@ -299,29 +301,6 @@ public class Programador extends javax.swing.JDialog {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Programador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Programador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Programador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Programador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {

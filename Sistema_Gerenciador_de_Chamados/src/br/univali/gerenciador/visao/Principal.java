@@ -28,6 +28,8 @@ public class Principal extends javax.swing.JFrame {
         comboBox_Filtro = new javax.swing.JComboBox();
         textField_Buscar = new javax.swing.JTextField();
         botao_Buscar = new javax.swing.JButton();
+        button_Excluir = new javax.swing.JButton();
+        button_Novo = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menu_Gerenciar = new javax.swing.JMenu();
         menuItem_Programador = new javax.swing.JMenuItem();
@@ -96,21 +98,45 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        button_Excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Excluir.setText("Excluir");
+        button_Excluir.setEnabled(false);
+        button_Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_ExcluirActionPerformed(evt);
+            }
+        });
+
+        button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Novo.setText("Novo");
+        button_Novo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_NovoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_PrincipalLayout = new javax.swing.GroupLayout(panel_Principal);
         panel_Principal.setLayout(panel_PrincipalLayout);
         panel_PrincipalLayout.setHorizontalGroup(
             panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
+            .addGroup(panel_PrincipalLayout.createSequentialGroup()
                 .addContainerGap(108, Short.MAX_VALUE)
-                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(scrollPane_Chamados, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                        .addComponent(comboBox_Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textField_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botao_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(98, 98, 98))
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
+                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(scrollPane_Chamados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_PrincipalLayout.createSequentialGroup()
+                                .addComponent(comboBox_Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(textField_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botao_Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(98, 98, 98))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
+                        .addComponent(button_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(button_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(337, 337, 337))))
         );
         panel_PrincipalLayout.setVerticalGroup(
             panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,9 +146,13 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(botao_Buscar)
                     .addComponent(textField_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboBox_Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollPane_Chamados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(button_Excluir)
+                    .addComponent(button_Novo))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         menu_Gerenciar.setText("Gerenciar");
@@ -246,6 +276,15 @@ public class Principal extends javax.swing.JFrame {
         categoria.setVisible(true);
     }//GEN-LAST:event_menuItem_CategoriaActionPerformed
 
+    private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
+        Chamado chamado = new Chamado(this,true);
+        chamado.setVisible(true);
+    }//GEN-LAST:event_button_NovoActionPerformed
+
+    private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
+
+    }//GEN-LAST:event_button_ExcluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -260,6 +299,8 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botao_Buscar;
+    private javax.swing.JButton button_Excluir;
+    private javax.swing.JButton button_Novo;
     private javax.swing.JComboBox comboBox_Filtro;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JMenuBar menuBar;

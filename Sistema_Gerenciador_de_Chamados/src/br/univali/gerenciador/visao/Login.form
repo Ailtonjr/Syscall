@@ -150,7 +150,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="field_SenhaActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="field_SenhaKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="label_Senha">
@@ -169,7 +168,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="field_UsuarioActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="field_UsuarioKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="label_Login">

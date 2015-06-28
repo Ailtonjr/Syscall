@@ -30,6 +30,8 @@ public class Login extends javax.swing.JFrame {
                     this.setVisible(false);
                     Principal principal = new Principal();
                     principal.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, "'Usuário' ou 'Senha' Inválidos", "Erro de Login", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Os campos 'Usuário' e 'Senha' não podem estar em branco", "Erro de Login", JOptionPane.ERROR_MESSAGE);
@@ -89,11 +91,6 @@ public class Login extends javax.swing.JFrame {
                 field_SenhaActionPerformed(evt);
             }
         });
-        field_Senha.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                field_SenhaKeyPressed(evt);
-            }
-        });
 
         label_Senha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         label_Senha.setText("Senha");
@@ -102,11 +99,6 @@ public class Login extends javax.swing.JFrame {
         field_Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 field_UsuarioActionPerformed(evt);
-            }
-        });
-        field_Usuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                field_UsuarioKeyPressed(evt);
             }
         });
 
