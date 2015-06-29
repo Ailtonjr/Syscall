@@ -27,6 +27,7 @@ public class Chamado extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.numChamado = numChamado;
+        con = new Conexao();
         Consulta consulta = new Consulta();
         modelo = consulta.geraTabelaTopicos(numChamado);
         exibeListaClientes(consulta.geraListaClientes());
@@ -390,11 +391,11 @@ public class Chamado extends javax.swing.JDialog {
     }//GEN-LAST:event_formatted_HoraActionPerformed
 
     private void button_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalvarActionPerformed
-        int idCliente  = (con.consultaIdCliente((String) comboBox_Cliente.getSelectedItem()));
-        int idCategoria  = (con.consultaIdCategoria((String) comboBox_Categoria.getSelectedItem()));
-        String data = formatted_Data.getText();
-        String hora = formatted_Hora.getText();
-        con.inserirChamado(textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, hora);
+        //int idCliente  = (con.consultaIdCliente((String) comboBox_Cliente.getSelectedItem()));
+        //int idCategoria  = (con.consultaIdCategoria((String) comboBox_Categoria.getSelectedItem()));
+        //String data = formatted_Data.getText();
+        //String hora = formatted_Hora.getText();
+        con.atualizarChamado(numChamado,"sas", 1, 1, 1, "2015-06-01", "22:22:22");
     }//GEN-LAST:event_button_SalvarActionPerformed
 
     private void button_Editar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_Editar1ActionPerformed
