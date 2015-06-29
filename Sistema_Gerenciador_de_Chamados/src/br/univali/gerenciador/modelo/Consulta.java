@@ -28,17 +28,8 @@ public class Consulta {
 
     public boolean consultaLogin(String login, String senha) throws SQLException {
         rs = con.consultaLogin(login);
-        String vetor[] = null;
-
-        ResultSetMetaData rsmt = rs.getMetaData();
-        int qtdColunas = rsmt.getColumnCount();
-        vetor = new String[qtdColunas];
         rs.next();
-        for (int i = 1; i <= qtdColunas; i++) {
-            vetor[i - 1] = rs.getString(i);
-        }
-        con.encerrarConexao();
-        return vetor[0].equals(login) && vetor[1].equals(senha);
+        return rs.getString(1).equals(login) && rs.getString(2).equals(senha);
     }
 
     public DefaultTableModel geraTabelaChamados() {

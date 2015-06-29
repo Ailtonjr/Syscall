@@ -18,8 +18,6 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         
-        Conexao con = new Conexao();
-        con.inserirChamado("blabla", 1, 1, 1, "2015-05-10", "20:41:00");
     }
 
     private void tentarLogin() {
