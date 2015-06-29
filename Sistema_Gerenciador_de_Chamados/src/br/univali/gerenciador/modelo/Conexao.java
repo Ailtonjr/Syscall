@@ -12,9 +12,9 @@ import javax.swing.JOptionPane;
 
 public class Conexao {
 
-    private String url = "jdbc:postgresql://localhost:5432/db_chamado";
+    private String url = "jdbc:postgresql://localhost:5432/db_chamados";
     private String usuario = "postgres";
-    private String senha = "123";
+    private String senha = "7133";
     private Connection conexao;
     private PreparedStatement preparedStatement;
     private Statement statement;
@@ -504,7 +504,19 @@ public class Conexao {
             ex.printStackTrace();
         }
     }
-
+    
+    public void atualizaStatus(int id) {
+        String sql = "BEGIN;"
+                + "UPDATE chamado SET status = false WHERE id = " + id
+                + "COMMIT";
+        try {
+            statement.executeUpdate(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar chamado " + id + "para solucionado\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+    }
+    
     public void atualizarTopico(int id, int id_chamado, String descricao, int id_programador, String tempo_trabalhado) {
         String sql = "BEGIN;"
                 + "UPDATE topico SET id_chamado = ?, descricao = ?, id_programador = ?, tempo_trabalhado = ? WHERE id = ?;"
