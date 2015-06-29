@@ -6,11 +6,14 @@ import java.awt.Color;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,12 +30,13 @@ public class Chamado extends javax.swing.JDialog {
     String operacao = "editar";
     int IDUser;
     private Conexao con;
+    private DateFormat timeFormat;
 
     public Chamado(java.awt.Frame parent, boolean modal, int numChamado) {
 
         super(parent, modal);
         initComponents();
-        //formatted_Data.setFormats(new String[]{"dd/MM/yyyy"});
+        // Errado formatted_Data.setFormats(new String[]{"HH.mm.ss"});
         formatted_Data.setFormats(new String[]{"yyyy-MM-dd"});
         this.numChamado = numChamado;
         con = new Conexao();
@@ -47,7 +51,6 @@ public class Chamado extends javax.swing.JDialog {
         formatted_Data.setEnabled(false);
         formatted_Hora.setEnabled(false);
         textArea_Descricao.setEnabled(false);
-
     }
 
     public Chamado(JFrame parent, boolean modal, String operacao) {
@@ -77,7 +80,7 @@ public class Chamado extends javax.swing.JDialog {
             Logger.getLogger(Chamado.class.getName()).log(Level.SEVERE, null, ex);
         }
         formatted_Data.setDate(date);
-        formatted_Hora.setText(vetor[3]);
+        formatted_Hora.setValue(vetor[3]);
         if (vetor[4].equalsIgnoreCase("aberto")) {
             label_Status.setForeground(new Color(0, 153, 0));
         } else {
@@ -109,8 +112,6 @@ public class Chamado extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        formatted_Data1 = new javax.swing.JFormattedTextField();
         panel_Principal = new javax.swing.JPanel();
         label_Cliente = new javax.swing.JLabel();
         label_Categoria = new javax.swing.JLabel();
@@ -135,23 +136,6 @@ public class Chamado extends javax.swing.JDialog {
         button_SalvarChamado = new javax.swing.JButton();
         button_EditarChamado = new javax.swing.JButton();
         formatted_Data = new org.jdesktop.swingx.JXDatePicker();
-
-        formatted_Data1.setFocusCycleRoot(true);
-        formatted_Data1.setName(""); // NOI18N
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(formatted_Data1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(formatted_Data1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Chamados - Chamados");
@@ -256,37 +240,47 @@ public class Chamado extends javax.swing.JDialog {
             .addGroup(panel_PrincipalLayout.createSequentialGroup()
                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(scrollPane_Topicos, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(label_Separador1)
-                                        .addGap(13, 13, 13)
-                                        .addComponent(separator1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                            .addGap(588, 588, 588)
-                                            .addComponent(label_Status))
-                                        .addComponent(scrollPane_Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(label_Separador)
-                                        .addGap(13, 13, 13)
-                                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(button_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(27, 27, 27)
-                                                .addComponent(button_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(27, 27, 27)
-                                                .addComponent(button_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(panel_PrincipalLayout.createSequentialGroup()
                                 .addContainerGap()
+                                .addComponent(scrollPane_Topicos, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(label_Separador1)
+                                    .addGap(13, 13, 13)
+                                    .addComponent(separator1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                                        .addGap(588, 588, 588)
+                                        .addComponent(label_Status))
+                                    .addComponent(scrollPane_Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(label_Separador)
+                                    .addGap(13, 13, 13)
+                                    .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                                            .addGap(10, 10, 10)
+                                            .addComponent(button_Novo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(27, 27, 27)
+                                            .addComponent(button_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(27, 27, 27)
+                                            .addComponent(button_Excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comboBox_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label_Cliente))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_Categoria)
+                                    .addComponent(comboBox_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panel_PrincipalLayout.createSequentialGroup()
                                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label_Descricao)
                                     .addGroup(panel_PrincipalLayout.createSequentialGroup()
@@ -296,17 +290,8 @@ public class Chamado extends javax.swing.JDialog {
                                     .addGroup(panel_PrincipalLayout.createSequentialGroup()
                                         .addComponent(formatted_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(25, 25, 25)
-                                        .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboBox_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_Cliente))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_Categoria)
-                            .addComponent(comboBox_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -342,7 +327,7 @@ public class Chamado extends javax.swing.JDialog {
                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(formatted_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label_Descricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollPane_Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -392,17 +377,13 @@ public class Chamado extends javax.swing.JDialog {
         topico.setVisible(true);
     }//GEN-LAST:event_button_NovoActionPerformed
 
-    private void formatted_HoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatted_HoraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formatted_HoraActionPerformed
-
     private void button_SalvarChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalvarChamadoActionPerformed
-        int idCliente  = (con.consultaIdCliente((String) comboBox_Cliente.getSelectedItem()));
-        int idCategoria  = (con.consultaIdCategoria((String) comboBox_Categoria.getSelectedItem()));
+        int idCliente = (con.consultaIdCliente((String) comboBox_Cliente.getSelectedItem()));
+        int idCategoria = (con.consultaIdCategoria((String) comboBox_Categoria.getSelectedItem()));
         Date pega = formatted_Data.getDate();
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         String data = formato.format(pega);
-        con.atualizarChamado(numChamado, textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, "22:22:22");
+        con.atualizarChamado(numChamado, textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, formatted_Hora.getText());
     }//GEN-LAST:event_button_SalvarChamadoActionPerformed
 
     private void button_EditarChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarChamadoActionPerformed
@@ -413,6 +394,10 @@ public class Chamado extends javax.swing.JDialog {
         textArea_Descricao.setEnabled(true);
         button_SalvarChamado.setEnabled(true);
     }//GEN-LAST:event_button_EditarChamadoActionPerformed
+
+    private void formatted_HoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatted_HoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formatted_HoraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -443,11 +428,9 @@ public class Chamado extends javax.swing.JDialog {
     private javax.swing.JComboBox comboBox_Categoria;
     private javax.swing.JComboBox comboBox_Cliente;
     private org.jdesktop.swingx.JXDatePicker formatted_Data;
-    private javax.swing.JFormattedTextField formatted_Data1;
     private javax.swing.JFormattedTextField formatted_Hora;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel label_Categoria;
     private javax.swing.JLabel label_Cliente;
     private javax.swing.JLabel label_Data;

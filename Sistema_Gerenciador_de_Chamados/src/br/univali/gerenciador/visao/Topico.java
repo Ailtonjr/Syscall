@@ -7,7 +7,11 @@ package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +23,7 @@ public class Topico extends javax.swing.JDialog {
      * Creates new form Topico
      */
     private Conexao con;
-    private int numChamado;
+    private int IDChamado;
 
     public Topico(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
@@ -30,10 +34,10 @@ public class Topico extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         con = new Conexao();
-        this.numChamado = numChamado;
+        this.IDChamado = numChamado;
         Consulta consulta = new Consulta();
         exibeListaProgramadores(consulta.geraListaProgramadores());
-        
+
     }
 
     private void exibeListaProgramadores(List<String> lista) {
@@ -154,13 +158,22 @@ public class Topico extends javax.swing.JDialog {
     }//GEN-LAST:event_formattedTextField_HorasActionPerformed
 
     private void button_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_salvarActionPerformed
-        
-        if(checkBox_Solucionado.isSelected()){
-            //fecha chamado
+
+        if (checkBox_Solucionado.isSelected()) {
+            con.atualizaStatusChamado(IDChamado);
+
         }
-        int idProgramador  = (con.consultaIdProgramador((String) comboBox_Programador.getSelectedItem()));
-        con.inserirTopico(numChamado, textArea_Descricao.getText(),idProgramador, formattedTextField_Horas.getText());
-        
+        int idProgramador = (con.consultaIdProgramador((String) comboBox_Programador.getSelectedItem()));
+        try {
+            con.inserirTopico(IDChamado, textArea_Descricao.getText(), idProgramador, formattedTextField_Horas.getText());
+            JOptionPane.showMessageDialog(this, "Topico inserido com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao inserir topico", "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }catch (IllegalArgumentException illegalex) {
+            JOptionPane.showMessageDialog(this, "Erro ao inserir topico, Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_button_salvarActionPerformed
 
     /**

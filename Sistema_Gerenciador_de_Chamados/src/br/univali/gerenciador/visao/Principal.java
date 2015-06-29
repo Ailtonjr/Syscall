@@ -1,23 +1,25 @@
-
 package br.univali.gerenciador.visao;
 
+import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
 import javax.swing.table.DefaultTableModel;
 
-
 public class Principal extends javax.swing.JFrame {
-
 
     DefaultTableModel modelo;
     int idSelecionado;
     int IDUser;
-    
+    Conexao con;
+    Consulta consulta;
+
     public Principal() {
         initComponents();
-        Consulta consulta = new Consulta();
+        consulta = new Consulta();
         modelo = consulta.geraTabelaChamados();
         table_Chamados.setModel(modelo);
+        con = new Conexao();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -217,55 +219,57 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItem_ChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_ChamadoActionPerformed
-        Chamado chamado = new Chamado(this, true,"novo");
+        Chamado chamado = new Chamado(this, true, "novo");
         chamado.IDUser = IDUser;
         chamado.setVisible(true);
     }//GEN-LAST:event_menuItem_ChamadoActionPerformed
 
     private void menuItem_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_UsuarioActionPerformed
-        Usuario usuario = new Usuario(this,true);
+        Usuario usuario = new Usuario(this, true);
         usuario.setVisible(true);
     }//GEN-LAST:event_menuItem_UsuarioActionPerformed
 
     private void menuItem_ProgramadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_ProgramadorActionPerformed
-        Programador programador = new Programador(this,true);
+        Programador programador = new Programador(this, true);
         programador.setVisible(true);
     }//GEN-LAST:event_menuItem_ProgramadorActionPerformed
 
     private void menuItem_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_ClienteActionPerformed
-        Cliente cliente = new Cliente(this,true);
+        Cliente cliente = new Cliente(this, true);
         cliente.setVisible(true);
     }//GEN-LAST:event_menuItem_ClienteActionPerformed
 
     private void table_ChamadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_ChamadosMouseClicked
-        
+
         if (evt.getClickCount() == 1) {
             idSelecionado = Integer.parseInt((String) table_Chamados.getValueAt(table_Chamados.getSelectedRow(), 0));
-            //clienteSelecionado = (String) table_Clientes.getValueAt(table_Clientes.getSelectedRow(), 1);
+            button_Excluir.setEnabled(true);
         }
-        
+
         if (evt.getClickCount() == 2) {
             int id = Integer.parseInt((String) table_Chamados.getValueAt(table_Chamados.getSelectedRow(), 0));
             Chamado chamado = new Chamado(this, true, id);
             chamado.IDUser = IDUser;
             chamado.setVisible(true);
         }
-        
+
     }//GEN-LAST:event_table_ChamadosMouseClicked
 
     private void menuItem_CategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_CategoriaActionPerformed
-        Categoria categoria = new Categoria(this,true);
+        Categoria categoria = new Categoria(this, true);
         categoria.setVisible(true);
     }//GEN-LAST:event_menuItem_CategoriaActionPerformed
 
     private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
-        Chamado chamado = new Chamado(this,true,"novo");
+        Chamado chamado = new Chamado(this, true, "novo");
         chamado.IDUser = IDUser;
         chamado.setVisible(true);
     }//GEN-LAST:event_button_NovoActionPerformed
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-
+        con.removerChamado(idSelecionado);
+        modelo = consulta.geraTabelaChamados();
+        table_Chamados.setModel(modelo);
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
     private void comboBox_FiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox_FiltroActionPerformed

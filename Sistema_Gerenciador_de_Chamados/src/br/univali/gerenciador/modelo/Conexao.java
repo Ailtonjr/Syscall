@@ -1,24 +1,20 @@
 package br.univali.gerenciador.modelo;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Conexao {
 
-    private String url = "jdbc:postgresql://localhost:5432/db_chamados";
+    private String url = "jdbc:postgresql://localhost:5432/db_chamado";
     private String usuario = "postgres";
-    private String senha = "7133";
+    private String senha = "123";
     private Connection conexao;
     private PreparedStatement preparedStatement;
     private Statement statement;
@@ -147,11 +143,11 @@ public class Conexao {
         }
     }
 
-    public void inserirTopico(int id_chamado, String descricao, int id_programador, String tempo_trabalhado) {
+    public void inserirTopico(int id_chamado, String descricao, int id_programador, String tempo_trabalhado) throws SQLException, IllegalArgumentException {
         String sql = "BEGIN;"
                 + "INSERT INTO topico (id_chamado, descricao, id_programador, tempo_trabalhado) VALUES (?, ?, ?, ?);"
                 + "COMMIT";
-        try {
+        //try {
             preparedStatement = conexao.prepareStatement(sql);
             preparedStatement.setInt(1, id_chamado);
             preparedStatement.setString(2, descricao);
@@ -159,11 +155,11 @@ public class Conexao {
             preparedStatement.setTime(4, java.sql.Time.valueOf(tempo_trabalhado));
 
             preparedStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Topico inserido com sucesso!");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir topico", "Erro", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
-        }
+            //JOptionPane.showMessageDialog(null, "Topico inserido com sucesso!");
+        //} catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "Erro ao inserir topico", "Erro", JOptionPane.ERROR_MESSAGE);
+            //ex.printStackTrace();
+        //}
     }
 
     //Remoções
@@ -544,9 +540,9 @@ public class Conexao {
         }
     }
     
-    public void atualizaStatus(int id) {
+    public void atualizaStatusChamado(int id){
         String sql = "BEGIN;"
-                + "UPDATE chamado SET status = false WHERE id = " + id
+                + "UPDATE chamado SET status = false WHERE id = " + id +";"
                 + "COMMIT";
         try {
             statement.executeUpdate(sql);
