@@ -2,7 +2,6 @@ package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Consulta;
 import java.awt.event.KeyEvent;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +15,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-
+        field_Usuario.setText("joao");
+        field_Senha.setText("joao");
     }
 
     private void tentarLogin() {
@@ -26,7 +26,6 @@ public class Login extends javax.swing.JFrame {
 
             if (!login.equals("") && !senha.equals("")) {
                 String vetor[] = consulta.consultaLogin(login, senha);
-                System.out.println("Login "+ vetor[2]+"Senha "+ vetor[3]);
                 if (vetor[2].equals(login) && vetor[3].equals(senha)) {
                     this.setVisible(false);
                     Principal principal = new Principal();
