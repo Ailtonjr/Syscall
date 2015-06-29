@@ -507,7 +507,7 @@ public class Conexao {
     
     public void atualizaStatus(int id) {
         String sql = "BEGIN;"
-                + "UPDATE chamado SET status = false WHERE id = " + id
+                + "UPDATE chamado SET status = false WHERE id = " + id + ";"
                 + "COMMIT";
         try {
             statement.executeUpdate(sql);
