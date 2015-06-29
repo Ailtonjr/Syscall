@@ -1,5 +1,6 @@
 package br.univali.gerenciador.visao;
 
+import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
