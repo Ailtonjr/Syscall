@@ -158,7 +158,7 @@ public class Topico extends javax.swing.JDialog {
         if(checkBox_Solucionado.isSelected()){
             //fecha chamado
         }
-        int idProgramador  = (con.consultaIdProgramador((String) comboBox_Programador.getSelectedItem()));
+        int idProgramador  = (con.consultaIdCategoria((String) comboBox_Programador.getSelectedItem()));
         con.inserirTopico(numChamado, textArea_Descricao.getText(),idProgramador, formattedTextField_Horas.getText());
         
     }//GEN-LAST:event_button_salvarActionPerformed

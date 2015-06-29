@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,19 +27,23 @@ public class Consulta {
         this.con = new Conexao();
     }
 
-    public boolean consultaLogin(String login, String senha) throws SQLException {
-        rs = con.consultaLogin(login);
+    public String[] consultaLogin(String login, String senha) {
         String vetor[] = null;
 
-        ResultSetMetaData rsmt = rs.getMetaData();
-        int qtdColunas = rsmt.getColumnCount();
-        vetor = new String[qtdColunas];
-        rs.next();
-        for (int i = 1; i <= qtdColunas; i++) {
-            vetor[i - 1] = rs.getString(i);
+        try {
+            rs = con.consultaLogin(login);
+            ResultSetMetaData rsmt = rs.getMetaData();
+            int qtdColunas = rsmt.getColumnCount();
+            vetor = new String[qtdColunas];
+            rs.next();
+            for (int i = 1; i <= qtdColunas; i++) {
+                vetor[i - 1] = rs.getString(i);
+            }
+            con.encerrarConexao();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "'Usuário' ou 'Senha' Inválidos", "Erro de Login", JOptionPane.ERROR_MESSAGE);
         }
-        con.encerrarConexao();
-        return vetor[0].equals(login) && vetor[1].equals(senha);
+        return vetor;
     }
 
     public DefaultTableModel geraTabelaChamados() {
@@ -379,6 +384,7 @@ public class Consulta {
         }
         return lista;
     }
+
     public List<String> geraListaProgramadores() {
         rs = con.consultaProgramadores();
         List<String> lista = new ArrayList<>();

@@ -1,11 +1,15 @@
 package br.univali.gerenciador.modelo;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -43,7 +47,7 @@ public class Conexao {
     }
 
     public ResultSet consultaLogin(String login) throws SQLException {
-        String sql = "SELECT login,senha FROM usuario WHERE login = ?";
+        String sql = "SELECT * FROM usuario WHERE login = ?";
         ResultSet rs = null;
 
         preparedStatement = conexao.prepareStatement(sql);
@@ -135,7 +139,6 @@ public class Conexao {
             preparedStatement.setInt(5, id_usuario);
             preparedStatement.setDate(6, java.sql.Date.valueOf(data));
             preparedStatement.setTime(7, java.sql.Time.valueOf(hora));
-
             preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Chamado inserido com sucesso!");
         } catch (SQLException ex) {
@@ -340,14 +343,50 @@ public class Conexao {
         }
         return rs;
     }
-    
+
     public int consultaIdProgramador(String nome) {
-        String sql = "SELECT * FROM programador WHERE nome = '" + nome+"'";
+        String sql = "SELECT * FROM programador WHERE nome = '" + nome + "'";
         ResultSet rs = null;
         try {
             rs = statement.executeQuery(sql);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao consultar clientes\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro ao consultar IDProgramador\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        try {
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
+    public int consultaIdCategoria(String nome) {
+        String sql = "SELECT * FROM categoria WHERE nome = '" + nome + "'";
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar IDCategoria\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        try {
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
+    public int consultaIdCliente(String nome) {
+        String sql = "SELECT * FROM cliente WHERE nome = '" + nome + "'";
+        ResultSet rs = null;
+        try {
+            rs = statement.executeQuery(sql);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao consultar IDCliente\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
         try {
@@ -409,7 +448,7 @@ public class Conexao {
 
     // Atualizações
     public void atualizarUsuario(int id, String nome, String login, String senha) {
-    
+
         String sql = "BEGIN;"
                 + "UPDATE usuario SET nome = ?, login = ?, senha = ? WHERE id = ? ;"
                 + "COMMIT";
@@ -525,13 +564,12 @@ public class Conexao {
         }
     }
 
-
     //Relatorios
     public ResultSet relatorioProblemasReportados(String ano) {
-        String sql ="SELECT EXTRACT(MONTH FROM c.data ), count(id) as qtd " +
-                    "FROM chamado c " +
-                    "WHERE c.data BETWEEN '01/01/" + ano + "' AND '31/12/" + ano + "' " +
-                    "GROUP BY  EXTRACT(MONTH FROM c.data)";
+        String sql = "SELECT EXTRACT(MONTH FROM c.data ), count(id) as qtd "
+                + "FROM chamado c "
+                + "WHERE c.data BETWEEN '01/01/" + ano + "' AND '31/12/" + ano + "' "
+                + "GROUP BY  EXTRACT(MONTH FROM c.data)";
         ResultSet rs = null;
         try {
             rs = statement.executeQuery(sql);
@@ -541,11 +579,11 @@ public class Conexao {
         }
         return rs;
     }
-    
+
     public ResultSet relatorioChamadosCategoria(String inferior, String superior) {
-        String sql ="SELECT ca.nome, count(c.id) FROM chamado c RIGHT JOIN categoria ca ON(ca.id = c.id_categoria) \n" +
-                    "WHERE c.data BETWEEN ' "+ inferior + "' AND '" + superior + "'\n" +
-                    "GROUP BY ca.nome";
+        String sql = "SELECT ca.nome, count(c.id) FROM chamado c RIGHT JOIN categoria ca ON(ca.id = c.id_categoria) \n"
+                + "WHERE c.data BETWEEN ' " + inferior + "' AND '" + superior + "'\n"
+                + "GROUP BY ca.nome";
         ResultSet rs = null;
         try {
             rs = statement.executeQuery(sql);
@@ -555,7 +593,7 @@ public class Conexao {
         }
         return rs;
     }
-    
+
     public ResultSet relatorioGastoProblema() {
         String sql = "SELECT * FROM gasto_problema";
         ResultSet rs = null;
@@ -567,7 +605,7 @@ public class Conexao {
         }
         return rs;
     }
-    
+
     public ResultSet relatorioGastoCliente() {
         String sql = "SELECT * FROM gasto_cliente";
         ResultSet rs = null;
