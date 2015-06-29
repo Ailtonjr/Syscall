@@ -117,6 +117,7 @@ public class Chamado extends javax.swing.JDialog {
         separator1 = new javax.swing.JSeparator();
         label_Status = new javax.swing.JLabel();
         button_Salvar = new javax.swing.JButton();
+        button_Editar1 = new javax.swing.JButton();
 
         formatted_Data1.setFocusCycleRoot(true);
         formatted_Data1.setName(""); // NOI18N
@@ -222,10 +223,19 @@ public class Chamado extends javax.swing.JDialog {
         separator1.setName(""); // NOI18N
 
         button_Salvar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        button_Salvar.setText("Salvar Chamado");
+        button_Salvar.setText("Salvar");
         button_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_SalvarActionPerformed(evt);
+            }
+        });
+
+        button_Editar1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        button_Editar1.setText("Editar");
+        button_Editar1.setEnabled(false);
+        button_Editar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_Editar1ActionPerformed(evt);
             }
         });
 
@@ -286,11 +296,14 @@ public class Chamado extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label_Categoria)
-                            .addComponent(comboBox_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(button_Salvar)))
+                            .addComponent(comboBox_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(button_Editar1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(button_Salvar)
+                .addGap(253, 253, 253))
         );
         panel_PrincipalLayout.setVerticalGroup(
             panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,7 +336,11 @@ public class Chamado extends javax.swing.JDialog {
                 .addComponent(label_Descricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollPane_Descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(button_Salvar)
+                    .addComponent(button_Editar1))
+                .addGap(14, 14, 14)
                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_PrincipalLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -336,9 +353,7 @@ public class Chamado extends javax.swing.JDialog {
                     .addComponent(button_Excluir))
                 .addGap(18, 18, 18)
                 .addComponent(scrollPane_Topicos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(button_Salvar)
-                .addGap(23, 23, 23))
+                .addGap(54, 54, 54))
         );
 
         formatted_Data.getAccessibleContext().setAccessibleName("");
@@ -382,6 +397,10 @@ public class Chamado extends javax.swing.JDialog {
         con.inserirChamado(textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, hora);
     }//GEN-LAST:event_button_SalvarActionPerformed
 
+    private void button_Editar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_Editar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_Editar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -404,6 +423,7 @@ public class Chamado extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_Editar;
+    private javax.swing.JButton button_Editar1;
     private javax.swing.JButton button_Excluir;
     private javax.swing.JButton button_Novo;
     private javax.swing.JButton button_Salvar;

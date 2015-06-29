@@ -110,7 +110,6 @@ public class Consulta {
             modelo.addColumn("Descrição");
             modelo.addColumn("Programador");
             modelo.addColumn("Tempo Trabalhado");
-            modelo.addColumn("Status");
 
             while (rs.next()) {
 

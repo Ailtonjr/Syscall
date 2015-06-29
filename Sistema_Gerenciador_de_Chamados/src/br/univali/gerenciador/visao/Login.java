@@ -26,8 +26,8 @@ public class Login extends javax.swing.JFrame {
 
             if (!login.equals("") && !senha.equals("")) {
                 String vetor[] = consulta.consultaLogin(login, senha);
-                
-                if (vetor[1].equals(login) && vetor[2].equals(senha)) {
+                System.out.println("Login "+ vetor[2]+"Senha "+ vetor[3]);
+                if (vetor[2].equals(login) && vetor[3].equals(senha)) {
                     this.setVisible(false);
                     Principal principal = new Principal();
                     principal.IDUser = Integer.parseInt(vetor[0]);
