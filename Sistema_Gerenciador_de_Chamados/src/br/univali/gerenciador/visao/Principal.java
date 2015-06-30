@@ -8,11 +8,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRResultSetDataSource;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
+
 
 
 public class Principal extends javax.swing.JFrame {
@@ -239,9 +235,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuItem_ChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_ChamadoActionPerformed
-        Chamado chamado = new Chamado(this, true, "novo");
-        chamado.IDUser = IDUser;
-        chamado.setVisible(true);
+        button_Novo.doClick();
     }//GEN-LAST:event_menuItem_ChamadoActionPerformed
 
     private void menuItem_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_UsuarioActionPerformed
@@ -297,18 +291,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBox_FiltroActionPerformed
 
     private void menuItem_Relatorio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_Relatorio1ActionPerformed
-        ResultSet rs = con.relatorioGastoProblema();
-        JRResultSetDataSource result = new JRResultSetDataSource(rs);
-        Map parametros = new HashMap();
-        String relatorio = "Relatorios\\report1.jasper";
-        JasperPrint jasperPrint = null;            
-        try {
-            jasperPrint = JasperFillManager.fillReport(relatorio, parametros);
-        } catch (JRException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        JasperViewer view = new JasperViewer(jasperPrint, false);
-        view.setVisible(true);
+
         
     }//GEN-LAST:event_menuItem_Relatorio1ActionPerformed
 

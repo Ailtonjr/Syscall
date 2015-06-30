@@ -49,9 +49,14 @@ public class Chamado extends javax.swing.JDialog {
         initComponents();
         this.operacao = operacao;
         con = new Conexao();
-        Consulta consulta = new Consulta();
+        consulta = new Consulta();
         exibeListaClientes(consulta.geraListaClientes());
         exibeListaCategorias(consulta.geraListaCategorias());
+        button_EditarChamado.setEnabled(false);
+        button_SalvarChamado.setEnabled(true);
+        button_Novo.setEnabled(false);
+        button_Editar.setEnabled(false);
+        button_Excluir.setEnabled(false);
     }
 
     public Chamado(JFrame parent, boolean modal) {
@@ -123,6 +128,7 @@ public class Chamado extends javax.swing.JDialog {
         label_Categoria = new javax.swing.JLabel();
         label_Data = new javax.swing.JLabel();
         formatted_Hora = new javax.swing.JFormattedTextField();
+        formatted_Hora.setValue("00:00");
         label_Hora = new javax.swing.JLabel();
         label_Descricao = new javax.swing.JLabel();
         scrollPane_Topicos = new javax.swing.JScrollPane();
@@ -156,10 +162,12 @@ public class Chamado extends javax.swing.JDialog {
         label_Data.setText("Data");
 
         try {
-            formatted_Hora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##:##")));
+            formatted_Hora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        formatted_Hora.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        formatted_Hora.setPreferredSize(new java.awt.Dimension(22, 22));
 
         label_Hora.setText("Hora");
 
@@ -298,20 +306,18 @@ public class Chamado extends javax.swing.JDialog {
                                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label_Categoria)
                                     .addComponent(comboBox_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(label_Descricao)
                             .addGroup(panel_PrincipalLayout.createSequentialGroup()
                                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_Descricao)
+                                    .addComponent(label_Data)
+                                    .addComponent(formatted_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(label_Data)
-                                            .addComponent(formatted_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(28, 28, 28)
+                                        .addComponent(label_Hora))
+                                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
                                         .addGap(27, 27, 27)
-                                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                                .addGap(1, 1, 1)
-                                                .addComponent(label_Hora))
-                                            .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                        .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -439,7 +445,11 @@ public class Chamado extends javax.swing.JDialog {
         Date date = formatted_Data.getDate();
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         String data = formato.format(date);
-        con.atualizarChamado(numChamado, textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, formatted_Hora.getText());
+        if (operacao.equalsIgnoreCase("novo")) {
+            con.inserirChamado(textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, formatted_Hora.getText());
+        } else {
+            con.atualizarChamado(numChamado, textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, formatted_Hora.getText()+":00");
+        }
         setarBotoesSalvarChamado();
     }//GEN-LAST:event_button_SalvarChamadoActionPerformed
 
