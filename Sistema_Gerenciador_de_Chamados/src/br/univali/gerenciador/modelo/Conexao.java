@@ -43,7 +43,7 @@ public class Conexao {
     }
 
     public ResultSet consultaLogin(String login) throws SQLException {
-        String sql = "SELECT * FROM usuario WHERE login = ?";
+        String sql = "SELECT login, senha FROM usuario WHERE login = ?";
         ResultSet rs = null;
 
         preparedStatement = conexao.prepareStatement(sql);
@@ -542,7 +542,7 @@ public class Conexao {
     
     public void atualizaStatusChamado(int id){
         String sql = "BEGIN;"
-                + "UPDATE chamado SET status = false WHERE id = " + id +";"
+                + "UPDATE chamado SET status = false WHERE id = " + id + ";"
                 + "COMMIT";
         try {
             statement.executeUpdate(sql);

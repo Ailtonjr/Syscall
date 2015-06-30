@@ -27,23 +27,10 @@ public class Consulta {
         this.con = new Conexao();
     }
 
-    public String[] consultaLogin(String login, String senha) {
-        String vetor[] = null;
-
-        try {
-            rs = con.consultaLogin(login);
-            ResultSetMetaData rsmt = rs.getMetaData();
-            int qtdColunas = rsmt.getColumnCount();
-            vetor = new String[qtdColunas];
-            rs.next();
-            for (int i = 1; i <= qtdColunas; i++) {
-                vetor[i - 1] = rs.getString(i);
-            }
-            con.encerrarConexao();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "'Usuário' ou 'Senha' Inválidos", "Erro de Login", JOptionPane.ERROR_MESSAGE);
-        }
-        return vetor;
+    public boolean consultaLogin(String login, String senha) throws SQLException {
+        rs = con.consultaLogin(login);
+        rs.next();
+        return rs.getString(1).equals(login) && rs.getString(2).equals(senha);
     }
 
     public DefaultTableModel geraTabelaChamados() {
