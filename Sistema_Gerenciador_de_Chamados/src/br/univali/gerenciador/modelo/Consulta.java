@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,10 +26,13 @@ public class Consulta {
         this.con = new Conexao();
     }
 
-    public boolean consultaLogin(String login, String senha) throws SQLException {
+    public String consultaLogin(String login, String senha) throws SQLException {
         rs = con.consultaLogin(login);
         rs.next();
-        return rs.getString(1).equals(login) && rs.getString(2).equals(senha);
+        if (rs.getString(2).equals(login) && rs.getString(3).equals(senha)) {
+            return rs.getString(1);
+        }
+        return null;
     }
 
     public DefaultTableModel geraTabelaChamados() {

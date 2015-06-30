@@ -43,7 +43,7 @@ public class Conexao {
     }
 
     public ResultSet consultaLogin(String login) throws SQLException {
-        String sql = "SELECT login, senha FROM usuario WHERE login = ?";
+        String sql = "SELECT id, login, senha FROM usuario WHERE login = ?";
         ResultSet rs = null;
 
         preparedStatement = conexao.prepareStatement(sql);

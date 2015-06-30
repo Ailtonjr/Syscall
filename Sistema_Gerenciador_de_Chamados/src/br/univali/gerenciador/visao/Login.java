@@ -1,8 +1,10 @@
 package br.univali.gerenciador.visao;
 
-import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,21 +27,24 @@ public class Login extends javax.swing.JFrame {
         String login = field_Usuario.getText();
         String senha = field_Senha.getText();
 
-            if (!login.equals("") && !senha.equals("")) {
-                String vetor[] = consulta.consultaLogin(login, senha);
-                if (vetor[2].equals(login) && vetor[3].equals(senha)) {
+        if (!login.equals("") && !senha.equals("")) {
+            try {
+                String retorno = consulta.consultaLogin(login, senha);
+                if (retorno!=null) {
                     this.setVisible(false);
                     Principal principal = new Principal();
-                    principal.IDUser = Integer.parseInt(vetor[0]);
+                    principal.IDUser = Integer.parseInt(retorno);
                     principal.setVisible(true);
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "'Usuário' ou 'Senha' Inválidos", "Erro de Login", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Os campos 'Usuário' e 'Senha' não podem estar em branco", "Erro de Login", JOptionPane.ERROR_MESSAGE);
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Os campos 'Usuário' e 'Senha' não podem estar em branco", "Erro de Login", JOptionPane.ERROR_MESSAGE);
+        }
 
-        
     }
 
     /**
