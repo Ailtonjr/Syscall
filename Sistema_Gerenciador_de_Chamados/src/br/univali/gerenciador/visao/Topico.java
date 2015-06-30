@@ -64,6 +64,7 @@ public class Topico extends javax.swing.JDialog {
         label_Descricao = new javax.swing.JLabel();
         button_salvar = new javax.swing.JButton();
         formattedTextField_Horas = new javax.swing.JFormattedTextField();
+        formattedTextField_Horas.setValue("00:00");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Chamados - Novo Tópico");
@@ -89,15 +90,12 @@ public class Topico extends javax.swing.JDialog {
         });
 
         try {
-            formattedTextField_Horas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##:##")));
+            formattedTextField_Horas.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        formattedTextField_Horas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                formattedTextField_HorasActionPerformed(evt);
-            }
-        });
+        formattedTextField_Horas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        formattedTextField_Horas.setPreferredSize(new java.awt.Dimension(22, 22));
 
         javax.swing.GroupLayout panel_PrincipalLayout = new javax.swing.GroupLayout(panel_Principal);
         panel_Principal.setLayout(panel_PrincipalLayout);
@@ -112,7 +110,7 @@ public class Topico extends javax.swing.JDialog {
                         .addComponent(button_salvar)
                         .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                .addComponent(formattedTextField_Horas, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(formattedTextField_Horas, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(checkBox_Solucionado))
                             .addComponent(label_Programador, javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,9 +128,9 @@ public class Topico extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(label_HorasTrabalhadas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(checkBox_Solucionado)
-                    .addComponent(formattedTextField_Horas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(formattedTextField_Horas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(label_Descricao)
                 .addGap(1, 1, 1)
@@ -165,7 +163,7 @@ public class Topico extends javax.swing.JDialog {
         }
         int idProgramador = (con.consultaIdProgramador((String) comboBox_Programador.getSelectedItem()));
         try {
-            con.inserirTopico(IDChamado, textArea_Descricao.getText(), idProgramador, formattedTextField_Horas.getText());
+            con.inserirTopico(IDChamado, textArea_Descricao.getText(), idProgramador, formattedTextField_Horas.getText()+":00");
             JOptionPane.showMessageDialog(this, "Topico inserido com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao inserir topico", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -175,10 +173,6 @@ public class Topico extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_button_salvarActionPerformed
-
-    private void formattedTextField_HorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formattedTextField_HorasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formattedTextField_HorasActionPerformed
 
     /**
      * @param args the command line arguments
