@@ -573,11 +573,10 @@ public class Conexao {
     }
 
     //Relatorios
-    public ResultSet relatorioProblemasReportados(String ano) {
-        String sql = "SELECT EXTRACT(MONTH FROM c.data ), count(id) as qtd "
+    public ResultSet relatorioProblemasReportados() {
+        String sql = "SELECT EXTRACT(YEAR FROM c.data),EXTRACT(MONTH FROM c.data ), count(id) as qtd "
                 + "FROM chamado c "
-                + "WHERE c.data BETWEEN '01/01/" + ano + "' AND '31/12/" + ano + "' "
-                + "GROUP BY  EXTRACT(MONTH FROM c.data)";
+                + "GROUP BY  EXTRACT(YEAR FROM c.data),EXTRACT(MONTH FROM c.data) ORDER BY EXTRACT(YEAR FROM c.data),EXTRACT(MONTH FROM c.data)";
         ResultSet rs = null;
         try {
             rs = statement.executeQuery(sql);
