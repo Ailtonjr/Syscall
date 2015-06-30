@@ -222,7 +222,7 @@ public class Categoria extends javax.swing.JDialog {
     }//GEN-LAST:event_field_NomeActionPerformed
 
 //confirmar e clique na tabela
-    private void botoes1() {
+    private void setaBotoesConfirmar() {
         button_Novo.setEnabled(true);
         button_Editar.setEnabled(true);
         button_Excluir.setEnabled(true);
@@ -230,7 +230,7 @@ public class Categoria extends javax.swing.JDialog {
         field_Nome.setEnabled(false);
     }
     
-     private void botoes2(){
+     private void setaBotoesEditar(){
         button_Novo.setEnabled(false);
         button_Editar.setEnabled(false);
         button_Excluir.setEnabled(false);
@@ -254,11 +254,11 @@ public class Categoria extends javax.swing.JDialog {
         modelo = consulta.geraTabelaCategorias();
         tabela_Categorias.setModel(modelo);
         tabela_Categorias.setRowSelectionInterval(tabela_Categorias.getRowCount() - 1, tabela_Categorias.getRowCount() - 1);
-        botoes1();
+        setaBotoesConfirmar();
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
-        botoes2();
+        setaBotoesEditar();
         operacao = "editar";
     }//GEN-LAST:event_button_EditarActionPerformed
 
@@ -268,12 +268,12 @@ public class Categoria extends javax.swing.JDialog {
             categoriaSelecionada =  (String) tabela_Categorias.getValueAt(tabela_Categorias.getSelectedRow(), 1);
             String[] vetor = consulta.geraVisaoCategoria(idSelecionado);
             field_Nome.setText(vetor[1]);
-            botoes1();
+            setaBotoesConfirmar();
         }
     }//GEN-LAST:event_tabela_CategoriasMouseClicked
 
     private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
-        botoes2();
+        setaBotoesEditar();
         field_Nome.setText("");
         button_Confirmar.transferFocus();
         operacao = "novo";

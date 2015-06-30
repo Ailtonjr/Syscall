@@ -237,7 +237,7 @@ public class Programador extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
 //confirmar e clique na tabela
-    private void botoes1() {
+    private void setaBotoesConfirmar() {
         button_Novo.setEnabled(true);
         button_Editar.setEnabled(true);
         button_Excluir.setEnabled(true);
@@ -246,7 +246,7 @@ public class Programador extends javax.swing.JDialog {
         field_ValorHora.setEnabled(false);
     }
 
-    private void botoes2() {
+    private void setaBotoesEditar() {
         button_Novo.setEnabled(false);
         button_Editar.setEnabled(false);
         button_Excluir.setEnabled(false);
@@ -256,7 +256,7 @@ public class Programador extends javax.swing.JDialog {
     }
     private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
         operacao = "editar";
-        botoes2();
+        setaBotoesEditar();
     }//GEN-LAST:event_button_EditarActionPerformed
 
     private void button_ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ConfirmarActionPerformed
@@ -268,7 +268,7 @@ public class Programador extends javax.swing.JDialog {
         modelo = consulta.geraTabelaProgramadores();
         table_Programadores.setModel(modelo);
         table_Programadores.setRowSelectionInterval(table_Programadores.getRowCount() - 1, table_Programadores.getRowCount() - 1);
-        botoes1();
+        setaBotoesConfirmar();
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
@@ -286,11 +286,11 @@ public class Programador extends javax.swing.JDialog {
             field_Nome.setText(vetor[1]);
             field_ValorHora.setText(vetor[2]);
         }
-        botoes1();
+        setaBotoesConfirmar();
     }//GEN-LAST:event_table_ProgramadoresMouseClicked
 
     private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
-        botoes2();
+        setaBotoesEditar();
         field_Nome.setText("");
         field_ValorHora.setText("");
         button_Confirmar.transferFocus();

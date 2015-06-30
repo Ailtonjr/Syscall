@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 
 public class Conexao {
 
-    private String url = "jdbc:postgresql://localhost:5432/db_chamado";
-    private String usuario = "postgres";
+    private String url = "jdbc:postgresql://localhost:5432/db_chamados";
+    private String usuario = "us_chamados";
     private String senha = "123";
     private Connection conexao;
     private PreparedStatement preparedStatement;

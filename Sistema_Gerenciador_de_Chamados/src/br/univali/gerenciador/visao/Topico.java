@@ -9,8 +9,6 @@ import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -66,8 +64,10 @@ public class Topico extends javax.swing.JDialog {
         textArea_Descricao = new javax.swing.JTextArea();
         label_Descricao = new javax.swing.JLabel();
         button_salvar = new javax.swing.JButton();
+        formatted_Hora = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Sistema de Chamados - Novo Tópico");
         setResizable(false);
 
         label_Programador.setText("Programador");
@@ -95,6 +95,17 @@ public class Topico extends javax.swing.JDialog {
             }
         });
 
+        try {
+            formatted_Hora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        formatted_Hora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                formatted_HoraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_PrincipalLayout = new javax.swing.GroupLayout(panel_Principal);
         panel_Principal.setLayout(panel_PrincipalLayout);
         panel_PrincipalLayout.setHorizontalGroup(
@@ -109,6 +120,8 @@ public class Topico extends javax.swing.JDialog {
                         .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(panel_PrincipalLayout.createSequentialGroup()
                                 .addComponent(formattedTextField_Horas, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(checkBox_Solucionado))
                             .addComponent(label_Programador, javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +141,8 @@ public class Topico extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(formattedTextField_Horas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkBox_Solucionado))
+                    .addComponent(checkBox_Solucionado)
+                    .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(label_Descricao)
                 .addGap(1, 1, 1)
@@ -176,6 +190,10 @@ public class Topico extends javax.swing.JDialog {
 
     }//GEN-LAST:event_button_salvarActionPerformed
 
+    private void formatted_HoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatted_HoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formatted_HoraActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -200,6 +218,7 @@ public class Topico extends javax.swing.JDialog {
     private javax.swing.JCheckBox checkBox_Solucionado;
     private javax.swing.JComboBox comboBox_Programador;
     private javax.swing.JFormattedTextField formattedTextField_Horas;
+    private javax.swing.JFormattedTextField formatted_Hora;
     private javax.swing.JLabel label_Descricao;
     private javax.swing.JLabel label_HorasTrabalhadas;
     private javax.swing.JLabel label_Programador;
