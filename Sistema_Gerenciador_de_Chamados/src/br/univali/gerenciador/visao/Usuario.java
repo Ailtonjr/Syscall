@@ -8,7 +8,6 @@ package br.univali.gerenciador.visao;
 import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
 import javax.swing.table.DefaultTableModel;
-import static jdk.nashorn.internal.runtime.Debug.id;
 
 /**
  *
@@ -277,7 +276,7 @@ public class Usuario extends javax.swing.JDialog {
     }//GEN-LAST:event_field_LoginActionPerformed
 
 //confirmar e clique na tabela
-    private void botoes1() {
+    private void setaBotoesConfirmar() {
         button_Novo.setEnabled(true);
         button_Editar.setEnabled(true);
         button_Excluir.setEnabled(true);
@@ -287,7 +286,7 @@ public class Usuario extends javax.swing.JDialog {
         field_Senha.setEnabled(false);
     }
     
-     private void botoes2(){
+     private void setaBotoesEditar(){
         button_Novo.setEnabled(false);
         button_Editar.setEnabled(false);
         button_Excluir.setEnabled(false);
@@ -306,13 +305,12 @@ public class Usuario extends javax.swing.JDialog {
             field_Nome.setText(vetor[1]);
             field_Login.setText(vetor[2]);
             field_Senha.setText(vetor[3]);
-            botoes1();
-            
+            setaBotoesConfirmar();   
         }
     }//GEN-LAST:event_table_UsuariosMouseClicked
 
     private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
-        botoes2();
+        setaBotoesEditar();
         field_Nome.setText("");
         field_Login.setText("");
         field_Senha.setText("");
@@ -321,7 +319,7 @@ public class Usuario extends javax.swing.JDialog {
     }//GEN-LAST:event_button_NovoActionPerformed
 
     private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
-        botoes2();
+        setaBotoesEditar();
         operacao = "editar";
     }//GEN-LAST:event_button_EditarActionPerformed
 
@@ -344,7 +342,7 @@ public class Usuario extends javax.swing.JDialog {
         modelo = consulta.geraTabelaUsuarios();
         table_Usuarios.setModel(modelo);
         table_Usuarios.setRowSelectionInterval(table_Usuarios.getRowCount() - 1, table_Usuarios.getRowCount() - 1);
-        botoes1();
+        setaBotoesConfirmar();
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     /**

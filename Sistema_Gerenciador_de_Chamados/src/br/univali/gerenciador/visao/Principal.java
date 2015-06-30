@@ -15,9 +15,13 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         consulta = new Consulta();
+        con = new Conexao();
+        atualizaTabela();
+    }
+    
+    public void atualizaTabela(){
         modelo = consulta.geraTabelaChamados();
         table_Chamados.setModel(modelo);
-        con = new Conexao();
     }
 
     @SuppressWarnings("unchecked")
@@ -251,6 +255,7 @@ public class Principal extends javax.swing.JFrame {
             Chamado chamado = new Chamado(this, true, id);
             chamado.IDUser = IDUser;
             chamado.setVisible(true);
+            atualizaTabela();
         }
 
     }//GEN-LAST:event_table_ChamadosMouseClicked
@@ -268,8 +273,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
         con.removerChamado(idSelecionado);
-        modelo = consulta.geraTabelaChamados();
-        table_Chamados.setModel(modelo);
+        atualizaTabela();
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
     private void comboBox_FiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox_FiltroActionPerformed

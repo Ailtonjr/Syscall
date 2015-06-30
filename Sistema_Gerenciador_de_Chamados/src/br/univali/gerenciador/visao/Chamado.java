@@ -6,14 +6,11 @@ import java.awt.Color;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,19 +25,21 @@ public class Chamado extends javax.swing.JDialog {
     private DefaultTableModel modelo;
     private int numChamado;
     String operacao = "editar";
-    int IDUser;
     private Conexao con;
-    private DateFormat timeFormat;
+    Consulta consulta;
+    int idSelecionado;
+    int IDUser;
+    
+    
 
     public Chamado(java.awt.Frame parent, boolean modal, int numChamado) {
-
         super(parent, modal);
         initComponents();
-        // Errado formatted_Data.setFormats(new String[]{"HH.mm.ss"});
-        formatted_Data.setFormats(new String[]{"yyyy-MM-dd"});
+        
+
         this.numChamado = numChamado;
         con = new Conexao();
-        Consulta consulta = new Consulta();
+        consulta = new Consulta();
         modelo = consulta.geraTabelaTopicos(numChamado);
         exibeListaClientes(consulta.geraListaClientes());
         exibeListaCategorias(consulta.geraListaCategorias());
@@ -136,6 +135,7 @@ public class Chamado extends javax.swing.JDialog {
         button_SalvarChamado = new javax.swing.JButton();
         button_EditarChamado = new javax.swing.JButton();
         formatted_Data = new org.jdesktop.swingx.JXDatePicker();
+        formatted_Data.setFormats(new String[]{"yyyy-MM-dd"});
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Chamados - Chamados");
@@ -153,11 +153,6 @@ public class Chamado extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        formatted_Hora.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                formatted_HoraActionPerformed(evt);
-            }
-        });
 
         label_Hora.setText("Hora");
 
@@ -174,6 +169,11 @@ public class Chamado extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        table_Topicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_TopicosMouseClicked(evt);
+            }
+        });
         scrollPane_Topicos.setViewportView(table_Topicos);
 
         separator.setForeground(new java.awt.Color(153, 153, 153));
@@ -188,9 +188,10 @@ public class Chamado extends javax.swing.JDialog {
         textArea_Descricao.setRows(5);
         scrollPane_Descricao.setViewportView(textArea_Descricao);
 
-        comboBox_Categoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        comboBox_Categoria.setSelectedItem(null);
 
-        comboBox_Cliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        comboBox_Cliente.setSelectedItem(null);
+        comboBox_Cliente.setToolTipText("");
 
         button_Novo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Novo.setText("Novo");
@@ -203,10 +204,20 @@ public class Chamado extends javax.swing.JDialog {
         button_Editar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Editar.setText("Editar");
         button_Editar.setEnabled(false);
+        button_Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_EditarActionPerformed(evt);
+            }
+        });
 
         button_Excluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         button_Excluir.setText("Excluir");
         button_Excluir.setEnabled(false);
+        button_Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_ExcluirActionPerformed(evt);
+            }
+        });
 
         label_Separador1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         label_Separador1.setForeground(new java.awt.Color(102, 102, 102));
@@ -284,13 +295,15 @@ public class Chamado extends javax.swing.JDialog {
                                 .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label_Descricao)
                                     .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                        .addComponent(label_Data)
-                                        .addGap(104, 104, 104)
-                                        .addComponent(label_Hora))
-                                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
-                                        .addComponent(formatted_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(25, 25, 25)
-                                        .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(label_Data)
+                                            .addComponent(formatted_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(27, 27, 27)
+                                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                                                .addGap(1, 1, 1)
+                                                .addComponent(label_Hora))
+                                            .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_PrincipalLayout.createSequentialGroup()
@@ -316,17 +329,19 @@ public class Chamado extends javax.swing.JDialog {
                     .addComponent(label_Cliente)
                     .addComponent(label_Categoria))
                 .addGap(6, 6, 6)
-                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboBox_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBox_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_Data)
-                    .addComponent(label_Hora))
-                .addGap(4, 4, 4)
-                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(formatted_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                        .addGroup(panel_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboBox_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboBox_Categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(label_Data)
+                        .addGap(4, 4, 4)
+                        .addComponent(formatted_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_PrincipalLayout.createSequentialGroup()
+                        .addComponent(label_Hora)
+                        .addGap(4, 4, 4)
+                        .addComponent(formatted_Hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label_Descricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -372,6 +387,37 @@ public class Chamado extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setarBotoesConfirmar() {
+        button_Novo.setEnabled(true);
+        button_Editar.setEnabled(true);
+        button_Excluir.setEnabled(true);
+    }
+    
+    private void setarBotoesExcuir() {
+        button_Editar.setEnabled(false);
+        button_Excluir.setEnabled(false);
+    }
+    
+    private void setarBotoesEditarChamado(){
+        comboBox_Categoria.setEnabled(true);
+        comboBox_Cliente.setEnabled(true);
+        formatted_Data.setEnabled(true);
+        formatted_Hora.setEnabled(true);
+        textArea_Descricao.setEnabled(true);
+        button_SalvarChamado.setEnabled(true);
+        button_EditarChamado.setEnabled(false);
+    }
+    
+    private void setarBotoesSalvarChamado(){
+        comboBox_Categoria.setEnabled(false);
+        comboBox_Cliente.setEnabled(false);
+        formatted_Data.setEnabled(false);
+        formatted_Hora.setEnabled(false);
+        textArea_Descricao.setEnabled(false);
+        button_SalvarChamado.setEnabled(false);
+        button_EditarChamado.setEnabled(true);
+    }
+    
     private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
         Topico topico = new Topico(this, true, numChamado);
         topico.setVisible(true);
@@ -380,24 +426,34 @@ public class Chamado extends javax.swing.JDialog {
     private void button_SalvarChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalvarChamadoActionPerformed
         int idCliente = (con.consultaIdCliente((String) comboBox_Cliente.getSelectedItem()));
         int idCategoria = (con.consultaIdCategoria((String) comboBox_Categoria.getSelectedItem()));
-        Date pega = formatted_Data.getDate();
+        Date date = formatted_Data.getDate();
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        String data = formato.format(pega);
+        String data = formato.format(date);
         con.atualizarChamado(numChamado, textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, formatted_Hora.getText());
+        setarBotoesSalvarChamado();
     }//GEN-LAST:event_button_SalvarChamadoActionPerformed
 
     private void button_EditarChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarChamadoActionPerformed
-        comboBox_Categoria.setEnabled(true);
-        comboBox_Cliente.setEnabled(true);
-        formatted_Data.setEnabled(true);
-        formatted_Hora.setEnabled(true);
-        textArea_Descricao.setEnabled(true);
-        button_SalvarChamado.setEnabled(true);
+        setarBotoesEditarChamado();
     }//GEN-LAST:event_button_EditarChamadoActionPerformed
 
-    private void formatted_HoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatted_HoraActionPerformed
+    private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
+        con.removerTopico(idSelecionado);
+        modelo = consulta.geraTabelaTopicos(numChamado);
+        table_Topicos.setModel(modelo);
+        setarBotoesExcuir();
+    }//GEN-LAST:event_button_ExcluirActionPerformed
+
+    private void table_TopicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_TopicosMouseClicked
+        if (evt.getClickCount() == 1) {
+            idSelecionado = Integer.parseInt((String) table_Topicos.getValueAt(table_Topicos.getSelectedRow(), 0));
+        }
+        setarBotoesConfirmar();
+    }//GEN-LAST:event_table_TopicosMouseClicked
+
+    private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_formatted_HoraActionPerformed
+    }//GEN-LAST:event_button_EditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -429,8 +485,6 @@ public class Chamado extends javax.swing.JDialog {
     private javax.swing.JComboBox comboBox_Cliente;
     private org.jdesktop.swingx.JXDatePicker formatted_Data;
     private javax.swing.JFormattedTextField formatted_Hora;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel label_Categoria;
     private javax.swing.JLabel label_Cliente;
     private javax.swing.JLabel label_Data;

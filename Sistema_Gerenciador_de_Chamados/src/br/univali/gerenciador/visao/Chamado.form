@@ -107,16 +107,20 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="label_Descricao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="label_Descricao" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="label_Data" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="104" pref="104" max="-2" attributes="0"/>
-                                          <Component id="label_Hora" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="formatted_Data" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                          <Component id="formatted_Hora" min="-2" pref="56" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="label_Data" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="formatted_Data" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                                  <Component id="label_Hora" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="formatted_Hora" alignment="0" min="-2" pref="56" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -153,20 +157,23 @@
                       <Component id="label_Cliente" min="-2" max="-2" attributes="0"/>
                       <Component id="label_Categoria" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="comboBox_Cliente" min="-2" max="-2" attributes="0"/>
-                      <Component id="comboBox_Categoria" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="label_Data" min="-2" max="-2" attributes="0"/>
-                      <Component id="label_Hora" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="formatted_Hora" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="formatted_Data" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="comboBox_Cliente" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboBox_Categoria" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="label_Data" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                          <Component id="formatted_Data" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="label_Hora" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                          <Component id="formatted_Hora" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="label_Descricao" min="-2" max="-2" attributes="0"/>
@@ -220,9 +227,6 @@
               <Format format="##:##:##" subtype="-1" type="5"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="formatted_HoraActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="label_Hora">
           <Properties>
@@ -279,6 +283,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="table_TopicosMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -320,19 +327,22 @@
         <Component class="javax.swing.JComboBox" name="comboBox_Categoria">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value=" "/>
-              </StringArray>
+              <StringArray count="0"/>
+            </Property>
+            <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="null" type="code"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboBox_Cliente">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value=" "/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
+            <Property name="selectedItem" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="null" type="code"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="button_Novo">
@@ -354,6 +364,9 @@
             <Property name="text" type="java.lang.String" value="Editar"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_EditarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="button_Excluir">
           <Properties>
@@ -363,6 +376,9 @@
             <Property name="text" type="java.lang.String" value="Excluir"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_ExcluirActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="label_Separador1">
           <Properties>
@@ -410,6 +426,9 @@
           </Events>
         </Component>
         <Component class="org.jdesktop.swingx.JXDatePicker" name="formatted_Data">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="        formatted_Data.setFormats(new String[]{&quot;yyyy-MM-dd&quot;});"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
