@@ -50,8 +50,6 @@
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="formattedTextField_Horas" min="-2" pref="56" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="formatted_Hora" min="-2" pref="56" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="checkBox_Solucionado" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -76,9 +74,8 @@
                   <Component id="label_HorasTrabalhadas" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="formattedTextField_Horas" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="checkBox_Solucionado" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="formatted_Hora" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="formattedTextField_Horas" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="label_Descricao" min="-2" max="-2" attributes="0"/>
@@ -108,11 +105,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Horas Trabalhadas"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="formattedTextField_Horas">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="formattedTextField_HorasActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="checkBox_Solucionado">
           <Properties>
@@ -147,14 +139,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_salvarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="formatted_Hora">
+        <Component class="javax.swing.JFormattedTextField" name="formattedTextField_Horas">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##:##:##" subtype="-1" type="5"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="formatted_HoraActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="formattedTextField_HorasActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

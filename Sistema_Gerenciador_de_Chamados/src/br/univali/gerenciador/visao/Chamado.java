@@ -29,8 +29,6 @@ public class Chamado extends javax.swing.JDialog {
     Consulta consulta;
     int idSelecionado;
     int IDUser;
-    
-    
 
     public Chamado(java.awt.Frame parent, boolean modal, int numChamado) {
         super(parent, modal);
@@ -38,18 +36,12 @@ public class Chamado extends javax.swing.JDialog {
         this.numChamado = numChamado;
         con = new Conexao();
         consulta = new Consulta();
-        modelo = consulta.geraTabelaTopicos(numChamado);
+        atualizaTabela();
         exibeListaClientes(consulta.geraListaClientes());
         exibeListaCategorias(consulta.geraListaCategorias());
-        exibeChamado(consulta.geraVisaoChamado(numChamado));
-        table_Topicos.setModel(modelo);
+        exibeChamado();
         setarBotoesSalvarChamado();
-        if (label_Status.getText().equalsIgnoreCase("Aberto")) {
-            System.out.println("Esta aberto");
-        } else {
-            System.out.println("Esta fechado");
-            button_EditarChamado.setEnabled(false);
-        }
+        verificaStatus();
     }
 
     public Chamado(JFrame parent, boolean modal, String operacao) {
@@ -67,7 +59,17 @@ public class Chamado extends javax.swing.JDialog {
         initComponents();
     }
 
-    private void exibeChamado(String[] vetor) {
+    private void verificaStatus() {
+        if (label_Status.getText().equalsIgnoreCase("Fechado")) {
+            button_EditarChamado.setEnabled(false);
+            button_Novo.setEnabled(false);
+            button_Editar.setEnabled(false);
+            button_Excluir.setEnabled(false);
+        }
+    }
+
+    private void exibeChamado() {
+        String[] vetor = consulta.geraVisaoChamado(numChamado);
         comboBox_Cliente.setSelectedItem(vetor[0]);
         comboBox_Categoria.setSelectedItem(vetor[1]);
         System.out.println("Data " + vetor[2]);
@@ -100,6 +102,11 @@ public class Chamado extends javax.swing.JDialog {
         for (String item : lista) {
             comboBox_Categoria.addItem(item);
         }
+    }
+
+    public void atualizaTabela() {
+        modelo = consulta.geraTabelaTopicos(numChamado);
+        table_Topicos.setModel(modelo);
     }
 
     /**
@@ -392,13 +399,13 @@ public class Chamado extends javax.swing.JDialog {
         button_Editar.setEnabled(true);
         button_Excluir.setEnabled(true);
     }
-    
+
     private void setarBotoesExcuir() {
         button_Editar.setEnabled(false);
         button_Excluir.setEnabled(false);
     }
-    
-    private void setarBotoesEditarChamado(){
+
+    private void setarBotoesEditarChamado() {
         comboBox_Categoria.setEnabled(true);
         comboBox_Cliente.setEnabled(true);
         formatted_Data.setEnabled(true);
@@ -407,8 +414,8 @@ public class Chamado extends javax.swing.JDialog {
         button_SalvarChamado.setEnabled(true);
         button_EditarChamado.setEnabled(false);
     }
-    
-    private void setarBotoesSalvarChamado(){
+
+    private void setarBotoesSalvarChamado() {
         comboBox_Categoria.setEnabled(false);
         comboBox_Cliente.setEnabled(false);
         formatted_Data.setEnabled(false);
@@ -417,10 +424,13 @@ public class Chamado extends javax.swing.JDialog {
         button_SalvarChamado.setEnabled(false);
         button_EditarChamado.setEnabled(true);
     }
-    
+
     private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
         Topico topico = new Topico(this, true, numChamado);
         topico.setVisible(true);
+        exibeChamado();
+        atualizaTabela();
+        verificaStatus();
     }//GEN-LAST:event_button_NovoActionPerformed
 
     private void button_SalvarChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalvarChamadoActionPerformed
@@ -439,16 +449,17 @@ public class Chamado extends javax.swing.JDialog {
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
         con.removerTopico(idSelecionado);
-        modelo = consulta.geraTabelaTopicos(numChamado);
-        table_Topicos.setModel(modelo);
         setarBotoesExcuir();
+        atualizaTabela();
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
     private void table_TopicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_TopicosMouseClicked
         if (evt.getClickCount() == 1) {
             idSelecionado = Integer.parseInt((String) table_Topicos.getValueAt(table_Topicos.getSelectedRow(), 0));
+            setarBotoesConfirmar();
+            verificaStatus();
         }
-        setarBotoesConfirmar();
+
     }//GEN-LAST:event_table_TopicosMouseClicked
 
     private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed

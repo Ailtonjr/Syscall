@@ -245,7 +245,7 @@ public class Conexao {
     public ResultSet consultaChamados(String parametro) {
         //String sql = "SELECT * FROM chamado WHERE " + parametro;
 
-        String sql = "SELECT ch.id, c.nome, ct.nome, ch.data, ch.hora, status FROM chamado ch join cliente c on (c.id = ch.id_cliente) join categoria ct on (ct.id = ch.id_categoria) WHERE " + parametro;
+        String sql = "SELECT ch.id, c.nome, ct.nome, ch.data, ch.hora, status FROM chamado ch join cliente c on (c.id = ch.id_cliente) join categoria ct on (ct.id = ch.id_categoria) WHERE " + parametro + " ORDER BY ch.status DESC";
         ResultSet rs = null;
         try {
             rs = statement.executeQuery(sql);
