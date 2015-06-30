@@ -57,6 +57,8 @@ public class Chamado extends javax.swing.JDialog {
         button_Novo.setEnabled(false);
         button_Editar.setEnabled(false);
         button_Excluir.setEnabled(false);
+        modelo = new DefaultTableModel(null, new String[]{"ID","Cliente","Categoria","Data","Hora","Status"});
+        table_Topicos.setModel(modelo);
     }
 
     public Chamado(JFrame parent, boolean modal) {
@@ -175,15 +177,27 @@ public class Chamado extends javax.swing.JDialog {
 
         table_Topicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Cliente", "Categoria", "Data", "Hora", "Status"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         table_Topicos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 table_TopicosMouseClicked(evt);
@@ -435,8 +449,9 @@ public class Chamado extends javax.swing.JDialog {
         Topico topico = new Topico(this, true, numChamado);
         topico.setVisible(true);
         exibeChamado();
-        atualizaTabela();
         verificaStatus();
+        atualizaTabela();
+        
     }//GEN-LAST:event_button_NovoActionPerformed
 
     private void button_SalvarChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalvarChamadoActionPerformed
@@ -446,9 +461,9 @@ public class Chamado extends javax.swing.JDialog {
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         String data = formato.format(date);
         if (operacao.equalsIgnoreCase("novo")) {
-            con.inserirChamado(textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, formatted_Hora.getText()+":00");
+            con.inserirChamado(textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, formatted_Hora.getText() + ":00");
         } else {
-            con.atualizarChamado(numChamado, textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, formatted_Hora.getText()+":00");
+            con.atualizarChamado(numChamado, textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, formatted_Hora.getText() + ":00");
         }
         setarBotoesSalvarChamado();
     }//GEN-LAST:event_button_SalvarChamadoActionPerformed

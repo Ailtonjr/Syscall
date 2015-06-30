@@ -35,8 +35,17 @@ public class Consulta {
         return null;
     }
 
-    public DefaultTableModel geraTabelaChamados() {
-        rs = con.consultaChamados("status = true or status = false");
+    public DefaultTableModel geraTabelaChamados(String filtro) {
+        switch (filtro) {
+            case "Concluidos":
+                rs = con.consultaChamados("status = false");
+                break;
+            case "Abertos":
+                rs = con.consultaChamados("status = true");
+                break;
+            default:
+                rs = con.consultaChamados("status = true or status = false");
+        }
         modelo = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int col) {
@@ -44,10 +53,7 @@ public class Consulta {
             }
         };
         try {
-            ResultSetMetaData rsmt = rs.getMetaData();
-            int qtdColunas = rsmt.getColumnCount();
-            String vetor[] = new String[qtdColunas];
-
+            String vetor[] = new String[6];
             modelo.addColumn("ID");
             modelo.addColumn("Cliente");
             modelo.addColumn("Categoria");
@@ -57,7 +63,7 @@ public class Consulta {
 
             while (rs.next()) {
 
-                for (int i = 1; i <= qtdColunas; i++) {
+                for (int i = 1; i <= 6; i++) {
                     if (i == 6) {
                         if (rs.getString(i).equalsIgnoreCase("t")) {
                             vetor[i - 1] = "Aberto";

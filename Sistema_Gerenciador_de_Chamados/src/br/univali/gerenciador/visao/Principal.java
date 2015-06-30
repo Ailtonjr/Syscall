@@ -2,11 +2,6 @@ package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
-import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -23,11 +18,11 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         consulta = new Consulta();
         con = new Conexao();
-        atualizaTabela();
+        atualizaTabela(comboBox_Filtro.getSelectedItem().toString());
     }
 
-    public void atualizaTabela() {
-        modelo = consulta.geraTabelaChamados();
+    public void atualizaTabela(String filtro) {
+        modelo = consulta.geraTabelaChamados(filtro);
         table_Chamados.setModel(modelo);
     }
 
@@ -94,7 +89,8 @@ public class Principal extends javax.swing.JFrame {
         });
         scrollPane_Chamados.setViewportView(table_Chamados);
 
-        comboBox_Filtro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Somente Abertos", "Somente Concluidos", "Todos" }));
+        comboBox_Filtro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Concluidos", "Abertos", "Todos" }));
+        comboBox_Filtro.setSelectedIndex(2);
         comboBox_Filtro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBox_FiltroActionPerformed(evt);
@@ -265,7 +261,7 @@ public class Principal extends javax.swing.JFrame {
             Chamado chamado = new Chamado(this, true, id);
             chamado.IDUser = IDUser;
             chamado.setVisible(true);
-            atualizaTabela();
+            atualizaTabela(comboBox_Filtro.getSelectedItem().toString());
         }
 
     }//GEN-LAST:event_table_ChamadosMouseClicked
@@ -279,15 +275,17 @@ public class Principal extends javax.swing.JFrame {
         Chamado chamado = new Chamado(this, true, "novo");
         chamado.IDUser = IDUser;
         chamado.setVisible(true);
+        atualizaTabela(comboBox_Filtro.getSelectedItem().toString());
     }//GEN-LAST:event_button_NovoActionPerformed
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
         con.removerChamado(idSelecionado);
-        atualizaTabela();
+        atualizaTabela(comboBox_Filtro.getSelectedItem().toString());
+        button_Excluir.setEnabled(false);
     }//GEN-LAST:event_button_ExcluirActionPerformed
 
     private void comboBox_FiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox_FiltroActionPerformed
-        // TODO add your handling code here:
+        atualizaTabela(comboBox_Filtro.getSelectedItem().toString());
     }//GEN-LAST:event_comboBox_FiltroActionPerformed
 
     private void menuItem_Relatorio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_Relatorio1ActionPerformed

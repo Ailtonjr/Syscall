@@ -231,11 +231,12 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
-                <StringItem index="0" value="Somente Abertos"/>
-                <StringItem index="1" value="Somente Concluidos"/>
+                <StringItem index="0" value="Concluidos"/>
+                <StringItem index="1" value="Abertos"/>
                 <StringItem index="2" value="Todos"/>
               </StringArray>
             </Property>
+            <Property name="selectedIndex" type="int" value="2"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboBox_FiltroActionPerformed"/>
