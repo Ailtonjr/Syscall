@@ -35,8 +35,6 @@ public class Chamado extends javax.swing.JDialog {
     public Chamado(java.awt.Frame parent, boolean modal, int numChamado) {
         super(parent, modal);
         initComponents();
-        
-
         this.numChamado = numChamado;
         con = new Conexao();
         consulta = new Consulta();
@@ -45,11 +43,13 @@ public class Chamado extends javax.swing.JDialog {
         exibeListaCategorias(consulta.geraListaCategorias());
         exibeChamado(consulta.geraVisaoChamado(numChamado));
         table_Topicos.setModel(modelo);
-        comboBox_Cliente.setEnabled(false);
-        comboBox_Categoria.setEnabled(false);
-        formatted_Data.setEnabled(false);
-        formatted_Hora.setEnabled(false);
-        textArea_Descricao.setEnabled(false);
+        setarBotoesSalvarChamado();
+        if (label_Status.getText().equalsIgnoreCase("Aberto")) {
+            System.out.println("Esta aberto");
+        } else {
+            System.out.println("Esta fechado");
+            button_EditarChamado.setEnabled(false);
+        }
     }
 
     public Chamado(JFrame parent, boolean modal, String operacao) {

@@ -72,6 +72,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Relatorio 1"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem_Relatorio1ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Relatorio2">
               <Properties>

@@ -2,7 +2,18 @@ package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
+import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
 
 public class Principal extends javax.swing.JFrame {
 
@@ -18,8 +29,8 @@ public class Principal extends javax.swing.JFrame {
         con = new Conexao();
         atualizaTabela();
     }
-    
-    public void atualizaTabela(){
+
+    public void atualizaTabela() {
         modelo = consulta.geraTabelaChamados();
         table_Chamados.setModel(modelo);
     }
@@ -189,6 +200,11 @@ public class Principal extends javax.swing.JFrame {
         menu_Relatorio.setText("Relatórios");
 
         menuItem_Relatorio1.setText("Relatorio 1");
+        menuItem_Relatorio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_Relatorio1ActionPerformed(evt);
+            }
+        });
         menu_Relatorio.add(menuItem_Relatorio1);
 
         menuItem_Relatorio2.setText("Relatorio 2");
@@ -279,6 +295,22 @@ public class Principal extends javax.swing.JFrame {
     private void comboBox_FiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox_FiltroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBox_FiltroActionPerformed
+
+    private void menuItem_Relatorio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_Relatorio1ActionPerformed
+        ResultSet rs = con.relatorioGastoProblema();
+        JRResultSetDataSource result = new JRResultSetDataSource(rs);
+        Map parametros = new HashMap();
+        String relatorio = "Relatorios\\report1.jasper";
+        JasperPrint jasperPrint = null;            
+        try {
+            jasperPrint = JasperFillManager.fillReport(relatorio, parametros);
+        } catch (JRException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JasperViewer view = new JasperViewer(jasperPrint, false);
+        view.setVisible(true);
+        
+    }//GEN-LAST:event_menuItem_Relatorio1ActionPerformed
 
     /**
      * @param args the command line arguments
