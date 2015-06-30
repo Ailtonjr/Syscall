@@ -33,6 +33,7 @@ public class Programador extends javax.swing.JDialog {
         con = new Conexao();
         modelo = consulta.geraTabelaProgramadores();
         table_Programadores.setModel(modelo);
+        System.out.println("teste");
     }
 
     /**
