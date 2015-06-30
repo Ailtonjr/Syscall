@@ -446,7 +446,7 @@ public class Chamado extends javax.swing.JDialog {
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         String data = formato.format(date);
         if (operacao.equalsIgnoreCase("novo")) {
-            con.inserirChamado(textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, formatted_Hora.getText());
+            con.inserirChamado(textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, formatted_Hora.getText()+":00");
         } else {
             con.atualizarChamado(numChamado, textArea_Descricao.getText(), idCategoria, idCliente, IDUser, data, formatted_Hora.getText()+":00");
         }
