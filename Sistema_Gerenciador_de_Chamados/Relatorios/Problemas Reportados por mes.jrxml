@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fc1c0fdb-e192-4d06-b512-49bfe950cc42">
-	<property name="ireport.zoom" value="1.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="555" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fc1c0fdb-e192-4d06-b512-49bfe950cc42">
+	<property name="ireport.zoom" value="1.610510000000001"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
@@ -18,19 +18,19 @@
 		<groupHeader>
 			<band height="40">
 				<textField>
-					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#000000" uuid="1377094c-389e-4d78-b2d0-4cadc7aa3a58"/>
+					<reportElement style="SubTitle" x="37" y="8" width="506" height="24" forecolor="#000000" uuid="1377094c-389e-4d78-b2d0-4cadc7aa3a58"/>
 					<textElement>
 						<font isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{ano}.intValue()]]></textFieldExpression>
 				</textField>
 				<rectangle>
-					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="6751abef-489a-47f3-a98f-72e55d062e62"/>
+					<reportElement mode="Opaque" x="11" y="15" width="10" height="10" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="6751abef-489a-47f3-a98f-72e55d062e62"/>
 				</rectangle>
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="6"/>
+			<band height="2"/>
 		</groupFooter>
 	</group>
 	<group name="mes">
@@ -38,7 +38,7 @@
 		<groupHeader>
 			<band height="30">
 				<textField>
-					<reportElement style="SubTitle" x="0" y="4" width="460" height="20" uuid="4e655539-75f7-40c8-a5bb-5c52e37d8547"/>
+					<reportElement style="SubTitle" x="84" y="11" width="275" height="19" uuid="4e655539-75f7-40c8-a5bb-5c52e37d8547"/>
 					<textElement>
 						<font size="16" isBold="true"/>
 					</textElement>
@@ -66,6 +66,10 @@
     )
 )]]></textFieldExpression>
 				</textField>
+				<textField>
+					<reportElement style="Detail" x="489" y="12" width="54" height="15" uuid="a0e4ca0d-2473-4544-8022-56b9f2eb2c0c"/>
+					<textFieldExpression><![CDATA[$F{qtd}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupHeader>
 	</group>
@@ -79,13 +83,13 @@
 				<imageExpression><![CDATA["leaf_banner_gray.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="6efae56c-96c2-4291-8f31-3c39056b8492"/>
+				<reportElement style="Title" x="11" y="13" width="252" height="33" uuid="6efae56c-96c2-4291-8f31-3c39056b8492"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Leaf Gray Title]]></text>
+				<text><![CDATA[Relatório]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="dd6e0ae1-7c76-4990-a4fd-0f42ad1466cb"/>
-				<text><![CDATA[Leaf Gray SubTitle]]></text>
+				<reportElement style="SubTitle" x="42" y="46" width="164" height="22" uuid="dd6e0ae1-7c76-4990-a4fd-0f42ad1466cb"/>
+				<text><![CDATA[Chamados por mês]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -101,27 +105,31 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="0" y="19" width="555" height="15" uuid="630261ab-d530-49cc-8c95-5774dc8aaf63"/>
-				<text><![CDATA[qtd]]></text>
+				<reportElement style="Column header" x="456" y="20" width="68" height="15" uuid="630261ab-d530-49cc-8c95-5774dc8aaf63"/>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="11" y="21" width="31" height="15" uuid="b28e2c57-8784-47c9-8c53-aec31d62a1e7"/>
+				<text><![CDATA[Ano]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="84" y="21" width="68" height="15" uuid="513c5807-a256-42cf-8dfd-f0c5019eaeb6"/>
+				<text><![CDATA[Mês]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="16" splitType="Stretch">
+		<band height="18" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="44390074-39d4-4356-ac6f-029d22802199"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
-			<textField>
-				<reportElement style="Detail" x="0" y="0" width="555" height="15" uuid="a0e4ca0d-2473-4544-8022-56b9f2eb2c0c"/>
-				<textFieldExpression><![CDATA[$F{qtd}]]></textFieldExpression>
-			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch">
+		<band height="11" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="61b9c7fb-3c79-4faf-af4b-b7d2f392daac"/>
 				<graphicElement>

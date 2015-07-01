@@ -352,8 +352,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItem_Relatorio2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        DatasRelatorio datasRelatorio = new DatasRelatorio(this,true);
-        datasRelatorio.setVisible(true);
+        DatasRelatorio dataRelatorio = new DatasRelatorio();
+        dataRelatorio.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
