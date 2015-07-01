@@ -352,15 +352,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItem_Relatorio2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-//        JasperPrint jasperPrint = null;
-//        try {
-//            HashMap map = new HashMap();
-//            String arquivoJasper = "relatorios/Problemas Reportados por mes.jasper";
-//            jasperPrint = JasperFillManager.fillReport(arquivoJasper, new HashMap(), con.relatorioProblemasReportados());
-//        } catch (JRException e) {
-//            JOptionPane.showMessageDialog(null, e.getMessage());
-//        }
-//        JasperViewer.viewReport(jasperPrint, false);
+        DatasRelatorio datasRelatorio = new DatasRelatorio(this,true);
+        datasRelatorio.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**

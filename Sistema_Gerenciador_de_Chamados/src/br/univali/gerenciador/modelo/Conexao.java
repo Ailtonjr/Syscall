@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
 import org.postgresql.util.PSQLException;
 
 public class Conexao {
@@ -578,55 +579,63 @@ public class Conexao {
     }
 
     //Relatorios
-    public ResultSet relatorioProblemasReportados() {
-        String sql = "SELECT EXTRACT(YEAR FROM c.data),EXTRACT(MONTH FROM c.data ), count(id) as qtd "
+    public JRResultSetDataSource relatorioProblemasReportados() {
+        String sql = "SELECT EXTRACT(YEAR FROM c.data) as ano,EXTRACT(MONTH FROM c.data ) as mes, count(id) as qtd "
                 + "FROM chamado c "
                 + "GROUP BY  EXTRACT(YEAR FROM c.data),EXTRACT(MONTH FROM c.data) ORDER BY EXTRACT(YEAR FROM c.data),EXTRACT(MONTH FROM c.data)";
         ResultSet rs = null;
+        JRResultSetDataSource jrRS = null;
         try {
             rs = statement.executeQuery(sql);
+            jrRS = new JRResultSetDataSource(rs);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao consultar Relatorio de problemas reportados\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
-        return rs;
+        return jrRS;
     }
 
-    public ResultSet relatorioChamadosCategoria(String inferior, String superior) {
+    public JRResultSetDataSource relatorioChamadosCategoria(String inferior, String superior) {
         String sql = "SELECT ca.nome, count(c.id) FROM chamado c RIGHT JOIN categoria ca ON(ca.id = c.id_categoria) \n"
                 + "WHERE c.data BETWEEN ' " + inferior + "' AND '" + superior + "'\n"
                 + "GROUP BY ca.nome";
         ResultSet rs = null;
+        JRResultSetDataSource jrRS = null;
         try {
             rs = statement.executeQuery(sql);
+            jrRS = new JRResultSetDataSource(rs);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao consultar Relatorio de chamados por categoria\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
-        return rs;
+        return jrRS;
     }
 
-    public ResultSet relatorioGastoProblema() {
+    public JRResultSetDataSource relatorioGastoProblema() {
         String sql = "SELECT * FROM gasto_problema";
         ResultSet rs = null;
+        JRResultSetDataSource jrRS = null;
         try {
             rs = statement.executeQuery(sql);
+            jrRS = new JRResultSetDataSource(rs);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao consultar Relatorio de gasto por problema\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
-        return rs;
+        return jrRS;
     }
 
-    public ResultSet relatorioGastoCliente() {
+    public JRResultSetDataSource relatorioGastoCliente() {
         String sql = "SELECT * FROM gasto_cliente";
         ResultSet rs = null;
+        JRResultSetDataSource jrRS = null;
         try {
             rs = statement.executeQuery(sql);
+            jrRS = new JRResultSetDataSource(rs);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao consultar Relatorio de gasto com clientes\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
-        return rs;
+        return jrRS;
     }
 }

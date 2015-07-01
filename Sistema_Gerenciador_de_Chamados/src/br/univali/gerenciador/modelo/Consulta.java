@@ -34,7 +34,8 @@ public class Consulta {
         }
         return null;
     }
-
+    
+    // Gerar Tabelas
     public DefaultTableModel geraTabelaChamados(String filtro) {
         switch (filtro) {
             case "Concluidos":
@@ -78,7 +79,6 @@ public class Consulta {
 
                 }
                 modelo.addRow(vetor);
-                System.out.println();
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -97,9 +97,7 @@ public class Consulta {
             }
         };
         try {
-            ResultSetMetaData rsmt = rs.getMetaData();
-            int qtdColunas = rsmt.getColumnCount();
-            String vetor[] = new String[qtdColunas];
+            String vetor[] = new String[4];
 
             modelo.addColumn("ID");
             modelo.addColumn("Descrição");
@@ -108,7 +106,7 @@ public class Consulta {
 
             while (rs.next()) {
 
-                for (int i = 1; i <= qtdColunas; i++) {
+                for (int i = 1; i <= 4; i++) {
                     if (i == 5) {
                         if (rs.getString(i).equalsIgnoreCase("f")) {
                             vetor[i - 1] = "Aberto";
@@ -123,7 +121,6 @@ public class Consulta {
 
                 }
                 modelo.addRow(vetor);
-                System.out.println();
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -142,20 +139,17 @@ public class Consulta {
             }
         };
         try {
-            ResultSetMetaData rsmt = rs.getMetaData();
-            int qtdColunas = rsmt.getColumnCount();
-            String vetor[] = new String[qtdColunas];
+            String vetor[] = new String[3];
 
             modelo.addColumn("ID");
             modelo.addColumn("Nome");
             modelo.addColumn("E-Mail");
 
             while (rs.next()) {
-                for (int i = 1; i <= qtdColunas; i++) {
+                for (int i = 1; i <= 3; i++) {
                     vetor[i - 1] = rs.getString(i);
                 }
                 modelo.addRow(vetor);
-                System.out.println();
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -174,19 +168,16 @@ public class Consulta {
             }
         };
         try {
-            ResultSetMetaData rsmt = rs.getMetaData();
-            int qtdColunas = rsmt.getColumnCount();
-            String vetor[] = new String[qtdColunas];
+            String vetor[] = new String[2];
 
             modelo.addColumn("ID");
             modelo.addColumn("Nome");
 
             while (rs.next()) {
-                for (int i = 1; i <= qtdColunas; i++) {
+                for (int i = 1; i <= 2; i++) {
                     vetor[i - 1] = rs.getString(i);
                 }
                 modelo.addRow(vetor);
-                System.out.println();
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -207,16 +198,13 @@ public class Consulta {
         modelo.addColumn("Nome");
         modelo.addColumn("Login");
         try {
-            ResultSetMetaData rsmt = rs.getMetaData();
-            int qtdColunas = rsmt.getColumnCount();
-            String vetor[] = new String[qtdColunas];
+            String vetor[] = new String[3];
 
             while (rs.next()) {
-                for (int i = 1; i <= qtdColunas; i++) {
+                for (int i = 1; i <= 3; i++) {
                     vetor[i - 1] = rs.getString(i);
                 }
                 modelo.addRow(vetor);
-                System.out.println();
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -234,20 +222,17 @@ public class Consulta {
             }
         };
         try {
-            ResultSetMetaData rsmt = rs.getMetaData();
-            int qtdColunas = rsmt.getColumnCount();
-            String vetor[] = new String[qtdColunas];
+            String vetor[] = new String[3];
 
             modelo.addColumn("ID");
             modelo.addColumn("Nome");
             modelo.addColumn("Valor Hora");
 
             while (rs.next()) {
-                for (int i = 1; i <= qtdColunas; i++) {
+                for (int i = 1; i <= 3; i++) {
                     vetor[i - 1] = rs.getString(i);
                 }
                 modelo.addRow(vetor);
-                System.out.println();
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -255,7 +240,7 @@ public class Consulta {
 
         return modelo;
     }
-
+    //Gerar Modelos para compor as visoes das telas
     public String[] geraVisaoChamado(int idChamado) {
         rs = con.consultaChamado(idChamado);
         String vetor[] = null;
@@ -353,6 +338,7 @@ public class Consulta {
         return vetor;
     }
 
+    // Gerar Listas para os combobox
     public List<String> geraListaClientes() {
         rs = con.consultaClientes();
         List<String> lista = new ArrayList<>();
