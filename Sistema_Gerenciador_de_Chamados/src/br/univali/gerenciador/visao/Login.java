@@ -24,8 +24,9 @@ public class Login extends javax.swing.JFrame {
         if (!login.equals("") && !senha.equals("")) {
             try {
                 String retorno = consulta.consultaLogin(login, senha);
-                if (retorno!=null) {
+                if (retorno != null) {
                     this.setVisible(false);
+                    
                     Principal principal = new Principal();
                     principal.IDUser = Integer.parseInt(retorno);
                     principal.setVisible(true);
