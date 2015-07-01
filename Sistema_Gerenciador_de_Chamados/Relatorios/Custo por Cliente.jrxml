@@ -27,11 +27,11 @@
 					<reportElement mode="Opaque" x="13" y="20" width="11" height="9" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="fb2a9dc0-8c67-4326-9cd7-cef1a7fefc25"/>
 				</rectangle>
 				<textField>
-					<reportElement style="Detail" x="510" y="22" width="50" height="15" uuid="a0fe5ff0-d9c9-4e74-8c9e-123de9c63933"/>
-					<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+					<reportElement style="Detail" x="515" y="22" width="50" height="15" uuid="a0fe5ff0-d9c9-4e74-8c9e-123de9c63933"/>
+					<textFieldExpression><![CDATA[$F{valor} == null ? "0" : $F{valor}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement style="Column header" x="488" y="22" width="34" height="15" uuid="988eeac4-064c-487e-9492-771edc697b0a"/>
+					<reportElement style="Column header" x="493" y="22" width="34" height="15" uuid="988eeac4-064c-487e-9492-771edc697b0a"/>
 					<text><![CDATA[R$]]></text>
 				</staticText>
 			</band>
@@ -47,16 +47,16 @@
 		<band height="70" splitType="Stretch">
 			<image>
 				<reportElement mode="Transparent" x="263" y="0" width="300" height="70" backcolor="#000000" uuid="b7f089a4-6c6c-4f9d-8f1b-705b198fcca7"/>
-				<imageExpression><![CDATA["sobreRelatorio.png"]]></imageExpression>
+				<imageExpression><![CDATA["leaf_banner_gray.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="0e989acc-bb80-47d3-ba89-bde9355cc43f"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Relatório de Gasto]]></text>
+				<text><![CDATA[Relatório]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="516ceb33-4f1b-48ea-9216-0a5aa7af3ba7"/>
-				<text><![CDATA[Por Cliente]]></text>
+				<reportElement style="SubTitle" x="40" y="46" width="170" height="22" uuid="516ceb33-4f1b-48ea-9216-0a5aa7af3ba7"/>
+				<text><![CDATA[Custo Por Cliente]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -72,11 +72,11 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="522" y="20" width="34" height="15" uuid="074a6496-b3b3-47e0-bad4-07f6f0e3d257"/>
+				<reportElement style="Column header" x="493" y="20" width="34" height="15" uuid="074a6496-b3b3-47e0-bad4-07f6f0e3d257"/>
 				<text><![CDATA[valor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="2" y="13" width="105" height="22" uuid="714c5e4b-8b0f-4cec-a8c2-7982542fe526"/>
+				<reportElement style="Column header" x="12" y="21" width="105" height="15" uuid="714c5e4b-8b0f-4cec-a8c2-7982542fe526"/>
 				<text><![CDATA[Cliente]]></text>
 			</staticText>
 		</band>
