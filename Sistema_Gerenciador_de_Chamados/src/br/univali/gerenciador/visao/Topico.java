@@ -168,7 +168,7 @@ public class Topico extends javax.swing.JDialog {
 
     private void button_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_salvarActionPerformed
         if (checkBox_Solucionado.isSelected()) {
-            //con.atualizaStatusChamado(idChamado);
+            con.atualizaStatusChamado(idChamado);
         }
         int idProgramador = (con.consultaIdProgramador((String) comboBox_Programador.getSelectedItem()));
         if (operacao.equalsIgnoreCase("novo")) {

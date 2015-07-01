@@ -569,7 +569,7 @@ public class Conexao {
             preparedStatement.setInt(5, id);
 
             preparedStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Topico " + id + " atualizado com sucesso!");
+            //JOptionPane.showMessageDialog(null, "Topico " + id + " atualizado com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar topico " + id + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
