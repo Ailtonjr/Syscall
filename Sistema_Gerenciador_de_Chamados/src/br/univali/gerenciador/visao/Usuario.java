@@ -1,29 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Ailton Cardoso Jr
- */
-public class Usuario extends javax.swing.JDialog {
 
-    /**
-     * Creates new form NovoCliente
-     */
-    DefaultTableModel modelo;
-    Consulta consulta;
-    String operacao;
-    Conexao con;
-    int idSelecionado;
-    String loginSelecionado;
+public class Usuario extends javax.swing.JDialog {
+    private DefaultTableModel modelo;
+    private Consulta consulta;
+    private String operacao;
+    private Conexao con;
+    private int idSelecionado;
+    private String loginSelecionado;
 
     public Usuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -69,31 +58,16 @@ public class Usuario extends javax.swing.JDialog {
 
         field_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         field_Nome.setEnabled(false);
-        field_Nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_NomeActionPerformed(evt);
-            }
-        });
 
         label_Login.setText("Login");
 
         field_Login.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         field_Login.setEnabled(false);
-        field_Login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_LoginActionPerformed(evt);
-            }
-        });
 
         label_Senha.setText("Senha");
 
         field_Senha.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         field_Senha.setEnabled(false);
-        field_Senha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_SenhaActionPerformed(evt);
-            }
-        });
 
         table_Usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -263,17 +237,6 @@ public class Usuario extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void field_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_NomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_NomeActionPerformed
-
-    private void field_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_SenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_SenhaActionPerformed
-
-    private void field_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_LoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_LoginActionPerformed
 
 //confirmar e clique na tabela
     private void setaBotoesConfirmar() {

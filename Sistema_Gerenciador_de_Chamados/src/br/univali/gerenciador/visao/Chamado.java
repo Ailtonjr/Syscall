@@ -15,22 +15,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author iPotter
- */
-public class Chamado extends javax.swing.JDialog {
 
-    /**
-     * Creates new form Chamado
-     */
+public class Chamado extends javax.swing.JDialog {
     private DefaultTableModel modelo;
     private int numChamado;
-    String operacao = "editar";
+    private String operacao = "editar";
     private Conexao con;
-    Consulta consulta;
-    int idSelecionado;
-    int IDUser;
+    private Consulta consulta;
+    private int idSelecionado;
+    public int IDUser;
 
     public Chamado(java.awt.Frame parent, boolean modal, int numChamado) {
         super(parent, modal);
@@ -525,9 +518,7 @@ public class Chamado extends javax.swing.JDialog {
         categoria.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
 
         /* Create and display the dialog */

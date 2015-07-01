@@ -5,17 +5,12 @@ import br.univali.gerenciador.modelo.Consulta;
 import javax.swing.table.DefaultTableModel;
 
 public class Cliente extends javax.swing.JDialog {
-
-    /**
-     * Creates new form NovoCliente
-     */
-    DefaultTableModel modelo;
-    Consulta consulta;
-    Conexao con;
-    int idSelecionado;
-    String clienteSelecionado;
-
-    String operacao;
+    private DefaultTableModel modelo;
+    private Consulta consulta;
+    private Conexao con;
+    private int idSelecionado;
+    private String clienteSelecionado;
+    private String operacao;
 
     public Cliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

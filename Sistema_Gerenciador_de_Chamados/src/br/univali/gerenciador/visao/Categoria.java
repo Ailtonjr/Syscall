@@ -6,13 +6,12 @@ import javax.swing.table.DefaultTableModel;
 
 public class Categoria extends javax.swing.JDialog {
 
-    DefaultTableModel modelo;
-    Consulta consulta;
-    Conexao con;
-    int idSelecionado;
-    String categoriaSelecionada;
-    
-    String operacao;
+    private DefaultTableModel modelo;
+    private Consulta consulta;
+    private Conexao con;
+    private int idSelecionado;
+    private String categoriaSelecionada;
+    private String operacao;
 
     public Categoria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -144,15 +143,6 @@ public class Categoria extends javax.swing.JDialog {
 
         label_Nome.setText("Nome");
 
-        field_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        field_Nome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        field_Nome.setEnabled(false);
-        field_Nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_NomeActionPerformed(evt);
-            }
-        });
-
         separator.setForeground(new java.awt.Color(153, 153, 153));
         separator.setToolTipText("");
         separator.setName(""); // NOI18N
@@ -226,11 +216,8 @@ public class Categoria extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void field_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_NomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_NomeActionPerformed
 
-//confirmar e clique na tabela
+// Confirmar e clique na tabela
     private void setaBotoesConfirmar() {
         button_Novo.setEnabled(true);
         button_Editar.setEnabled(true);
