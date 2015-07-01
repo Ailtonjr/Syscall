@@ -44,6 +44,11 @@ public class DatasRelatorio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setText("Data inicio");
 
@@ -146,6 +151,10 @@ public class DatasRelatorio extends javax.swing.JFrame {
         }
         JasperViewer.viewReport(jasperPrint, false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        con.encerrarConexao();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

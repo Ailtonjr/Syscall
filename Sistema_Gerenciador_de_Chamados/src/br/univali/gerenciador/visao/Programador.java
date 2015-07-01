@@ -52,6 +52,11 @@ public class Programador extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         panel_Principal.setToolTipText("");
         panel_Principal.setMaximumSize(new java.awt.Dimension(480, 420));
@@ -287,6 +292,10 @@ public class Programador extends javax.swing.JDialog {
         button_Confirmar.transferFocus();
         operacao = "novo";
     }//GEN-LAST:event_button_NovoActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        con.encerrarConexao();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

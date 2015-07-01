@@ -62,6 +62,11 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Chamados - Início");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         table_Chamados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -370,6 +375,10 @@ public class Principal extends javax.swing.JFrame {
         con.encerrarConexao();
         new Login().setVisible(true);
     }//GEN-LAST:event_menu_SairMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        con.encerrarConexao();
+    }//GEN-LAST:event_formWindowClosing
 
 
     public static void main(String args[]) {

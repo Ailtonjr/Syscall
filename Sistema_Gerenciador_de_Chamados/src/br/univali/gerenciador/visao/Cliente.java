@@ -58,6 +58,11 @@ public class Cliente extends javax.swing.JDialog {
         setTitle("Sistema de Chamados - Clientes");
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         panel_Principal.setToolTipText("");
         panel_Principal.setMaximumSize(new java.awt.Dimension(480, 420));
@@ -302,6 +307,10 @@ public class Cliente extends javax.swing.JDialog {
     private void field_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_EmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_field_EmailActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        con.encerrarConexao();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

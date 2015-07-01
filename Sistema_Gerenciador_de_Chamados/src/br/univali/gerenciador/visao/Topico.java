@@ -80,6 +80,11 @@ public class Topico extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Chamados - Novo Tópico");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         label_Programador.setText("Programador");
 
@@ -191,6 +196,10 @@ public class Topico extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_button_salvarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        con.encerrarConexao();
+    }//GEN-LAST:event_formWindowClosing
 
 
     public static void main(String args[]) {

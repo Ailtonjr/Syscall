@@ -57,6 +57,11 @@ public class Categoria extends javax.swing.JDialog {
         setTitle("Sistema de Chamados - Clientes");
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         panel_Principal.setToolTipText("");
         panel_Principal.setMaximumSize(new java.awt.Dimension(480, 420));
@@ -142,6 +147,10 @@ public class Categoria extends javax.swing.JDialog {
         }
 
         label_Nome.setText("Nome");
+
+        field_Nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        field_Nome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        field_Nome.setEnabled(false);
 
         separator.setForeground(new java.awt.Color(153, 153, 153));
         separator.setToolTipText("");
@@ -274,6 +283,10 @@ public class Categoria extends javax.swing.JDialog {
         button_Confirmar.transferFocus();
         operacao = "novo";
     }//GEN-LAST:event_button_NovoActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        con.encerrarConexao();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

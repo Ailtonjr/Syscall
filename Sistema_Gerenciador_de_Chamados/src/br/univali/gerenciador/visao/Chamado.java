@@ -152,6 +152,11 @@ public class Chamado extends javax.swing.JDialog {
         setTitle("Sistema de Chamados - Chamados");
         setAlwaysOnTop(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         label_Cliente.setText("Cliente");
 
@@ -517,6 +522,10 @@ public class Chamado extends javax.swing.JDialog {
         Categoria categoria = new Categoria(this, true);
         categoria.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        con.encerrarConexao();
+    }//GEN-LAST:event_formWindowClosing
 
 
     public static void main(String args[]) {

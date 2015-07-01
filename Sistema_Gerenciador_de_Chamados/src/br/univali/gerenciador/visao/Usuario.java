@@ -53,6 +53,11 @@ public class Usuario extends javax.swing.JDialog {
         setTitle("Sistema de Chamados - Usuários");
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         label_Nome.setText("Nome");
 
@@ -307,6 +312,10 @@ public class Usuario extends javax.swing.JDialog {
         table_Usuarios.setRowSelectionInterval(table_Usuarios.getRowCount() - 1, table_Usuarios.getRowCount() - 1);
         setaBotoesConfirmar();
     }//GEN-LAST:event_button_ConfirmarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        con.encerrarConexao();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
