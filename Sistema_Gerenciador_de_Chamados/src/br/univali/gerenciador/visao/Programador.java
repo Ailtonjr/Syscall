@@ -1,34 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author iPotter
- */
+
 public class Programador extends javax.swing.JDialog {
 
-    /**
-     * Creates new form NewJDialog
-     */
-    DefaultTableModel modelo;
-    Consulta consulta;
-    Conexao con;
-    int idSelecionado;
-    String ProgramadorSelecionado;
-
-    String operacao;
+    private DefaultTableModel modelo;
+    private Consulta consulta;
+    private Conexao con;
+    private int idSelecionado;
+    private String programadorSelecionado;
+    private String operacao;
     
     public Programador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setTitle("Programadores");
         consulta = new Consulta();
         con = new Conexao();
         modelo = consulta.geraTabelaProgramadores();
@@ -273,7 +263,7 @@ public class Programador extends javax.swing.JDialog {
     }//GEN-LAST:event_button_ConfirmarActionPerformed
 
     private void button_ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ExcluirActionPerformed
-        con.removerProgramador(idSelecionado, ProgramadorSelecionado);
+        con.removerProgramador(idSelecionado, programadorSelecionado);
         modelo = consulta.geraTabelaProgramadores();
         table_Programadores.setModel(modelo);
         button_Novo.doClick();
@@ -282,7 +272,7 @@ public class Programador extends javax.swing.JDialog {
     private void table_ProgramadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_ProgramadoresMouseClicked
         if (evt.getClickCount() == 1) {
             idSelecionado = Integer.parseInt((String) table_Programadores.getValueAt(table_Programadores.getSelectedRow(), 0));
-            ProgramadorSelecionado =  (String) table_Programadores.getValueAt(table_Programadores.getSelectedRow(), 1);
+            programadorSelecionado =  (String) table_Programadores.getValueAt(table_Programadores.getSelectedRow(), 1);
             String[] vetor = consulta.geraVisaoProgramador(idSelecionado);
             field_Nome.setText(vetor[1]);
             field_ValorHora.setText(vetor[2]);

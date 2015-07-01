@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
@@ -11,15 +7,8 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author iPotter
- */
-public class Topico extends javax.swing.JDialog {
 
-    /**
-     * Creates new form Topico
-     */
+public class Topico extends javax.swing.JDialog {
     private Conexao con;
     private int IDChamado;
 
@@ -174,9 +163,7 @@ public class Topico extends javax.swing.JDialog {
 
     }//GEN-LAST:event_button_salvarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {

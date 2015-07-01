@@ -71,16 +71,13 @@ public class Consulta {
                     } else {
                         vetor[i - 1] = rs.getString(i);
                     }
-
                 }
                 modelo.addRow(vetor);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return modelo;
-
     }
 
     public DefaultTableModel geraTabelaTopicos(int idChamado) {

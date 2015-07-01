@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
-import static br.univali.gerenciador.modelo.Conexao.con;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,15 +11,8 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 
-/**
- *
- * @author Ailton Cardoso Jr
- */
-public class DatasRelatorio extends javax.swing.JDialog {
 
-    /**
-     * Creates new form DatasRelatorio
-     */
+public class DatasRelatorio extends javax.swing.JDialog {
     private Conexao con = null;
 
     public DatasRelatorio(java.awt.Frame parent, boolean modal) {
