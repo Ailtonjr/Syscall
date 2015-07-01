@@ -10,16 +10,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Ailton Cardoso Jr
- */
+
 public class Consulta {
-
-    Conexao con;
-    //private DefaultTableModel modelo = new DefaultTableModel();
+    private Conexao con;
     private DefaultTableModel modelo;
-
     private ResultSet rs;
 
     public Consulta() {
@@ -377,5 +371,4 @@ public class Consulta {
         }
         return lista;
     }
-
 }
