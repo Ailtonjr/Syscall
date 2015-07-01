@@ -6,20 +6,16 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
-/**
- *
- * @author iPotter
- */
+
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame
-     */
     public Login() {
         initComponents();
-        field_Usuario.setText("joao");
-        field_Senha.setText("joao");
+        field_Usuario.setText("abc");
+        field_Senha.setText("123");
     }
 
     private void tentarLogin() {
@@ -30,8 +26,9 @@ public class Login extends javax.swing.JFrame {
         if (!login.equals("") && !senha.equals("")) {
             try {
                 String retorno = consulta.consultaLogin(login, senha);
-                if (retorno!=null) {
+                if (retorno != null) {
                     this.setVisible(false);
+                    
                     Principal principal = new Principal();
                     principal.IDUser = Integer.parseInt(retorno);
                     principal.setVisible(true);
@@ -90,12 +87,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        field_Senha.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        field_Senha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_SenhaActionPerformed(evt);
-            }
-        });
         field_Senha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 field_SenhaKeyPressed(evt);
@@ -104,13 +95,6 @@ public class Login extends javax.swing.JFrame {
 
         label_Senha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         label_Senha.setText("Senha");
-
-        field_Usuario.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        field_Usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_UsuarioActionPerformed(evt);
-            }
-        });
 
         label_Login.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         label_Login.setText("Login");
@@ -189,20 +173,12 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_CancelarActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_button_CancelarActionPerformed
 
     private void button_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EntrarActionPerformed
         tentarLogin();
     }//GEN-LAST:event_button_EntrarActionPerformed
-
-    private void field_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_SenhaActionPerformed
-
-    }//GEN-LAST:event_field_SenhaActionPerformed
-
-    private void field_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_UsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_field_UsuarioActionPerformed
 
     private void field_UsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field_UsuarioKeyPressed
         int key = evt.getKeyCode();
@@ -218,11 +194,20 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_field_SenhaKeyPressed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
 
+    public static void main(String args[]) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);

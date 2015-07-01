@@ -10,16 +10,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Ailton Cardoso Jr
- */
+
 public class Consulta {
-
-    Conexao con;
-    //private DefaultTableModel modelo = new DefaultTableModel();
+    private Conexao con;
     private DefaultTableModel modelo;
-
     private ResultSet rs;
 
     public Consulta() {
@@ -54,17 +48,18 @@ public class Consulta {
             }
         };
         try {
-            String vetor[] = new String[6];
+            String vetor[] = new String[7];
             modelo.addColumn("ID");
             modelo.addColumn("Cliente");
             modelo.addColumn("Categoria");
             modelo.addColumn("Data");
             modelo.addColumn("Hora");
             modelo.addColumn("Status");
+            modelo.addColumn("Usuario");
 
             while (rs.next()) {
 
-                for (int i = 1; i <= 6; i++) {
+                for (int i = 1; i <= 7; i++) {
                     if (i == 6) {
                         if (rs.getString(i).equalsIgnoreCase("t")) {
                             vetor[i - 1] = "Aberto";
@@ -377,5 +372,4 @@ public class Consulta {
         }
         return lista;
     }
-
 }
