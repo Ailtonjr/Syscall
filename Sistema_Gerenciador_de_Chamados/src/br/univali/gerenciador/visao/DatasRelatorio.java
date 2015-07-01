@@ -51,7 +51,7 @@ public class DatasRelatorio extends javax.swing.JFrame {
         jXDatePicker_DataFim = new org.jdesktop.swingx.JXDatePicker();
         jXDatePicker_DataFim.setFormats(new String[]{"yyyy-MM-dd"});
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setText("Data inicio");
@@ -142,7 +142,7 @@ public class DatasRelatorio extends javax.swing.JFrame {
         JasperPrint jasperPrint = null;
         try {
             HashMap map = new HashMap();
-            String arquivoJasper = "relatorios/report1.jasper";
+            String arquivoJasper = "relatorios/relatorioChamadosCategoria.jasper";
             Date dataInicio = jXDatePicker_DataInicio.getDate();
             Date dataFim = jXDatePicker_DataFim.getDate();
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -196,7 +196,6 @@ public class DatasRelatorio extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker_DataFim;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker_DataInicio;

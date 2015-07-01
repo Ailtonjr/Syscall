@@ -55,6 +55,7 @@ public class Principal extends javax.swing.JFrame {
         menuItem_Relatorio1 = new javax.swing.JMenuItem();
         menuItem_Relatorio2 = new javax.swing.JMenuItem();
         menuItem_Relatorio3 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         menu_Sobre = new javax.swing.JMenu();
         menu_Sair = new javax.swing.JMenu();
@@ -199,7 +200,7 @@ public class Principal extends javax.swing.JFrame {
 
         menu_Relatorio.setText("Relatórios");
 
-        menuItem_Relatorio1.setText("Problemas reportados ano/mês");
+        menuItem_Relatorio1.setText("Chamados por mês");
         menuItem_Relatorio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItem_Relatorio1ActionPerformed(evt);
@@ -207,7 +208,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Relatorio.add(menuItem_Relatorio1);
 
-        menuItem_Relatorio2.setText("Chamados/categoria");
+        menuItem_Relatorio2.setText("Custo por chamados");
         menuItem_Relatorio2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItem_Relatorio2ActionPerformed(evt);
@@ -215,7 +216,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Relatorio.add(menuItem_Relatorio2);
 
-        menuItem_Relatorio3.setText("Gasto/Cliente");
+        menuItem_Relatorio3.setText("Custo por cliente");
         menuItem_Relatorio3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItem_Relatorio3ActionPerformed(evt);
@@ -223,13 +224,17 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Relatorio.add(menuItem_Relatorio3);
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenu1.setText("Por período");
+
+        jMenuItem1.setText("Chamado por categoria");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        menu_Relatorio.add(jMenuItem1);
+        jMenu1.add(jMenuItem1);
+
+        menu_Relatorio.add(jMenu1);
 
         menuBar.add(menu_Relatorio);
 
@@ -318,7 +323,7 @@ public class Principal extends javax.swing.JFrame {
         JasperPrint jasperPrint = null;
         try {
             HashMap map = new HashMap();
-            String arquivoJasper = "relatorios/Problemas Reportados por mes.jasper";
+            String arquivoJasper = "relatorios/relatorioProblemasReportados.jasper";
             jasperPrint = JasperFillManager.fillReport(arquivoJasper, new HashMap(), con.relatorioProblemasReportados());
         } catch (JRException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -331,7 +336,7 @@ public class Principal extends javax.swing.JFrame {
         JasperPrint jasperPrint = null;
         try {
             HashMap map = new HashMap();
-            String arquivoJasper = "relatorios/Gasto por Cliente.jasper";
+            String arquivoJasper = "relatorios/relatorioGastoCliente.jasper";
             jasperPrint = JasperFillManager.fillReport(arquivoJasper, new HashMap(), con.relatorioGastoCliente());
         } catch (JRException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -342,7 +347,7 @@ public class Principal extends javax.swing.JFrame {
     private void menuItem_Relatorio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_Relatorio2ActionPerformed
         JasperPrint jasperPrint = null;
         HashMap map = new HashMap();
-        String arquivoJasper = "relatorios/Gasto por Categoria.jasper";
+        String arquivoJasper = "relatorios/relatorioGastoProblema.jasper";
         try {
             jasperPrint = JasperFillManager.fillReport(arquivoJasper, new HashMap(), con.relatorioGastoProblema());
         } catch (JRException ex) {
@@ -373,6 +378,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton button_Novo;
     private javax.swing.JComboBox comboBox_Filtro;
     private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuItem_Categoria;

@@ -70,7 +70,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Relatorio1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Problemas reportados ano/m&#xea;s"/>
+                <Property name="text" type="java.lang.String" value="Chamados por m&#xea;s"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem_Relatorio1ActionPerformed"/>
@@ -78,7 +78,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Relatorio2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Chamados/categoria"/>
+                <Property name="text" type="java.lang.String" value="Custo por chamados"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem_Relatorio2ActionPerformed"/>
@@ -86,20 +86,27 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Relatorio3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Gasto/Cliente"/>
+                <Property name="text" type="java.lang.String" value="Custo por cliente"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem_Relatorio3ActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <Menu class="javax.swing.JMenu" name="jMenu1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+                <Property name="text" type="java.lang.String" value="Por per&#xed;odo"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
-              </Events>
-            </MenuItem>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Chamado por categoria"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menu_Sobre">
