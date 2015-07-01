@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.postgresql.util.PSQLException;
 
 public class Conexao {
 
@@ -100,10 +101,12 @@ public class Conexao {
 
             preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Programador " + nome + " inserido com sucesso!");
-        } catch (SQLException ex) {
+        } catch (PSQLException e){
+            JOptionPane.showMessageDialog(null, "Erro ao inserir. \n" + "O Programador '" + nome + "' já existe!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao inserir programador " + nome + "\n" + sql, "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
-        }
+        } 
     }
 
     public void inserirCategoria(String nome) {
@@ -122,11 +125,11 @@ public class Conexao {
         }
     }
 
-    public void inserirChamado(String descricao, int id_categoria, int id_cliente, int id_usuario, String data, String hora) {
+    public void inserirChamado(String descricao, int id_categoria, int id_cliente, int id_usuario, String data, String hora) throws SQLException {
         String sql = "BEGIN;"
                 + "INSERT INTO chamado(status, descricao, id_categoria, id_cliente, id_usuario, data, hora) VALUES (?, ?, ?, ?, ?, ?, ?);"
                 + "COMMIT";
-        try {
+       // try {
             preparedStatement = conexao.prepareStatement(sql);
             preparedStatement.setBoolean(1, true);
             preparedStatement.setString(2, descricao);
@@ -136,11 +139,11 @@ public class Conexao {
             preparedStatement.setDate(6, java.sql.Date.valueOf(data));
             preparedStatement.setTime(7, java.sql.Time.valueOf(hora));
             preparedStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Chamado inserido com sucesso!");
-        } catch (SQLException ex) {
+            //JOptionPane.showMessageDialog(null, "Chamado inserido com sucesso!");
+        /*} catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao criar chamado", "Erro", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
-        }
+        }*/
     }
 
     public void inserirTopico(int id_chamado, String descricao, int id_programador, String tempo_trabalhado) throws SQLException, IllegalArgumentException {
