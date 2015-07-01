@@ -235,6 +235,11 @@ public class Principal extends javax.swing.JFrame {
         menuBar.add(menu_Sobre);
 
         menu_Sair.setText("Sair");
+        menu_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_SairMouseClicked(evt);
+            }
+        });
         menuBar.add(menu_Sair);
 
         setJMenuBar(menuBar);
@@ -353,6 +358,13 @@ public class Principal extends javax.swing.JFrame {
         DatasRelatorio datasRelatorio = new DatasRelatorio(this,true);
         datasRelatorio.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void menu_SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_SairMouseClicked
+        // TODO Logout
+        this.setVisible(false);
+        con.encerrarConexao();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_menu_SairMouseClicked
 
 
     public static void main(String args[]) {
