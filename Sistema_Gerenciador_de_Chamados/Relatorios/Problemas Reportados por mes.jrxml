@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fc1c0fdb-e192-4d06-b512-49bfe950cc42">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT EXTRACT(YEAR FROM c.data) as ano,EXTRACT(MONTH FROM c.data ) as mes, count(id) as qtd FROM chamado c GROUP BY  EXTRACT(YEAR FROM c.data),EXTRACT(MONTH FROM c.data) ORDER BY EXTRACT(YEAR FROM c.data),EXTRACT(MONTH FROM c.data);]]>
+	</queryString>
+	<field name="ano" class="java.lang.Double"/>
+	<field name="mes" class="java.lang.Double"/>
+	<field name="qtd" class="java.lang.Long"/>
+	<group name="ano">
+		<groupExpression><![CDATA[$F{ano}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#000000" uuid="1377094c-389e-4d78-b2d0-4cadc7aa3a58"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ano}.intValue()]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="6751abef-489a-47f3-a98f-72e55d062e62"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="mes">
+		<groupExpression><![CDATA[$F{mes}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField>
+					<reportElement style="SubTitle" x="0" y="4" width="460" height="20" uuid="4e655539-75f7-40c8-a5bb-5c52e37d8547"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{mes}.intValue() == 1 ? "Janeiro" :
+( $F{mes}.intValue() == 2 ? "Fevereiro" :
+    ($F{mes}.intValue() == 3 ? "Março" :
+        ($F{mes}.intValue() == 4 ? "Abril" :
+            ($F{mes}.intValue() == 5 ? "Maio" :
+                ($F{mes}.intValue() == 6 ? "Junho" :
+                    ( $F{mes}.intValue() == 7 ? "Julho" :
+                        ($F{mes}.intValue() == 8 ? "Agosto" :
+                            ($F{mes}.intValue() == 9 ? "Setembro" :
+                                ($F{mes}.intValue() == 10 ? "Outubro" :
+                                    ($F{mes}.intValue() == 11 ? "Novembro" :
+                                        ($F{mes}.intValue() == 12 ? "Dezembro" :
+                                        "Null")
+                                    ) 
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    )
+)]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="780b9aae-00a6-418b-91ca-cceae7f6dfd1"/>
+				<imageExpression><![CDATA["leaf_banner_gray.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="6efae56c-96c2-4291-8f31-3c39056b8492"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Gray Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="dd6e0ae1-7c76-4990-a4fd-0f42ad1466cb"/>
+				<text><![CDATA[Leaf Gray SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="d89f5b37-4c66-407a-87f0-4df9a28feb5d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="555" height="15" uuid="630261ab-d530-49cc-8c95-5774dc8aaf63"/>
+				<text><![CDATA[qtd]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="44390074-39d4-4356-ac6f-029d22802199"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="555" height="15" uuid="a0e4ca0d-2473-4544-8022-56b9f2eb2c0c"/>
+				<textFieldExpression><![CDATA[$F{qtd}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="61b9c7fb-3c79-4faf-af4b-b7d2f392daac"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="3bae8854-88ec-4ef9-91e2-3670eac7afc8"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="ef655234-634f-421c-91bc-6a2bb3ea1dc8"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="a33ae382-a938-425a-bd62-f8b82745a5a8"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

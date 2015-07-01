@@ -19,11 +19,13 @@ public class Conexao {
     private Connection conexao;
     private PreparedStatement preparedStatement;
     private Statement statement;
+    public static Connection con;
 
     public Conexao() {
 
         try {
             this.conexao = DriverManager.getConnection(url, usuario, senha);
+            con = conexao;
             System.out.println("Conexão estabelecida");
 
             this.statement = conexao.createStatement();

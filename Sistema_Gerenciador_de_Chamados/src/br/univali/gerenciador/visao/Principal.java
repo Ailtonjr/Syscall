@@ -2,9 +2,14 @@ package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
+import java.sql.Connection;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
-
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -191,7 +196,7 @@ public class Principal extends javax.swing.JFrame {
 
         menu_Relatorio.setText("Relatórios");
 
-        menuItem_Relatorio1.setText("Relatorio 1");
+        menuItem_Relatorio1.setText("Problemas reportados ano/mês");
         menuItem_Relatorio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItem_Relatorio1ActionPerformed(evt);
@@ -199,10 +204,20 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Relatorio.add(menuItem_Relatorio1);
 
-        menuItem_Relatorio2.setText("Relatorio 2");
+        menuItem_Relatorio2.setText("Chamados/categoria");
+        menuItem_Relatorio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_Relatorio2ActionPerformed(evt);
+            }
+        });
         menu_Relatorio.add(menuItem_Relatorio2);
 
-        menuItem_Relatorio3.setText("Relatorio 3");
+        menuItem_Relatorio3.setText("Gasto/Cliente");
+        menuItem_Relatorio3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_Relatorio3ActionPerformed(evt);
+            }
+        });
         menu_Relatorio.add(menuItem_Relatorio3);
 
         menuBar.add(menu_Relatorio);
@@ -289,9 +304,36 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBox_FiltroActionPerformed
 
     private void menuItem_Relatorio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_Relatorio1ActionPerformed
-
+        gerarRelatorio("Problemas Reportados por mes");
         
+
+
     }//GEN-LAST:event_menuItem_Relatorio1ActionPerformed
+
+    private void menuItem_Relatorio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_Relatorio3ActionPerformed
+        gerarRelatorio("Gasto por Cliente");
+    }//GEN-LAST:event_menuItem_Relatorio3ActionPerformed
+
+    private void menuItem_Relatorio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_Relatorio2ActionPerformed
+        gerarRelatorio("Gasto por Categoria");
+    }//GEN-LAST:event_menuItem_Relatorio2ActionPerformed
+
+    public void gerarRelatorio(String relatorio) {
+
+        JasperPrint rel = null;
+        try {
+            Connection con = new Conexao().con;
+            HashMap map = new HashMap();
+            String arquivoJasper = "relatorios/"+relatorio+".jasper";
+            rel = JasperFillManager.fillReport(arquivoJasper, map, con);
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }        
+        JasperViewer jv = new JasperViewer(rel, false);
+        jv.setVisible(true);
+        jv.setTitle("Título");
+        jv.setIconImage(null);
+    }
 
     /**
      * @param args the command line arguments

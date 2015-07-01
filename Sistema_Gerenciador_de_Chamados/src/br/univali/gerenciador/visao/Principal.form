@@ -70,7 +70,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Relatorio1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Relatorio 1"/>
+                <Property name="text" type="java.lang.String" value="Problemas reportados ano/m&#xea;s"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem_Relatorio1ActionPerformed"/>
@@ -78,13 +78,19 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Relatorio2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Relatorio 2"/>
+                <Property name="text" type="java.lang.String" value="Chamados/categoria"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem_Relatorio2ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Relatorio3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Relatorio 3"/>
+                <Property name="text" type="java.lang.String" value="Gasto/Cliente"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItem_Relatorio3ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
