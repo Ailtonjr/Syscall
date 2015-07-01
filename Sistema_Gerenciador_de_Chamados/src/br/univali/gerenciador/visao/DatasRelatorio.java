@@ -16,8 +16,6 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author Ailton Cardoso Jr
  */
 public class DatasRelatorio extends javax.swing.JFrame {
-
-public class DatasRelatorio extends javax.swing.JDialog {
     private Conexao con = null;
     public DatasRelatorio() {
         initComponents();
