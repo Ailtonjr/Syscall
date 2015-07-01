@@ -7,28 +7,33 @@
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[SELECT * FROM gasto_problema;]]>
 	</queryString>
 	<field name="descricao" class="java.lang.String"/>
-	<field name="valor" class="java.lang.Double"/>
+	<field name="valor" class="java.math.BigDecimal"/>
+	<field name="status" class="java.lang.Boolean"/>
 	<group name="descricao">
 		<groupExpression><![CDATA[$F{descricao}]]></groupExpression>
 		<groupHeader>
-			<band height="40">
+			<band height="49">
 				<textField>
-					<reportElement style="Detail" x="513" y="22" width="50" height="15" uuid="b42b5464-cb58-4732-8d15-9511ab2fcb31"/>
-					<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+					<reportElement style="Detail" x="420" y="22" width="50" height="15" uuid="b42b5464-cb58-4732-8d15-9511ab2fcb31"/>
+					<textFieldExpression><![CDATA[$F{valor} == null ? "0" : $F{valor}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement style="Column header" x="488" y="22" width="34" height="15" uuid="f96d4e55-a263-4d2b-8a8c-9aedf268f9ab"/>
+					<reportElement style="Column header" x="395" y="22" width="34" height="15" uuid="f96d4e55-a263-4d2b-8a8c-9aedf268f9ab"/>
 					<text><![CDATA[R$]]></text>
 				</staticText>
 				<rectangle>
 					<reportElement mode="Opaque" x="13" y="20" width="11" height="9" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="464d6bb7-4f9f-4456-b12a-5e135bebd2c0"/>
 				</rectangle>
 				<textField>
-					<reportElement style="SubTitle" x="40" y="13" width="271" height="24" forecolor="#000000" uuid="23975700-a832-4264-b77a-39c5c79d3eb4"/>
+					<reportElement style="Detail" x="490" y="20" width="65" height="15" uuid="f3ab566d-6716-4911-8509-dfb394290f87"/>
+					<textFieldExpression><![CDATA[$F{status} == ( true ) ? "Aberto" :"Fechado"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="40" y="3" width="341" height="43" forecolor="#000000" uuid="23975700-a832-4264-b77a-39c5c79d3eb4"/>
 					<textElement>
 						<font isBold="true"/>
 					</textElement>
@@ -37,7 +42,7 @@
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="45"/>
+			<band height="4"/>
 		</groupFooter>
 	</group>
 	<background>
@@ -52,11 +57,11 @@
 			<staticText>
 				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="a6c7cc01-a3ec-4d10-8020-cedc5849580e"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Relatorio de Gasto]]></text>
+				<text><![CDATA[Relatório]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="8aff60f5-075d-4a92-95c3-87b30cbd8e9a"/>
-				<text><![CDATA[Por Categoria]]></text>
+				<reportElement style="SubTitle" x="40" y="46" width="195" height="22" uuid="8aff60f5-075d-4a92-95c3-87b30cbd8e9a"/>
+				<text><![CDATA[de Custo Por Chamado]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -72,17 +77,21 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="SubTitle" x="2" y="13" width="105" height="22" uuid="9f17918d-cad8-4206-b89c-ed35414fdf2b"/>
-				<text><![CDATA[Cliente]]></text>
+				<reportElement style="SubTitle" x="2" y="13" width="83" height="22" uuid="9f17918d-cad8-4206-b89c-ed35414fdf2b"/>
+				<text><![CDATA[Descrição]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="522" y="20" width="34" height="15" uuid="3918eaf5-5cbf-41ab-be97-8e556b3be20d"/>
+				<reportElement style="Column header" x="399" y="20" width="34" height="15" uuid="3918eaf5-5cbf-41ab-be97-8e556b3be20d"/>
 				<text><![CDATA[valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="490" y="20" width="46" height="15" uuid="a200e90b-2d4a-4245-ae06-b3ae4c9e633d"/>
+				<text><![CDATA[Status]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="16" splitType="Stretch">
+		<band height="17" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="362cc53a-3571-433c-9bcd-3262d519f019"/>
 				<graphicElement>

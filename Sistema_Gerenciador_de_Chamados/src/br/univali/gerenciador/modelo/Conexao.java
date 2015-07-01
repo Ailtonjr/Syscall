@@ -285,7 +285,7 @@ public class Conexao {
     }
 
     public ResultSet consulaTopico(int idTopico) {
-        String sql = "SELECT t.descricao, p.nome, t.tempo_trabalhado, t.solucionado FROM topico t JOIN programador p ON (t.id_programador = p.id) WHERE t.id = " + idTopico;
+        String sql = "SELECT t.descricao, p.nome, t.tempo_trabalhado FROM topico t JOIN programador p ON (t.id_programador = p.id) WHERE t.id = " + idTopico;
         ResultSet rs = null;
         try {
             rs = statement.executeQuery(sql);

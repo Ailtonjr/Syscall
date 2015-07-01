@@ -264,6 +264,23 @@ public class Consulta {
         return vetor;
 
     }
+    
+    public String[] geraVisaoTopico(int idTopico) {
+        rs = con.consulaTopico(idTopico);
+        String vetor[] = null;
+        try {
+            ResultSetMetaData rsmt = rs.getMetaData();
+            int qtdColunas = rsmt.getColumnCount();
+            vetor = new String[qtdColunas];
+            rs.next();
+            for (int i = 1; i <= qtdColunas; i++) {
+                vetor[i - 1] = rs.getString(i);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vetor;
+    }
 
     public String[] geraVisaoCliente(int idCliente) {
         rs = con.consultaCliente(idCliente);

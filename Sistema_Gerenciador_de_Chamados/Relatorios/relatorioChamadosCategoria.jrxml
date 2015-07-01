@@ -17,15 +17,19 @@
 		<groupHeader>
 			<band height="40">
 				<textField>
-					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#000000" uuid="8e0141e9-e8d9-47f6-ab56-95aa6e34b205"/>
+					<reportElement style="SubTitle" x="40" y="13" width="428" height="24" forecolor="#000000" uuid="8e0141e9-e8d9-47f6-ab56-95aa6e34b205"/>
 					<textElement>
 						<font isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 				</textField>
 				<rectangle>
-					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="72c906d7-455a-43e7-a121-0ee87946859b"/>
+					<reportElement mode="Opaque" x="13" y="19" width="10" height="10" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="72c906d7-455a-43e7-a121-0ee87946859b"/>
 				</rectangle>
+				<textField>
+					<reportElement style="Detail" x="516" y="22" width="37" height="15" uuid="0395bd34-67d2-4f90-8a9c-c8eae5165226"/>
+					<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupHeader>
 		<groupFooter>
@@ -36,7 +40,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="70" splitType="Stretch">
+		<band height="91" splitType="Stretch">
 			<image>
 				<reportElement x="275" y="0" width="300" height="64" uuid="bdcfbb09-6c49-4ecb-a831-99f0bfeaec05"/>
 				<imageExpression><![CDATA["leaf_banner_gray.png"]]></imageExpression>
@@ -44,11 +48,15 @@
 			<staticText>
 				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="de2f31e0-c31f-445c-a350-31ea7bdf3d75"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Leaf Gray Title]]></text>
+				<text><![CDATA[Relatório]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="a4c349ea-0e4c-409d-9135-6915c59f00ae"/>
-				<text><![CDATA[Leaf Gray SubTitle]]></text>
+				<reportElement style="SubTitle" x="40" y="46" width="234" height="22" uuid="a4c349ea-0e4c-409d-9135-6915c59f00ae"/>
+				<text><![CDATA[de Chamado por categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="92" y="69" width="126" height="22" uuid="1dd8d119-0637-482d-bbcc-08b9541f7171"/>
+				<text><![CDATA[Em um periodo]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -64,8 +72,8 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="0" y="19" width="555" height="15" uuid="cd5f6e2a-727c-4ec3-b7cf-844b5d475ecb"/>
-				<text><![CDATA[count]]></text>
+				<reportElement style="Column header" x="486" y="21" width="69" height="15" uuid="cd5f6e2a-727c-4ec3-b7cf-844b5d475ecb"/>
+				<text><![CDATA[Quantidade]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -77,10 +85,6 @@
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
-			<textField>
-				<reportElement style="Detail" x="0" y="0" width="555" height="15" uuid="0395bd34-67d2-4f90-8a9c-c8eae5165226"/>
-				<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
-			</textField>
 		</band>
 	</detail>
 	<columnFooter>

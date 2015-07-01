@@ -7,8 +7,15 @@ package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
+import java.awt.Color;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,21 +28,36 @@ public class Topico extends javax.swing.JDialog {
      * Creates new form Topico
      */
     private Conexao con;
-    private int IDChamado;
+    private Consulta consulta = null;
+    private int idChamado;
+    private int idTopico;
+    String operacao = "editar";
 
     public Topico(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
-    Topico(Chamado parent, boolean modal, int numChamado) {
+    Topico(Chamado parent, boolean modal, int idTopico, int idchamado, String operacao) {
         super(parent, modal);
         initComponents();
         con = new Conexao();
-        this.IDChamado = numChamado;
-        Consulta consulta = new Consulta();
+        this.idChamado = idchamado;
+        this.operacao = operacao;
+        this.idTopico = idTopico;
+        consulta = new Consulta();
         exibeListaProgramadores(consulta.geraListaProgramadores());
+        if (operacao.equalsIgnoreCase("editar")) {
+            exibeTopico();
+        }
+    }
 
+    private void exibeTopico() {
+        consulta = new Consulta();
+        String[] vetor = consulta.geraVisaoTopico(idTopico);
+        textArea_Descricao.setText(vetor[0]);
+        comboBox_Programador.setSelectedItem(vetor[1]);
+        formattedTextField_Horas.setValue(vetor[2]);
     }
 
     private void exibeListaProgramadores(List<String> lista) {
@@ -156,20 +178,27 @@ public class Topico extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_salvarActionPerformed
-
         if (checkBox_Solucionado.isSelected()) {
-            con.atualizaStatusChamado(IDChamado);
-
+            //con.atualizaStatusChamado(idChamado);
         }
         int idProgramador = (con.consultaIdProgramador((String) comboBox_Programador.getSelectedItem()));
-        try {
-            con.inserirTopico(IDChamado, textArea_Descricao.getText(), idProgramador, formattedTextField_Horas.getText()+":00");
-            JOptionPane.showMessageDialog(this, "Topico inserido com sucesso!");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir topico", "Erro", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
-        }catch (IllegalArgumentException illegalex) {
-            JOptionPane.showMessageDialog(this, "Erro ao inserir topico, Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
+        if (operacao.equalsIgnoreCase("novo")) {
+            try {
+                con.inserirTopico(idChamado, textArea_Descricao.getText(), idProgramador, formattedTextField_Horas.getText() + ":00");
+                JOptionPane.showMessageDialog(this, "Topico inserido com sucesso!");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao inserir topico", "Erro", JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            } catch (IllegalArgumentException illegalex) {
+                JOptionPane.showMessageDialog(this, "Erro ao inserir topico, Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if (operacao.equalsIgnoreCase("editar")) {
+            try {
+                con.atualizarTopico(idTopico, idChamado, textArea_Descricao.getText(), idProgramador, formattedTextField_Horas.getText() + ":00");
+                JOptionPane.showMessageDialog(this, "Topico inserido com sucesso!");
+            } catch (IllegalArgumentException illegalex) {
+                JOptionPane.showMessageDialog(this, "Erro ao inserir topico, Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         }
 
     }//GEN-LAST:event_button_salvarActionPerformed

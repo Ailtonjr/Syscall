@@ -59,7 +59,7 @@ public class Chamado extends javax.swing.JDialog {
         button_Novo.setEnabled(false);
         button_Editar.setEnabled(false);
         button_Excluir.setEnabled(false);
-        modelo = new DefaultTableModel(null, new String[]{"ID","Cliente","Categoria","Data","Hora","Status"});
+        modelo = new DefaultTableModel(null, new String[]{"ID", "Cliente", "Categoria", "Data", "Hora", "Status"});
         table_Topicos.setModel(modelo);
     }
 
@@ -96,7 +96,6 @@ public class Chamado extends javax.swing.JDialog {
         } else {
             label_Status.setForeground(new Color(204, 0, 0));
         }
-        
 
         textArea_Descricao.setText(vetor[5]);
     }
@@ -463,12 +462,12 @@ public class Chamado extends javax.swing.JDialog {
     }
 
     private void button_NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_NovoActionPerformed
-        Topico topico = new Topico(this, true, numChamado);
+        Topico topico = new Topico(this, true,0, numChamado,"novo");
         topico.setVisible(true);
         exibeChamado();
         verificaStatus();
         atualizaTabela();
-        
+
     }//GEN-LAST:event_button_NovoActionPerformed
 
     private void button_SalvarChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_SalvarChamadoActionPerformed
@@ -510,7 +509,10 @@ public class Chamado extends javax.swing.JDialog {
     }//GEN-LAST:event_table_TopicosMouseClicked
 
     private void button_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_EditarActionPerformed
-        // TODO add your handling code here:
+        int idTopico = Integer.parseInt((String) table_Topicos.getValueAt(table_Topicos.getSelectedRow(), 0));
+        Topico topico = new Topico(this, true, idTopico, idSelecionado,"editar");
+        topico.setVisible(true);
+        atualizaTabela();
     }//GEN-LAST:event_button_EditarActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
