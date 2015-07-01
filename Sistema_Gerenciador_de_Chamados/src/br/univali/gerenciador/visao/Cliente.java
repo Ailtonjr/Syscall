@@ -25,6 +25,15 @@ public class Cliente extends javax.swing.JDialog {
         modelo = consulta.geraTabelaClientes();
         table_Clientes.setModel(modelo);
     }
+    
+    public Cliente(java.awt.Dialog parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        consulta = new Consulta();
+        con = new Conexao();
+        modelo = consulta.geraTabelaClientes();
+        table_Clientes.setModel(modelo);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

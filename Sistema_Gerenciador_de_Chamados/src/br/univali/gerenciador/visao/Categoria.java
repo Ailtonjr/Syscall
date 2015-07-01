@@ -22,6 +22,15 @@ public class Categoria extends javax.swing.JDialog {
         modelo = consulta.geraTabelaCategorias();
         tabela_Categorias.setModel(modelo);
     }
+    
+    public Categoria(java.awt.Dialog parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        consulta = new Consulta();
+        con = new Conexao();
+        modelo = consulta.geraTabelaCategorias();
+        tabela_Categorias.setModel(modelo);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
