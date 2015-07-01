@@ -4,6 +4,8 @@ import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
@@ -53,6 +55,7 @@ public class Principal extends javax.swing.JFrame {
         menuItem_Relatorio1 = new javax.swing.JMenuItem();
         menuItem_Relatorio2 = new javax.swing.JMenuItem();
         menuItem_Relatorio3 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         menu_Sobre = new javax.swing.JMenu();
         menu_Sair = new javax.swing.JMenu();
 
@@ -220,6 +223,14 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Relatorio.add(menuItem_Relatorio3);
 
+        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menu_Relatorio.add(jMenuItem1);
+
         menuBar.add(menu_Relatorio);
 
         menu_Sobre.setText("Sobre");
@@ -304,36 +315,53 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBox_FiltroActionPerformed
 
     private void menuItem_Relatorio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_Relatorio1ActionPerformed
-        gerarRelatorio("Problemas Reportados por mes");
+        JasperPrint jasperPrint = null;
+        try {
+            HashMap map = new HashMap();
+            String arquivoJasper = "relatorios/Problemas Reportados por mes.jasper";
+            jasperPrint = JasperFillManager.fillReport(arquivoJasper, new HashMap(), con.relatorioProblemasReportados());
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        JasperViewer.viewReport(jasperPrint, false);
         
-
-
     }//GEN-LAST:event_menuItem_Relatorio1ActionPerformed
 
     private void menuItem_Relatorio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_Relatorio3ActionPerformed
-        gerarRelatorio("Gasto por Cliente");
+        JasperPrint jasperPrint = null;
+        try {
+            HashMap map = new HashMap();
+            String arquivoJasper = "relatorios/Gasto por Cliente.jasper";
+            jasperPrint = JasperFillManager.fillReport(arquivoJasper, new HashMap(), con.relatorioGastoCliente());
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        JasperViewer.viewReport(jasperPrint, false);
     }//GEN-LAST:event_menuItem_Relatorio3ActionPerformed
 
     private void menuItem_Relatorio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_Relatorio2ActionPerformed
-        gerarRelatorio("Gasto por Categoria");
+        JasperPrint jasperPrint = null;
+        HashMap map = new HashMap();
+        String arquivoJasper = "relatorios/Gasto por Categoria.jasper";
+        try {
+            jasperPrint = JasperFillManager.fillReport(arquivoJasper, new HashMap(), con.relatorioGastoProblema());
+        } catch (JRException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JasperViewer.viewReport(jasperPrint, false);
     }//GEN-LAST:event_menuItem_Relatorio2ActionPerformed
 
-    public void gerarRelatorio(String relatorio) {
-
-        JasperPrint rel = null;
-        try {
-            Connection con = new Conexao().con;
-            HashMap map = new HashMap();
-            String arquivoJasper = "relatorios/"+relatorio+".jasper";
-            rel = JasperFillManager.fillReport(arquivoJasper, map, con);
-        } catch (JRException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }        
-        JasperViewer jv = new JasperViewer(rel, false);
-        jv.setVisible(true);
-        jv.setTitle("Título");
-        jv.setIconImage(null);
-    }
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+//        JasperPrint jasperPrint = null;
+//        try {
+//            HashMap map = new HashMap();
+//            String arquivoJasper = "relatorios/Problemas Reportados por mes.jasper";
+//            jasperPrint = JasperFillManager.fillReport(arquivoJasper, new HashMap(), con.relatorioProblemasReportados());
+//        } catch (JRException e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+//        }
+//        JasperViewer.viewReport(jasperPrint, false);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,6 +380,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton button_Novo;
     private javax.swing.JComboBox comboBox_Filtro;
     private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuItem_Categoria;
     private javax.swing.JMenuItem menuItem_Chamado;
