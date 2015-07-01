@@ -2,7 +2,6 @@ package br.univali.gerenciador.visao;
 
 import br.univali.gerenciador.modelo.Conexao;
 import br.univali.gerenciador.modelo.Consulta;
-import java.sql.Connection;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,12 +13,11 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 
 public class Principal extends javax.swing.JFrame {
-
-    DefaultTableModel modelo;
-    int idSelecionado;
-    int IDUser;
-    Conexao con;
-    Consulta consulta;
+    private DefaultTableModel modelo;
+    private int idSelecionado;
+    private Conexao con;
+    private Consulta consulta;
+    public int IDUser;
 
     public Principal() {
         initComponents();
@@ -356,9 +354,7 @@ public class Principal extends javax.swing.JFrame {
         datasRelatorio.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
