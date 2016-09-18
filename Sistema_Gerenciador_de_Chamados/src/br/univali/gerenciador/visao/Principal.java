@@ -49,6 +49,8 @@ public class Principal extends javax.swing.JFrame {
         menuItem_Chamado = new javax.swing.JMenuItem();
         menuItem_Categoria = new javax.swing.JMenuItem();
         menuItem_Usuario = new javax.swing.JMenuItem();
+        menuItem_Logout = new javax.swing.JMenuItem();
+        menuItem_Sair = new javax.swing.JMenuItem();
         menu_Relatorio = new javax.swing.JMenu();
         menuItem_Relatorio1 = new javax.swing.JMenuItem();
         menuItem_Relatorio2 = new javax.swing.JMenuItem();
@@ -56,12 +58,11 @@ public class Principal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         menu_Sobre = new javax.swing.JMenu();
-        menu_Sair = new javax.swing.JMenu();
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema de Chamados - Início");
+        setTitle("Syscall - Início");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -159,6 +160,7 @@ public class Principal extends javax.swing.JFrame {
 
         menu_Gerenciar.setText("Gerenciar");
 
+        menuItem_Programador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Boss.png"))); // NOI18N
         menuItem_Programador.setText("Programador");
         menuItem_Programador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +169,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Gerenciar.add(menuItem_Programador);
 
+        menuItem_Cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Male.png"))); // NOI18N
         menuItem_Cliente.setText("Cliente");
         menuItem_Cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +178,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Gerenciar.add(menuItem_Cliente);
 
+        menuItem_Chamado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/How-to.png"))); // NOI18N
         menuItem_Chamado.setText("Chamado");
         menuItem_Chamado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,6 +187,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Gerenciar.add(menuItem_Chamado);
 
+        menuItem_Categoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Blue tag.png"))); // NOI18N
         menuItem_Categoria.setText("Categoria");
         menuItem_Categoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,6 +196,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Gerenciar.add(menuItem_Categoria);
 
+        menuItem_Usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/People.png"))); // NOI18N
         menuItem_Usuario.setText("Usuário");
         menuItem_Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,10 +205,27 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Gerenciar.add(menuItem_Usuario);
 
+        menuItem_Logout.setText("Logout");
+        menuItem_Logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_LogoutActionPerformed(evt);
+            }
+        });
+        menu_Gerenciar.add(menuItem_Logout);
+
+        menuItem_Sair.setText("Sair");
+        menuItem_Sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItem_SairActionPerformed(evt);
+            }
+        });
+        menu_Gerenciar.add(menuItem_Sair);
+
         menuBar.add(menu_Gerenciar);
 
         menu_Relatorio.setText("Relatórios");
 
+        menuItem_Relatorio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Report.png"))); // NOI18N
         menuItem_Relatorio1.setText("Chamados por mês");
         menuItem_Relatorio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,6 +234,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Relatorio.add(menuItem_Relatorio1);
 
+        menuItem_Relatorio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Report.png"))); // NOI18N
         menuItem_Relatorio2.setText("Custo por chamados");
         menuItem_Relatorio2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,6 +243,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Relatorio.add(menuItem_Relatorio2);
 
+        menuItem_Relatorio3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Report.png"))); // NOI18N
         menuItem_Relatorio3.setText("Custo por cliente");
         menuItem_Relatorio3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,8 +252,10 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Relatorio.add(menuItem_Relatorio3);
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Report.png"))); // NOI18N
         jMenu1.setText("Por período");
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/3d bar chart.png"))); // NOI18N
         jMenuItem1.setText("Chamado por categoria");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,14 +270,6 @@ public class Principal extends javax.swing.JFrame {
 
         menu_Sobre.setText("Sobre");
         menuBar.add(menu_Sobre);
-
-        menu_Sair.setText("Sair");
-        menu_Sair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menu_SairMouseClicked(evt);
-            }
-        });
-        menuBar.add(menu_Sair);
 
         setJMenuBar(menuBar);
 
@@ -369,16 +388,20 @@ public class Principal extends javax.swing.JFrame {
         dataRelatorio.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void menu_SairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_SairMouseClicked
-        // TODO Logout
-        this.setVisible(false);
-        con.encerrarConexao();
-        new Login().setVisible(true);
-    }//GEN-LAST:event_menu_SairMouseClicked
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         con.encerrarConexao();
     }//GEN-LAST:event_formWindowClosing
+
+    private void menuItem_SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_SairActionPerformed
+        con.encerrarConexao();
+        System.exit(EXIT_ON_CLOSE);
+    }//GEN-LAST:event_menuItem_SairActionPerformed
+
+    private void menuItem_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItem_LogoutActionPerformed
+        this.setVisible(false);
+        con.encerrarConexao();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_menuItem_LogoutActionPerformed
 
 
     public static void main(String args[]) {
@@ -401,14 +424,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItem_Categoria;
     private javax.swing.JMenuItem menuItem_Chamado;
     private javax.swing.JMenuItem menuItem_Cliente;
+    private javax.swing.JMenuItem menuItem_Logout;
     private javax.swing.JMenuItem menuItem_Programador;
     private javax.swing.JMenuItem menuItem_Relatorio1;
     private javax.swing.JMenuItem menuItem_Relatorio2;
     private javax.swing.JMenuItem menuItem_Relatorio3;
+    private javax.swing.JMenuItem menuItem_Sair;
     private javax.swing.JMenuItem menuItem_Usuario;
     private javax.swing.JMenu menu_Gerenciar;
     private javax.swing.JMenu menu_Relatorio;
-    private javax.swing.JMenu menu_Sair;
     private javax.swing.JMenu menu_Sobre;
     private javax.swing.JPanel panel_Principal;
     private javax.swing.JScrollPane scrollPane_Chamados;
