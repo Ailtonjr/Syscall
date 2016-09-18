@@ -23,6 +23,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Programador">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/Boss.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Programador"/>
               </Properties>
               <Events>
@@ -31,6 +34,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Cliente">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/Male.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cliente"/>
               </Properties>
               <Events>
@@ -39,6 +45,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Chamado">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/How-to.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Chamado"/>
               </Properties>
               <Events>
@@ -47,6 +56,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Categoria">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/Blue tag.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Categoria"/>
               </Properties>
               <Events>
@@ -55,6 +67,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Usuario">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/People.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
               </Properties>
               <Events>
@@ -70,6 +85,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Relatorio1">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/Report.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Chamados por m&#xea;s"/>
               </Properties>
               <Events>
@@ -78,6 +96,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Relatorio2">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/Report.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Custo por chamados"/>
               </Properties>
               <Events>
@@ -86,6 +107,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Relatorio3">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/Report.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Custo por cliente"/>
               </Properties>
               <Events>
@@ -94,11 +118,17 @@
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="jMenu1">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/Report.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Por per&#xed;odo"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/br/univali/gerenciador/visao/imagens/3d bar chart.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Chamado por categoria"/>
                   </Properties>
                   <Events>
@@ -127,7 +157,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Sistema de Chamados - In&#xed;cio"/>
+    <Property name="title" type="java.lang.String" value="Syscall - In&#xed;cio"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menuBar"/>

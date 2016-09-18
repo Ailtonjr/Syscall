@@ -61,7 +61,7 @@ public class Principal extends javax.swing.JFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema de Chamados - Início");
+        setTitle("Syscall - Início");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -159,6 +159,7 @@ public class Principal extends javax.swing.JFrame {
 
         menu_Gerenciar.setText("Gerenciar");
 
+        menuItem_Programador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Boss.png"))); // NOI18N
         menuItem_Programador.setText("Programador");
         menuItem_Programador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +168,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Gerenciar.add(menuItem_Programador);
 
+        menuItem_Cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Male.png"))); // NOI18N
         menuItem_Cliente.setText("Cliente");
         menuItem_Cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +177,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Gerenciar.add(menuItem_Cliente);
 
+        menuItem_Chamado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/How-to.png"))); // NOI18N
         menuItem_Chamado.setText("Chamado");
         menuItem_Chamado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,6 +186,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Gerenciar.add(menuItem_Chamado);
 
+        menuItem_Categoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Blue tag.png"))); // NOI18N
         menuItem_Categoria.setText("Categoria");
         menuItem_Categoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,6 +195,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Gerenciar.add(menuItem_Categoria);
 
+        menuItem_Usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/People.png"))); // NOI18N
         menuItem_Usuario.setText("Usuário");
         menuItem_Usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,6 +208,7 @@ public class Principal extends javax.swing.JFrame {
 
         menu_Relatorio.setText("Relatórios");
 
+        menuItem_Relatorio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Report.png"))); // NOI18N
         menuItem_Relatorio1.setText("Chamados por mês");
         menuItem_Relatorio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,6 +217,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Relatorio.add(menuItem_Relatorio1);
 
+        menuItem_Relatorio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Report.png"))); // NOI18N
         menuItem_Relatorio2.setText("Custo por chamados");
         menuItem_Relatorio2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,6 +226,7 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Relatorio.add(menuItem_Relatorio2);
 
+        menuItem_Relatorio3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Report.png"))); // NOI18N
         menuItem_Relatorio3.setText("Custo por cliente");
         menuItem_Relatorio3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,8 +235,10 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_Relatorio.add(menuItem_Relatorio3);
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/Report.png"))); // NOI18N
         jMenu1.setText("Por período");
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/univali/gerenciador/visao/imagens/3d bar chart.png"))); // NOI18N
         jMenuItem1.setText("Chamado por categoria");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
